@@ -1,15 +1,15 @@
 import './Section4.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
-import LabelValue from '../../LabelValue/LabelValue';
+import { LabelValue } from '../../LabelValue/LabelValue';
 
 const Section4 = () => {
   return (
     <BoxFrame>
       <div className="stats-grid">
-        <LabelValue />
-        <LabelValue />
-        <LabelValue />
-        <LabelValue />
+        <LabelValue label="Repositories" value="68" />
+        <LabelValue label="Repositories" value="68" />
+        <LabelValue label="Repositories" value="68" />
+        <LabelValue label="Repositories" value="68" />
       </div>
     </BoxFrame>
   );
