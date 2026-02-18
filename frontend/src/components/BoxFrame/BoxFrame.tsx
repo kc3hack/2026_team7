@@ -5,7 +5,7 @@ type BoxFrameProps = {
 };
 
 const BoxFrame = ({ children }: BoxFrameProps) => {
-  return <div className="box">{children}</div>;
+  return <div className="box_area">{children}</div>;
 };
 
 export default BoxFrame;

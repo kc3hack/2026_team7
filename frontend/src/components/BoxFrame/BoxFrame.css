@@ -2,9 +2,9 @@ body{
     background-color: rgb(137, 137, 137);
 }
 
-.box {
+.box_area {
     
-    width: 90%;
+    width: 95%;
 
     border: 6px solid rgba(220, 224, 230, 0.8); /* 4.5pt ≒ 6px */
     
