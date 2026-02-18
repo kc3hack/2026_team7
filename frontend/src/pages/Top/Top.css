@@ -12,6 +12,7 @@
   justify-content: center;
   text-align: center;
   padding: 0 20px 100px 20px; /* 下に少し余白を持たせてバランス調整 */
+  margin-top: 80px; /* ヘッダーの高さ分だけ上に余白を追加 */
 }
 
 /* 1. タイトルをさらに巨大に */
