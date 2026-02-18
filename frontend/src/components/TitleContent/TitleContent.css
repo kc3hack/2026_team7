@@ -1,3 +1,25 @@
 body{
     background-color: black;
 }
+
+.container {
+    padding: 40px;
+}
+
+.about-card {
+    color: white;
+    max-width: 900px;
+}
+
+.about-title {
+    font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0; 
+}
+
+.about-text {
+    margin-top: 0; 
+    font-size: 16px;
+    text-indent: 1em;
+}
