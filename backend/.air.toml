@@ -5,9 +5,11 @@ tmp_dir = "tmp"
 [build]
   bin = "./tmp/main"
   cmd = "go build -o ./tmp/main ."
-  delay = 1000
+  delay = 2000
   exclude_dir = ["assets", "tmp", "vendor"]
   include_ext = ["go", "tpl", "tmpl", "html", "env"]
+  poll = true
+  poll_interval = 500
 
 [screen]
   clear_on_rebuild = true
