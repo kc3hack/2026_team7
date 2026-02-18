@@ -1,7 +1,11 @@
 import './BodyFrame.css';
 
-const BodyFrame = () => {
-  return <h1>BodyFrame</h1>;
+type FrameProps = {
+  children: React.ReactNode;
+};
+
+const BodyFrame = (props: FrameProps) => {
+  return <div className="frame">{props.children}</div>;
 };
 
 export default BodyFrame;
