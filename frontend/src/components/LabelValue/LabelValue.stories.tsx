@@ -1,10 +1,22 @@
-import { LabelValue } from "./LabelValue";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { LabelValue } from './LabelValue';
 
-export default {
+const meta: Meta<typeof LabelValue> = {
   title: 'Components/LabelValue',
   component: LabelValue,
+  argTypes: {
+    label: { control: 'text' },
+    value: { control: 'text' },
+  },
 };
 
-export const Default = () => (
-  <LabelValue label="Username" value="john_doe" />
-);
+export default meta;
+
+type Story = StoryObj<typeof LabelValue>;
+
+export const Default: Story = {
+  args: {
+    label: 'Repositories',
+    value: '68',
+  },
+};
