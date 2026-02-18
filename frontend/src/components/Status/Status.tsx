@@ -1,13 +1,10 @@
 import './Status.css';
-import img1 from "../assets/img/not-updated.png";
-import img2 from "../assets/img/updating.png";
-import img3 from "../assets/img/updated.png";
 
 const Status = () => {
   return <div>
-            <img src={img1} alt="img1" />
-            <img src={img2} alt="img2" />
-            <img src={img3} alt="img3" />
+            <img src="/assets/img/not-updated.png" alt="img1" />
+            <img src="/assets/img/updating.gif" alt="img2" />
+            <img src="/assets/img/updated.png" alt="img3" />
           </div>;
 };
 
