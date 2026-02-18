@@ -1,7 +1,7 @@
 import './BoxFrame.css';
 
 const BoxFrame = () => {
-  return <h1>BoxFrame</h1>;
+  return <div className="box"></div>;
 };
 
 export default BoxFrame;

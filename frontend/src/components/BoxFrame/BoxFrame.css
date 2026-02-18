@@ -1,3 +1,19 @@
 body{
     background-color: rgb(137, 137, 137);
 }
+
+.box {
+    
+    width: 80%;
+    height: 200px;
+    border: 6px solid rgba(220, 224, 230, 0.8); /* 4.5pt ≒ 6px */
+    
+    box-sizing: border-box;      /* 枠込みで画面サイズに収める */
+
+    background-color: rgba(0, 57, 98, 0.5); /* 半透明の青 */
+
+    padding: 24px;
+
+    /* 浮いている感じ */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
