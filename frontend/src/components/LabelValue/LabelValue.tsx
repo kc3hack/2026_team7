@@ -1,7 +1,16 @@
+import React from 'react';
 import './LabelValue.css';
 
-const LabelValue = () => {
-  return <h1>Label Value</h1>;
-};
+interface LabelValueProps {
+  label: string;
+  value: string | number;
+}
 
-export default LabelValue;
+export const LabelValue: React.FC<LabelValueProps> = ({ label, value }) => {
+  return (
+    <div className="label-value-item">
+      <span className="label-value__label">{label}</span>
+      <span className="label-value__value">{value}</span>
+    </div>
+  );
+};

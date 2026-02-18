@@ -1,3 +1,22 @@
-body{
-    background-color: rgb(137, 137, 137);
+.label-value-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6); /* 白い下線 */
+  min-width: 250px;
+  background-color: transparent;
+}
+
+.label-value__label {
+  /* デザイン資料に近い筆記体風フォント */
+  font-family: 'Comic Sans MS', 'Cursive', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.label-value__value {
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: normal;
 }
