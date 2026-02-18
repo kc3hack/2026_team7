@@ -1,3 +1,48 @@
 body{
     background-color: rgb(137, 137, 137);
 }
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.skill-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+}
+
+.skill-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.skill-name {
+  font-size: 18px;
+}
+
+.skill-bar {
+  flex: 1;
+  height: 30px;
+  background-color: #bfbfbf;
+  border: 1px solid #fff;
+  position: relative;
+}
+
+.skill-fill {
+  height: 100%;
+  width: 70%;
+  background: linear-gradient(to bottom, #a8e063, #2e7d32);
+}
+
+.skill-score {
+  font-size: 18px;
+  font-weight: bold;
+  width: 120px;
+  text-align: right;
+  text-align: left;
+}
