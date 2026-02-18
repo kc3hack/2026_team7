@@ -1,0 +1,39 @@
+/* 全体リセット */
+.page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+/* 外枠コンテナ */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+/* タイトル */
+.title {
+  font-size: 64px;
+  color: #ffffff;
+  margin-bottom: 60px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* ID */
+.user-id {
+  color: #ffffff;
+  font-size: 28px;
+  margin-bottom: 50px;
+  opacity: 0.9;
+}
