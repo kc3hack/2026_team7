@@ -1,7 +1,20 @@
 import './Section1.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
 
-const Section1 = () => {
+type Props = {
+  user_name: string;  // エンジニア名
+  user_id: string;  // エンジニアID
+  registration_date: string;  // 登録日
+  level: number;  // エンジニアレベル
+  title_name: string; // 称号名
+  skill_update_date: string;  // スキル更新日時
+};
+
+const getEngineerHistory = (registration_date: string): number => {
+  return registration_date.length; // 修正必須
+}
+
+const Section1 = (props: Props) => {
   return(
   <BoxFrame>
     <div className="card">
@@ -27,7 +40,7 @@ const Section1 = () => {
                     <div className="Registration-date">登録日：2019/03/10</div>
                   </div>
 
-                  <div className="big">6年</div>
+                  <div className="big">{getEngineerHistory(props.registration_date)}年</div>
                 </div>
 
                 <div className="box level-box">
