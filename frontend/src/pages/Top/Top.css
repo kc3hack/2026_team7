@@ -1,0 +1,62 @@
+.top-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.hero-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px 100px 20px; /* 下に少し余白を持たせてバランス調整 */
+}
+
+/* 1. タイトルをさらに巨大に */
+.product-title {
+  font-size: 8rem; /* 5remから8remに大幅アップ */
+  font-family: serif; 
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 少し影をつけて読みやすく */
+}
+
+.message-area {
+  margin-bottom: 80px;
+}
+
+/* 2. メインコピーをより強調 */
+.main-message {
+  font-size: 3.5rem; /* 2.2remから3.5remに拡大 */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* 3. サブコピーも存在感を出す */
+.sub-message {
+  font-size: 1.6rem; /* 1.2remから1.6remに拡大 */
+  opacity: 0.95;
+  color: #ffffff;
+}
+
+/* 4. ボタンも文字に合わせて大きく */
+.start-button {
+  background-color: #ffffff;
+  color: #002060;
+  border: none;
+  padding: 24px 80px; /* パディングを増やしてボタン自体を大きく */
+  font-size: 2rem;    /* 文字を2remにアップ */
+  font-weight: bold;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.start-button:hover {
+  transform: scale(1.05); /* ホバー時に少し大きくして躍動感を出す */
+}
