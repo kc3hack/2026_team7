@@ -1,0 +1,11 @@
+# backend/Dockerfile.backend
+FROM golang:1.26-alpine
+
+WORKDIR /app
+
+RUN go install github.com/air-verse/air@latest
+
+COPY go.mod* go.sum* ./
+RUN if [ -f go.mod ]; then go mod download; fi
+
+CMD ["air", "-c", ".air.toml"]
