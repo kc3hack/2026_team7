@@ -1,8 +1,25 @@
-import UpdateBtn from "./UpdateBtn";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import UpdateBtn from './UpdateBtn';
 
-export default {
+const meta: Meta<typeof UpdateBtn> = {
   title: 'Components/UpdateBtn',
-  component: UpdateBtn    ,
+  component: UpdateBtn,
+  argTypes: {
+    status: {
+      control: 'radio',
+      options: ['initial', 'updating', 'updated'],
+    },
+    onClick: { action: 'clicked' }, // ボタンクリックイベントをログに表示
+  },
 };
 
-export const Default = () => <UpdateBtn  />;
+export default meta;
+
+type Story = StoryObj<typeof UpdateBtn>;
+
+// デフォルトストーリー
+export const Default: Story = {
+  args: {
+    status: 'initial',
+  },
+};
