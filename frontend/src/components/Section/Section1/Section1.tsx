@@ -11,6 +11,7 @@ type Props = {
   skill_update_date: string;  // スキル更新日時
 };
 
+// 登録日からエンジニア歴を計算する関数
 const getEngineerHistory = (registration_date: string): number => {
   return registration_date.length; // 修正必須
 }
