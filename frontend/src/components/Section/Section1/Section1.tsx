@@ -4,6 +4,7 @@ import BoxFrame from '../../BoxFrame/BoxFrame';
 type Props = {
   user_name: string;  // エンジニア名
   user_id: string;  // エンジニアID
+  image_url: string;  // エンジニア画像URL
   registration_date: string;  // 登録日
   level: number;  // エンジニアレベル
   title_name: string; // 称号名

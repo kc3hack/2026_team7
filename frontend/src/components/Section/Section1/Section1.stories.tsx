@@ -7,6 +7,7 @@ const meta: Meta<typeof Section1> = {
   argTypes: {
     user_name: { control: 'text' },
     user_id: { control: 'text' },
+    image_url: { control: 'text' },
     registration_date: { control: 'date' },
     level: { control: 'number' },
     title_name: { control: 'text' },
@@ -22,6 +23,7 @@ export const Default: Story = {
   args: {
     user_name: 'ゆーと',
     user_id: 'yutota13',
+    image_url: '/assets/img/img.jpg',
     registration_date: '2019-03-10',
     level: 120,
     title_name: '暁のエンジニア',
