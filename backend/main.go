@@ -7,11 +7,16 @@ import (
 
 	"github.com/kc3hack/2026_team7/config"
 	"github.com/kc3hack/2026_team7/handler"
+	"github.com/kc3hack/2026_team7/db"
 )
 
 func main() {
 	// 設定をロード
 	config.LoadConfig()
+
+	// データベースを初期化
+	db.InitSQLite()
+	db.InitRedis()
 
 	// ルーティング設定
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
