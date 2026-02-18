@@ -3,7 +3,13 @@ import BoxFrame from '../../BoxFrame/BoxFrame';
 import TitleContent from '../../TitleContent/TitleContent';
 
 const Section2 = () => {
-  return <BoxFrame><TitleContent/></BoxFrame>;
+  return (
+    <BoxFrame>
+      <TitleContent/>
+      <TitleContent/>
+      <TitleContent/>
+    </BoxFrame>
+  );
 };
 
 export default Section2;

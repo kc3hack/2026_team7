@@ -5,7 +5,7 @@ body{
 .box {
     
     width: 80%;
-    height: 200px;
+    
     border: 6px solid rgba(220, 224, 230, 0.8); /* 4.5pt ≒ 6px */
     
     box-sizing: border-box;      /* 枠込みで画面サイズに収める */

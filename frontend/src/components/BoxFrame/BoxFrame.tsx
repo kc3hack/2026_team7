@@ -1,7 +1,11 @@
 import './BoxFrame.css';
 
-const BoxFrame = () => {
-  return <div className="box"></div>;
+type BoxFrameProps = {
+  children: React.ReactNode;
+};
+
+const BoxFrame = ({ children }: BoxFrameProps) => {
+  return <div className="box">{children}</div>;
 };
 
 export default BoxFrame;
