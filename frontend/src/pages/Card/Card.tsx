@@ -10,7 +10,7 @@ const Card = () => {
   return (
     <div>
       <BodyFrame>
-        <Section1 />
+        <Section1 user_name='test' user_id='test123' image_url='/assets/img/test.jpg' registration_date='2020-01-01' level={100} title_name='テストエンジニア' skill_update_date='2026-02-17T05:43:32'/>
         <Section2 />
         <Section3 />
         <Section4 />
