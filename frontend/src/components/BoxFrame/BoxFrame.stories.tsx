@@ -5,4 +5,4 @@ export default {
   component: BoxFrame       ,
 };
 
-export const Default = () => <BoxFrame />;
+export const Default = () => <BoxFrame>BoxFrame Component</BoxFrame>;

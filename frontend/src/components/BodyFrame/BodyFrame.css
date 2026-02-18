@@ -3,8 +3,10 @@ body{
 }
 
 .frame {
-    width: 100vw;
-    height: 100vh;
+    width: 95vw;
+    /* height: 100vh; */
     border: 6pt solid #FFFFFF;   /* 白 6pt 枠線 */
     box-sizing: border-box;      /* 枠込みで画面サイズに収める */
+    
+    margin: 20px auto; /* 上下のマージンを10px、左右のマージンを自動で中央寄せ */
 }
