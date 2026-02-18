@@ -1,9 +1,12 @@
 import './Section1.css';
+import BoxFrame from '../../BoxFrame/BoxFrame';
 
 const Section1 = () => {
-  return  <div className="card">
+  return(
+  <BoxFrame>
+    <div className="card">
             <div className="left">
-              <img src="/engineer.jpg" alt="engineer" />
+              <img src="/assets/img/img.jpg" alt="engineer" />
             </div>
 
             <div className="right">
@@ -44,7 +47,9 @@ const Section1 = () => {
               </div>
 
             </div>
-          </div>;
+          </div>
+          </BoxFrame>
+          );
 };
 
 export default Section1;

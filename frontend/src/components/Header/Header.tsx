@@ -3,7 +3,7 @@ import './Header.css';
 
 export const Header: React.FC = () => {
   return (
-    <header className="header">
+    <header className="header fixed-header">
       <div className="header-container">
         <div className="header-logo">
           <span className="logo-placeholder">Logo</span>

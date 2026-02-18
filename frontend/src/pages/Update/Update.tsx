@@ -7,11 +7,11 @@ const Update = () => {
   return (
     <div className="page">
       <BoxFrame>
-        <div className="container">
-          <h1 className="title">Skill Update</h1>
+        <div className="container_outer">
+          <h1 className="title_update">Skill Update</h1>
           <Status />
           <p className="user-id">ID : yutota13</p>
-          <UpdateBtn />
+          <UpdateBtn status="initial" onClick={() => console.log('Update button clicked')} />
         </div>
       </BoxFrame>
     </div>
