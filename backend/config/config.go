@@ -34,3 +34,15 @@ func GetEnv(key, defaultValue string) string {
 	}
 	return defaultValue
 }
+
+func GetDBDriver() string {
+	return GetEnv("DB_DRIVER", "sqlite")
+}
+
+func GetDBDSN() string {
+	return GetEnv("DB_DSN", "engineer_card.db")
+}
+
+func GetFrontendURL() string {
+	return GetEnv("FRONTEND_URL", "http://localhost:3000")
+}
