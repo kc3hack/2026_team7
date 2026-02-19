@@ -5,7 +5,9 @@ import TitleContent from '../../TitleContent/TitleContent';
 const Section3 = () => {
   return (
     <BoxFrame>
-      <TitleContent title="サンプル" content="サンプル文章あああああああああああ" />
+      <div className="pad_box">
+        <TitleContent title="サンプル" content="サンプル文章あああああああああああ" />
+      </div>
     </BoxFrame>
   );
 };
