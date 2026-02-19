@@ -9,6 +9,7 @@ type Props = {
   level: number;  // エンジニアレベル
   title_name: string; // 称号名
   skill_update_date: string;  // スキル更新日時
+  onClickQR?: () => void;
 };
 
 // 登録日からエンジニア歴を計算する関数
@@ -32,7 +33,7 @@ const Section1 = (props: Props) => {
                   <span className="id">ID : yutota13</span>
                 </div>
                 <div className="name">ゆーと</div>
-                <button className="qr-btn">QR表示</button>
+                <button className="qr-btn"onClick={props.onClickQR}>QR表示</button>
               </div>
 
               <div className="middle-row">

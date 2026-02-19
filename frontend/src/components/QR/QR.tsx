@@ -2,7 +2,11 @@ import React from 'react';
 import BoxFrame from '../BoxFrame/BoxFrame';
 import './QR.css';
 
-const QR: React.FC = () => {
+type Props = {
+  onClose?: () => void;
+};
+
+const QR: React.FC<Props> = ({ onClose }) => {  
   return (
     <BoxFrame>
       <div className="qr-page-container">
@@ -21,7 +25,7 @@ const QR: React.FC = () => {
 
           {/* アクション部：一番下に配置 */}
           <div className="qr-actions">
-            <button className="back-button">
+            <button className="back-button" onClick={onClose}>
               閉じる
             </button>
           </div>
