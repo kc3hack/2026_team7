@@ -9,9 +9,8 @@ services:
       - "8080:8080"
     env_file:
       - ./backend/.env
-    depends_on:
-      - redis
-    command: tail -f /dev/null
+
+    command: go run main.go
 
   frontend:
     build:
