@@ -10,6 +10,7 @@ interface Section1Props {
   level: number; // LVを追加
   imageUrl: string; // 写真のURLを追加
   updatedDate: string; // スキル更新日時を追加
+  onClickQR?: () => void;
 }
 
 const getEngineerHistory = (registeredDate: string): number => {
@@ -21,7 +22,7 @@ const getEngineerHistory = (registeredDate: string): number => {
   return years > 0 ? years : 0;
 };
 
-const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, title, level, imageUrl, updatedDate }) => {
+const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, title, level, imageUrl, updatedDate, onClickQR }) => {
   const history = getEngineerHistory(registeredDate);
   return(
   <BoxFrame>
@@ -40,7 +41,7 @@ const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, t
                   <span className="id">ID : {userId}</span>
                 </div>
                 <div className="name">{userName}</div>
-                <button className="qr-btn">QR表示</button>
+                <button className="qr-btn" onClick={onClickQR}>QR表示</button>
               </div>
               {/* 3. 歴・登録日枠 */}
               <div className="middle-row">
