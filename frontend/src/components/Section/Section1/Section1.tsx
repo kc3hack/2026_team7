@@ -1,40 +1,48 @@
+import React from 'react';
 import './Section1.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
 
-type Props = {
-  user_name: string;  // エンジニア名
-  user_id: string;  // エンジニアID
-  image_url: string;  // エンジニア画像URL
-  registration_date: string;  // 登録日
-  level: number;  // エンジニアレベル
-  title_name: string; // 称号名
-  skill_update_date: string;  // スキル更新日時
-};
-
-// 登録日からエンジニア歴を計算する関数
-const getEngineerHistory = (registration_date: string): number => {
-  return registration_date.length; // 修正必須
+interface Section1Props {
+  userName: string;
+  userId: string;
+  registeredDate: string;
+  title: string;
+  level: number; // LVを追加
+  imageUrl: string; // 写真のURLを追加
+  updatedDate: string; // スキル更新日時を追加
 }
 
-const Section1 = (props: Props) => {
+const getEngineerHistory = (registeredDate: string): number => {
+  const start = new Date(registeredDate);
+  const now = new Date();
+  let years = now.getFullYear() - start.getFullYear();
+  const thisYearMonthDay = new Date(now.getFullYear(), start.getMonth(), start.getDate());
+  if (now < thisYearMonthDay) years--;
+  return years > 0 ? years : 0;
+};
+
+const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, title, level, imageUrl, updatedDate }) => {
+  const history = getEngineerHistory(registeredDate);
   return(
   <BoxFrame>
     <div className="card">
+            {/* 1. 写真エリア */}
             <div className="left">
-              <img src="/assets/img/img.jpg" alt="engineer" />
+                    
+              <img src={imageUrl} alt="engineer" />
             </div>
-
+            {/* 2. 名前・ID・QR枠 */}
             <div className="right">
 
               <div className="box name-box">
                 <div className="top-row">
                   <span>エンジニア名</span>
-                  <span className="id">ID : yutota13</span>
+                  <span className="id">ID : {userId}</span>
                 </div>
-                <div className="name">ゆーと</div>
+                <div className="name">{userName}</div>
                 <button className="qr-btn">QR表示</button>
               </div>
-
+              {/* 3. 歴・登録日枠 */}
               <div className="middle-row">
                 <div className="box history-box">
                   <div className="history-header">
@@ -42,23 +50,23 @@ const Section1 = (props: Props) => {
                     <div className="Registration-date">登録日：2019/03/10</div>
                   </div>
 
-                  <div className="big">{getEngineerHistory(props.registration_date)}年</div>
+                  <div className="big">{history}年</div>
                 </div>
-
+                {/* 4. LV枠 */}
                 <div className="box level-box">
                   <div className="level-title">LV</div>
-                  <div className="level">120</div>
+                  <div className="level">{level}</div>
                 </div>
               </div>
-
+              {/* 5. 称号・スキル更新枠 */}
               <div className="box title-box">
                 <div className="title">称号</div>
-                <div className="title-neme">暁のエンジニア</div>
+                <div className="title-neme">{title}</div>
                 <button className="update-btn">スキル更新</button>
               </div>
 
               <div className="updated">
-                スキル更新日時：2026.02.17 05:43:32
+                スキル更新日時：{updatedDate}
               </div>
 
             </div>
