@@ -109,13 +109,8 @@ func HandleGitHubCallback(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Printf("ユーザー情報: Login=%s, ID=%d, Name=%s\n", user.Login, user.ID, user.Name)
 
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	fmt.Fprintf(w, `
-		<h1>GitHub OAuth2 ログイン成功!</h1>
-		<p>ログイン: %s</p>
-		<p>ID: %d</p>
-		<p>名前: %s</p>
-		<img src="%s" alt="Avatar" width="100" height="100">
-		<a href="/">戻る</a>
-	`, user.Login, user.ID, user.Name, user.AvatarURL)
+	// フロントエンドのコールバックページにリダイレクト
+	frontendURL := config.GetFrontendURL()
+	redirectURL := fmt.Sprintf("%s/callback.html?login=success&user=%s", frontendURL, user.Login)
+	http.Redirect(w, r, redirectURL, http.StatusFound)
 }
