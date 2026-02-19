@@ -8,9 +8,9 @@ type Props = {
 const TitleContent = (props: Props) => {
   return   <div className="container">
     <div className="about-card">
-      <h2 className="about-title">location</h2>
+      <h2 className="about-title">{props.title}</h2>
       <p className="about-text">
-        サンプルテキスト
+        {props.content}
       </p>
     </div>
   </div>;
