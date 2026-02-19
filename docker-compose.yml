@@ -13,7 +13,14 @@ services:
       - redis
     command: tail -f /dev/null
 
-  redis:
-    image: redis:alpine
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend.dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     ports:
-      - "6379:6379"
+      - "3000:3000"
+    depends_on:
+      - backend
