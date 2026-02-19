@@ -10,7 +10,7 @@ export const useQr = (user_name: string) => {
     useEffect(() => {
         const fetchQrData = async () => {
             try {   
-                const response = await fetch(`/api/v1/engineers/${user_name}/qr`);
+                const response = await fetch(`/api/v1/cards/${user_name}/qr`);
                 if (!response.ok) {
                     throw new Error(`Error fetching QR data: ${response.statusText}`);
                 }
