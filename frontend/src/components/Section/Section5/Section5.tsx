@@ -1,8 +1,13 @@
 import './Section5.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
 import LanguageSkill from '../../LanguageSkill/LanguageSkill';
+import type { Language } from '../../../types/card';
 
-const Section5 = () => {
+type Section5Props = {
+  languageSkills: Language[];
+};
+
+const Section5 = (props: Section5Props) => {
   return (      
     <BoxFrame>
       <div className="skills">
