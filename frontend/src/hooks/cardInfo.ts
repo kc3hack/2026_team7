@@ -1,9 +1,9 @@
 import { useEffect,useState } from "react";
-import type { CardInfo } from "../types/card";
+import type { CardResponse } from "../types/card";
 
 export const useCardInfo = (user_name: string) => {
 
-    const [cardInfo, setCardInfo] = useState<CardInfo | null>(null);
+    const [cardInfo, setCardInfo] = useState<CardResponse | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -15,7 +15,7 @@ export const useCardInfo = (user_name: string) => {
                     throw new Error(`Error fetching card info: ${response.statusText}`);
                 }
                 const data = await response.json();
-                setCardInfo(data.card_info);
+                setCardInfo(data);
             } catch (err: unknown) {
                 setError((err as Error).message);
             } finally {
