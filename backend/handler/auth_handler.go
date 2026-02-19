@@ -4,12 +4,15 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/gin"
 	"github.com/kc3hack/2026_team7/config"
+	"github.com/kc3hack/2026_team7/db"
+	"github.com/kc3hack/2026_team7/model"
 )
 
 // GitHub APIから返ってくるレスポンスの構造体
@@ -29,65 +32,52 @@ func generateRandomState() (string, error) {
 	return hex.EncodeToString(b), nil
 }
 
-func HandleGitHubLogin(w http.ResponseWriter, r *http.Request) {
-	// CSRF対策: リクエストごとにランダムな state を生成しCookieに保存
+func HandleGitHubLogin(c *gin.Context) {
+	// CSRF対策: リクエストごとにランダムな state を生成しセッションに保存
 	state, err := generateRandomState()
 	if err != nil {
 		log.Printf("state生成に失敗しました: %v\n", err)
-		http.Error(w, "state生成に失敗しました", http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "state生成に失敗しました")
 		return
 	}
 
-	http.SetCookie(w, &http.Cookie{
-		Name:     "oauth_state",
-		Value:    state,
-		Path:     "/",
-		HttpOnly: true,
-		Secure:   r.TLS != nil,
-		SameSite: http.SameSiteLaxMode,
-		MaxAge:   600,
-	})
+	session := sessions.Default(c)
+	session.Set("oauth_state", state)
+	session.Save()
 
 	url := config.GihubOAuthConfig.AuthCodeURL(state)
 	log.Printf("GitHub OAuth2 URLにリダイレクト中: %s\n", url)
-	http.Redirect(w, r, url, http.StatusFound)
+	c.Redirect(http.StatusFound, url)
 }
 
-func HandleGitHubCallback(w http.ResponseWriter, r *http.Request) {
+func HandleGitHubCallback(c *gin.Context) {
 	// GitHub からのコールバックを処理
-	code := r.URL.Query().Get("code")
-	state := r.URL.Query().Get("state")
+	code := c.Query("code")
+	state := c.Query("state")
 
-	// Cookieからstateを取得して検証
-	stateCookie, err := r.Cookie("oauth_state")
-	if err != nil || stateCookie.Value == "" || state != stateCookie.Value {
-		http.Error(w, "stateパラメータが不正です", http.StatusBadRequest)
+	// セッションからstateを取得して検証
+	session := sessions.Default(c)
+	savedState := session.Get("oauth_state")
+	if savedState == nil || savedState.(string) != state {
+		c.String(http.StatusBadRequest, "stateパラメータが不正です")
 		return
 	}
-
-	// 使用済みのstate Cookieを削除
-	http.SetCookie(w, &http.Cookie{
-		Name:     "oauth_state",
-		Value:    "",
-		Path:     "/",
-		HttpOnly: true,
-		MaxAge:   -1,
-	})
+	session.Delete("oauth_state")
 
 	// コードをアクセストークンに交換
-	token, err := config.GihubOAuthConfig.Exchange(r.Context(), code)
+	token, err := config.GihubOAuthConfig.Exchange(c.Request.Context(), code)
 	if err != nil {
 		log.Printf("コードをトークンに交換するのに失敗しました: %v\n", err)
-		http.Error(w, "コードをトークンに交換するのに失敗しました", http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "コードをトークンに交換するのに失敗しました")
 		return
 	}
 
 	// GitHub APIからユーザー情報を取得
-	client := config.GihubOAuthConfig.Client(r.Context(), token)
+	client := config.GihubOAuthConfig.Client(c.Request.Context(), token)
 	resp, err := client.Get("https://api.github.com/user")
 	if err != nil {
 		log.Printf("ユーザー情報の取得に失敗しました: %v\n", err)
-		http.Error(w, "ユーザー情報の取得に失敗しました", http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "ユーザー情報の取得に失敗しました")
 		return
 	}
 	defer resp.Body.Close()
@@ -96,21 +86,70 @@ func HandleGitHubCallback(w http.ResponseWriter, r *http.Request) {
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Printf("ユーザー情報の読み込みに失敗しました: %v\n", err)
-		http.Error(w, "ユーザー情報の読み込みに失敗しました", http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "ユーザー情報の読み込みに失敗しました")
 		return
 	}
 
-	// ユーザー情報をログに出力
 	var user GitHubUser
 	if err := json.Unmarshal(body, &user); err != nil {
 		log.Printf("ユーザープロフィールの解析に失敗しました: %v\n", err)
-		http.Error(w, "ユーザープロフィールの解析に失敗しました", http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "ユーザープロフィールの解析に失敗しました")
 		return
 	}
 	log.Printf("ユーザー情報: Login=%s, ID=%d, Name=%s\n", user.Login, user.ID, user.Name)
 
+	// DBにユーザーを保存（存在しなければ作成）
+	var dbUser model.User
+	result := db.DB.Where("user_name = ?", user.Login).First(&dbUser)
+	if result.Error != nil {
+		dbUser = model.User{
+			UserName:  user.Login,
+			AvatarURL: user.AvatarURL,
+		}
+		db.DB.Create(&dbUser)
+	} else {
+		// 既存ユーザーのアバターURLを更新
+		db.DB.Model(&dbUser).Update("avatar_url", user.AvatarURL)
+	}
+
+	// セッションにユーザー情報とアクセストークンを保存
+	session.Set("user_id", dbUser.ID)
+	session.Set("user_name", user.Login)
+	session.Set("access_token", token.AccessToken)
+	session.Save()
+
 	// フロントエンドのコールバックページにリダイレクト
 	frontendURL := config.GetFrontendURL()
-	redirectURL := fmt.Sprintf("%s/callback.html?login=success&user=%s", frontendURL, user.Login)
-	http.Redirect(w, r, redirectURL, http.StatusFound)
+	c.Redirect(http.StatusFound, frontendURL+"/callback.html?login=success&user="+user.Login)
+}
+
+// HandleGetMe は現在ログイン中のユーザー情報を返す
+func HandleGetMe(c *gin.Context) {
+	session := sessions.Default(c)
+	userName := session.Get("user_name")
+	accessToken := session.Get("access_token")
+
+	if userName == nil || accessToken == nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "未ログイン"})
+		return
+	}
+
+	// DBからアバターURLを取得
+	var user model.User
+	db.DB.Where("user_name = ?", userName).First(&user)
+
+	c.JSON(http.StatusOK, gin.H{
+		"user_name":    userName,
+		"avatar_url":   user.AvatarURL,
+		"access_token": accessToken,
+	})
+}
+
+// HandleLogout はセッションを破棄してログアウトする
+func HandleLogout(c *gin.Context) {
+	session := sessions.Default(c)
+	session.Clear()
+	session.Save()
+
+	c.JSON(http.StatusOK, gin.H{"message": "ログアウトしました"})
 }
