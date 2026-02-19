@@ -1,16 +1,18 @@
 package handler
 
 import (
+	"crypto/rand"
+	"encoding/hex"
+	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
-	"io"
-	"encoding/json"
 
 	"github.com/kc3hack/2026_team7/config"
 )
 
-//GitHub APIから返ってくるレスポンスの構造体
+// GitHub APIから返ってくるレスポンスの構造体
 type GitHubUser struct {
 	Login     string `json:"login"`
 	ID        int    `json:"id"`
@@ -18,12 +20,36 @@ type GitHubUser struct {
 	Name      string `json:"name"`
 }
 
-func HandleGitHubLogin(w http.ResponseWriter, r *http.Request) {
-	// CRSF 対策のための state を生成
-	state := config.GetStateString()
-	url := config.GihubOAuthConfig.AuthCodeURL(state)
+// 安全なランダム文字列を生成
+func generateRandomState() (string, error) {
+	b := make([]byte, 32)
+	if _, err := rand.Read(b); err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(b), nil
+}
 
-	log.Printf("Redirecting to GitHub OAuth2 URL: %s\n", url)
+func HandleGitHubLogin(w http.ResponseWriter, r *http.Request) {
+	// CSRF対策: リクエストごとにランダムな state を生成しCookieに保存
+	state, err := generateRandomState()
+	if err != nil {
+		log.Printf("state生成に失敗しました: %v\n", err)
+		http.Error(w, "state生成に失敗しました", http.StatusInternalServerError)
+		return
+	}
+
+	http.SetCookie(w, &http.Cookie{
+		Name:     "oauth_state",
+		Value:    state,
+		Path:     "/",
+		HttpOnly: true,
+		Secure:   r.TLS != nil,
+		SameSite: http.SameSiteLaxMode,
+		MaxAge:   600,
+	})
+
+	url := config.GihubOAuthConfig.AuthCodeURL(state)
+	log.Printf("GitHub OAuth2 URLにリダイレクト中: %s\n", url)
 	http.Redirect(w, r, url, http.StatusFound)
 }
 
@@ -32,16 +58,27 @@ func HandleGitHubCallback(w http.ResponseWriter, r *http.Request) {
 	code := r.URL.Query().Get("code")
 	state := r.URL.Query().Get("state")
 
-	if state != config.GetStateString() {
-		http.Error(w, "Invalid state parameter", http.StatusBadRequest)
+	// Cookieからstateを取得して検証
+	stateCookie, err := r.Cookie("oauth_state")
+	if err != nil || stateCookie.Value == "" || state != stateCookie.Value {
+		http.Error(w, "stateパラメータが不正です", http.StatusBadRequest)
 		return
 	}
+
+	// 使用済みのstate Cookieを削除
+	http.SetCookie(w, &http.Cookie{
+		Name:     "oauth_state",
+		Value:    "",
+		Path:     "/",
+		HttpOnly: true,
+		MaxAge:   -1,
+	})
 
 	// コードをアクセストークンに交換
 	token, err := config.GihubOAuthConfig.Exchange(r.Context(), code)
 	if err != nil {
-		log.Printf("Failed to exchange code for token: %v\n", err)
-		http.Error(w, "Failed to exchange code for token", http.StatusInternalServerError)
+		log.Printf("コードをトークンに交換するのに失敗しました: %v\n", err)
+		http.Error(w, "コードをトークンに交換するのに失敗しました", http.StatusInternalServerError)
 		return
 	}
 
@@ -49,8 +86,8 @@ func HandleGitHubCallback(w http.ResponseWriter, r *http.Request) {
 	client := config.GihubOAuthConfig.Client(r.Context(), token)
 	resp, err := client.Get("https://api.github.com/user")
 	if err != nil {
-		log.Printf("Failed to get user info: %v\n", err)
-		http.Error(w, "Failed to get user info", http.StatusInternalServerError)
+		log.Printf("ユーザー情報の取得に失敗しました: %v\n", err)
+		http.Error(w, "ユーザー情報の取得に失敗しました", http.StatusInternalServerError)
 		return
 	}
 	defer resp.Body.Close()
@@ -58,27 +95,27 @@ func HandleGitHubCallback(w http.ResponseWriter, r *http.Request) {
 	// ユーザー情報を構造体にデコード
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Printf("Failed to read user info: %v\n", err)
-		http.Error(w, "Failed to read user info", http.StatusInternalServerError)
+		log.Printf("ユーザー情報の読み込みに失敗しました: %v\n", err)
+		http.Error(w, "ユーザー情報の読み込みに失敗しました", http.StatusInternalServerError)
 		return
 	}
 
 	// ユーザー情報をログに出力
 	var user GitHubUser
 	if err := json.Unmarshal(body, &user); err != nil {
-		log.Printf("Failed to unmarshal user info: %v\n", err)
-		http.Error(w, "Failed to unmarshal user info", http.StatusInternalServerError)
+		log.Printf("ユーザープロフィールの解析に失敗しました: %v\n", err)
+		http.Error(w, "ユーザープロフィールの解析に失敗しました", http.StatusInternalServerError)
 		return
 	}
-	log.Printf("User Info: Login=%s, ID=%d, Name=%s\n", user.Login, user.ID, user.Name)
+	log.Printf("ユーザー情報: Login=%s, ID=%d, Name=%s\n", user.Login, user.ID, user.Name)
 
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	fmt.Fprintf(w, `
-		<h1>GitHub OAuth2 Login Successful!</h1>
-		<p>Login: %s</p>
+		<h1>GitHub OAuth2 ログイン成功!</h1>
+		<p>ログイン: %s</p>
 		<p>ID: %d</p>
-		<p>Name: %s</p>
+		<p>名前: %s</p>
 		<img src="%s" alt="Avatar" width="100" height="100">
-		<a href="/">Go Back</a>
+		<a href="/">戻る</a>
 	`, user.Login, user.ID, user.Name, user.AvatarURL)
 }

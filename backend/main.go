@@ -28,8 +28,8 @@ func main() {
 
 	// サーバーを起動
 	port := ":8080"
-	log.Printf("Server starting on http://localhost%s\n", port)
-	
+	log.Printf("サーバーを起動しました: http://localhost%s\n", port)
+
 	if err := http.ListenAndServe(port, nil); err != nil {
 		log.Fatal(err)
 	}

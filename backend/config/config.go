@@ -12,9 +12,8 @@ import (
 var GihubOAuthConfig *oauth2.Config
 
 func LoadConfig() {
-	// .env を読み込む
 	if err := godotenv.Load(); err != nil {
-		log.Printf("No .env file found: %v", err)
+		log.Printf(".envファイルが見つかりません: %v", err)
 	}
 
 	// GitHub OAuth2 の設定
@@ -22,10 +21,10 @@ func LoadConfig() {
 		ClientID:     os.Getenv("GITHUB_CLIENT_ID"),
 		ClientSecret: os.Getenv("GITHUB_CLIENT_SECRET"),
 		RedirectURL:  os.Getenv("REDIRECT_URL"),
-		Scopes:       []string{
+		Scopes: []string{
 			"read:user", "user:email", "profile", "read:repo", "content:read", "issue:read", "pull_request:read",
 		},
-		Endpoint:     github.Endpoint,
+		Endpoint: github.Endpoint,
 	}
 }
 
@@ -34,9 +33,4 @@ func GetEnv(key, defaultValue string) string {
 		return value
 	}
 	return defaultValue
-}
-
-func GetStateString() string {
-	state := GetEnv("STATE_STRING", "RANDOM_STRING_gpoi3hj93rjloi4bnjrln32n6l5jnr")
-	return state
 }
