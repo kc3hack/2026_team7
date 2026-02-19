@@ -2,7 +2,13 @@ import './Section2.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
 import TitleContent from '../../TitleContent/TitleContent';
 
-const Section2 = () => {
+type Section2Props = {
+  aboutMe?: string;
+  Location?: string;
+  Company?: string;
+};
+
+const Section2 = (props: Section2Props) => {
   return (
     <BoxFrame>
       <div className="pad_box">

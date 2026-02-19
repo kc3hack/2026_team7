@@ -28,7 +28,12 @@ const Card = () => {
           />
           <Section2 />
           <Section3 />
-          <Section4 />
+          <Section4 
+            repositories={68}
+            total_bytes={12345678}
+            activity_grade={85}
+            charisma_grade={90}
+          />
           <Section5 />   
         </BodyFrame>
       </div>

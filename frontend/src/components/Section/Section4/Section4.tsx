@@ -2,7 +2,14 @@ import './Section4.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
 import { LabelValue } from '../../LabelValue/LabelValue';
 
-const Section4 = () => {
+type Section4Props = {
+  repositories : number;
+  total_bytes : number;
+  activity_grade : number;
+  charisma_grade : number;
+};
+
+const Section4 = (props: Section4Props) => {
   return (
     <BoxFrame>
       <div className="stats-grid">
