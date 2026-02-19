@@ -26,5 +26,11 @@
 
 /* 更新済 (Slide 8): 「閉じる」ボタンの状態 */
 .update-main-button.updated {
+  pointer-events: auto;
+}
+
+.update-main-button.updated:hover {
+  transform: none;
   background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
