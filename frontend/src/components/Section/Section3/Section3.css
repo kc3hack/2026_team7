@@ -1,3 +1,7 @@
 body{
     background-color: rgb(137, 137, 137);
 }
+
+.pad_box{
+    padding: 20px;
+}
