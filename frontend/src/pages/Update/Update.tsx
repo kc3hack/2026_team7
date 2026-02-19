@@ -9,7 +9,7 @@ const Update = () => {
       <BoxFrame>
         <div className="container_outer">
           <h1 className="title_update">Skill Update</h1>
-          <Status />
+          <Status status="initial" />
           <p className="user-id">ID : yutota13</p>
           <UpdateBtn status="initial" onClick={() => console.log('Update button clicked')} />
         </div>
