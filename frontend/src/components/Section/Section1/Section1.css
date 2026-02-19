@@ -1,148 +1,105 @@
-body{
-    background-color: rgb(137, 137, 137);
+/* 全体のコンテナ：グレー背景のみ */
+.section1-container {
+  display: grid;
+  /* 歴の枠(2) と LVの枠(1) の比率 */
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  padding: 20px;
+  background-color: #A6A6A6; /* コンテナの背景色 */
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.card {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
-    color: white;
+/* 各項目の共通スタイル */
+.info-item {
+  background-color: #595959;
+  border: 2px solid #D9D9D9;
+  border-radius: 12px;
+  padding: 10px 15px;
+  color: white;
+  display: flex;
+  box-sizing: border-box;
 }
 
-.left {
-    width: 30%;
-    height: 50%;
-}
-.left img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 8px solid #cfcfcf;
-    box-shadow: 0 0 0 4px #8a8a8a inset;
+/* --- レイアウト指定 --- */
+
+.photo-section {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }
 
-.right {
-  flex: 1;
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border: 3px solid #D9D9D9;
+  object-fit: cover;
+  background-color: #fff;
 }
 
-.box {
-    background-color: rgb(0 0 0 / 0.5);
-    border: 3px solid #dcdcdc;
-    border-radius: 20px;
-    padding: 15px;
-    padding-top: 0;
-    margin-bottom: 20px;
-    position: relative;
+.name-id-row {
+  grid-column: span 2;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.name-box .top-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    position: relative;
+.history-row {
+  grid-column: 1;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.name {
-    font-size: 30px;
-    margin-top: 10px;
-    font-weight: bold;
-    text-align: center;
+.lv-row {
+  grid-column: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.qr-btn {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    background: white;
-    color:rgb(0 0 0 / 0.5);
-    border: none;
-    padding: 5px 15px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 18px;
+.title-row {
+  grid-column: span 2;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.middle-row {
-    display: flex;
-    gap: 20px;
+/* --- 文字・ボタンの装飾 --- */
+.label {
+  font-size: 0.75rem;
+  color: #D9D9D9;
+  display: block;
 }
 
-.history-box {
-    flex: 3;
+.value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
 }
 
-.history-header {
-    display: flex;
-    justify-content: space-between; /* 左右に分ける */
-    align-items: center;
+.lv-value {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
 }
 
-.Registration{
-    text-align: left;
-
+.highlighted {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
-.Registration-date {
-    text-align: right;
-}
-.big {
-    font-size: 30px;
-    margin-top: 10px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.level-box {
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
-    text-align: center;
-    padding: 0;
-}
-.level-title {
-    font-size: 25px;
-    margin-top: 0;
-    text-align: left;
-}
-.level {
-    font-size: 60px;
-    margin-top: 10px;
-    text-align: right;
+.qr-button, .update-button-mini {
+  background-color: white;
+  color: #002060;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.title-box .title-neme {
-    font-size: 30px;
-    margin-top: 10px;
-    font-weight: bold;
-    margin-bottom: 0;
-}
-.title-neme{
-    text-align: center;
-}
-
-.update-btn {
-    position: absolute;
-    right: 20px;
-    bottom: 10px;
-    background: white;
-    color:rgb(0 0 0 / 0.5);
-    border: none;
-    padding: 5px 15px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 18px;
-    max-width: 100px;
-}
-
-.updated {
-    margin-top: 0;
-    text-align: right;
-    font-size: 18px;
-    text-align: right;
-}
-
-.heading{
-    font-size: 20px;
+.update-button-mini {
+  padding: 8px 16px;
 }
