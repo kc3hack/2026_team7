@@ -4,63 +4,67 @@ import './Section1.css';
 interface Section1Props {
   userName: string;
   userId: string;
-  registeredDate: string; // "2019/03/10" のような形式を想定
+  registeredDate: string;
   title: string;
+  level: number; // LVを追加
+  imageUrl: string; // 写真のURLを追加
 }
 
-/**
- * 登録日から現在までの年数を計算する関数
- * @param registeredDate 登録日 (YYYY/MM/DD)
- * @returns エンジニア歴 (年)
- */
 const getEngineerHistory = (registeredDate: string): number => {
   const start = new Date(registeredDate);
   const now = new Date();
-  
   let years = now.getFullYear() - start.getFullYear();
-  
-  // 誕生日の計算と同じ要領で、今年の登録日を過ぎていなければ1引く
   const thisYearMonthDay = new Date(now.getFullYear(), start.getMonth(), start.getDate());
-  if (now < thisYearMonthDay) {
-    years--;
-  }
-  
+  if (now < thisYearMonthDay) years--;
   return years > 0 ? years : 0;
 };
 
-const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, title }) => {
+const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, title, level, imageUrl }) => {
   const history = getEngineerHistory(registeredDate);
 
   return (
     <div className="section1-container">
-      {/* エンジニア名 */}
-      <div className="info-item">
-        <span className="label">エンジニア名</span>
-        <p className="value">{userName}</p>
+      {/* 1. 写真エリア */}
+      <div className="photo-section">
+        <img src={imageUrl} alt="profile" className="profile-image" />
       </div>
 
-      {/* ID */}
-      <div className="info-item">
-        <span className="label">ID</span>
-        <p className="value">{userId}</p>
+      {/* 2. 名前・ID・QR枠 */}
+      <div className="info-item name-id-row">
+        <div className="name-group">
+          <span className="label">エンジニア名</span>
+          <p className="value">{userName}</p>
+        </div>
+        <div className="id-group">
+          <span className="label">ID : {userId}</span>
+          <button className="qr-button">QR表示</button>
+        </div>
       </div>
 
-      {/* エンジニア歴 (計算結果を表示) */}
-      <div className="info-item">
-        <span className="label">エンジニア歴</span>
-        <p className="value">{history}年</p>
+      {/* 3. 歴・登録日枠 */}
+      <div className="info-item history-row">
+        <div className="history-group">
+          <span className="label">エンジニア歴</span>
+          <p className="value">{history}年</p>
+        </div>
+        <div className="date-group">
+          <span className="label">登録日 : {registeredDate}</span>
+        </div>
       </div>
 
-      {/* 登録日 */}
-      <div className="info-item">
-        <span className="label">登録日</span>
-        <p className="value">{registeredDate}</p>
+      {/* 4. LV枠 */}
+      <div className="info-item lv-row">
+        <span className="label">LV</span>
+        <p className="lv-value">{level}</p>
       </div>
 
-      {/* 称号 */}
-      <div className="info-item">
-        <span className="label">称号</span>
-        <p className="value highlighted">{title}</p>
+      {/* 5. 称号・スキル更新枠 */}
+      <div className="info-item title-row">
+        <div className="title-group">
+          <span className="label">称号</span>
+          <p className="value highlighted">{title}</p>
+        </div>
+        <button className="update-button-mini">スキル更新</button>
       </div>
     </div>
   );
