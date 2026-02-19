@@ -41,11 +41,11 @@ export const handlers = [
     });
   }),
 
-  http.put("/api/v1/cards/:user_name/update", ({ params }) => {
+  http.get("/api/v1/cards/:user_name/update", ({ params }) => {
     const { user_name } = params;
 
     return HttpResponse.json({
-      status: user_name === "techtaro"
+      status: user_name === "test"
     });
   }),
 
