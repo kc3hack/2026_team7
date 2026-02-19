@@ -1,4 +1,5 @@
 import './LanguageSkill.css';
+import getIconUrl from '../../utils/getIcon';
 
 type Props = {
   language: string;
@@ -8,7 +9,7 @@ type Props = {
 const LanguageSkill = (props: Props) => {
   return  <div className="skill">
             <div className="skill-left">
-              <img alt="Language" className="skill-icon"></img>
+              <img alt="Language" className="skill-icon" src={getIconUrl("javascript")}></img>
               <span className="skill-name">Language-icon</span>
             </div>
 
