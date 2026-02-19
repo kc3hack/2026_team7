@@ -6,7 +6,7 @@ const Section3 = () => {
   return (
     <BoxFrame>
       <div className="pad_box">
-        <TitleContent title="サンプル" content="サンプル文章あああああああああああ" />
+        <TitleContent title="sample" content="サンプル文章あああああああああああ" />
       </div>
     </BoxFrame>
   );
