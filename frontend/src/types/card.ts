@@ -1,13 +1,13 @@
 // 言語情報
 export interface Language {
     name: string;
-    char_count: number;
+    bytes: number;
 }
 
 // 統計情報
 export interface Stats {
     repo_count: number;
-    total_char_count: number;
+    total_bytes: number;
 }
 
 // ユーザー情報
