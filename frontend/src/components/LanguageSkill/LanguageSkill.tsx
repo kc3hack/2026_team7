@@ -1,6 +1,11 @@
 import './LanguageSkill.css';
 
-const LanguageSkill = () => {
+type Props = {
+  language: string;
+  score: number;
+};
+
+const LanguageSkill = (props: Props) => {
   return  <div className="skill">
             <div className="skill-left">
               <img alt="Language" className="skill-icon"></img>
