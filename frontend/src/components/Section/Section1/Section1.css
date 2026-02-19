@@ -32,6 +32,8 @@ body {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+
+    position: relative;
 }
 
 /* ★ 変更ポイント：左右の両端へ確実に引き離す ★ */
@@ -104,4 +106,112 @@ body {
 
     .main-value { font-size: 24px; }
     .heading { font-size: 12px; }
+}
+
+.name-box .top-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    position: relative;
+}
+
+.name {
+    font-size: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.qr-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background: white;
+    color:rgb(0 0 0 / 0.5);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.middle-row {
+    display: flex;
+    gap: 20px;
+}
+
+.history-box {
+    flex: 3;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between; /* 左右に分ける */
+    align-items: center;
+}
+
+.Registration{
+    text-align: left;
+
+}
+
+.Registration-date {
+    text-align: right;
+}
+.big {
+    font-size: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.level-box {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    text-align: center;
+    padding: 0;
+}
+.level-title {
+    font-size: 25px;
+    margin-top: 0;
+    text-align: left;
+}
+.level {
+    font-size: 60px;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.title-box .title-neme {
+    font-size: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.title-neme{
+    text-align: center;
+}
+
+.update-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    background: white;
+    color:rgb(0 0 0 / 0.5);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    max-width: 100px;
+}
+
+.updated {
+    margin-top: 0;
+    text-align: right;
+    font-size: 18px;
+    text-align: right;
 }
