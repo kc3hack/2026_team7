@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* App.cssの背景を活かすため透過 */
+  background-color: transparent;
 }
 
 .hero-section {
@@ -11,13 +13,11 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 20px 100px 20px; /* 下に少し余白を持たせてバランス調整 */
-  margin-top: 80px; /* ヘッダーの高さ分だけ上に余白を追加 */
+  padding: 0 20px 100px 20px;
 }
 
-/* 1. タイトルをさらに巨大に */
 .product-title {
-  font-size: 8rem; /* 5remから8remに大幅アップ */
+  font-size: 8rem;
   font-family: serif; 
   margin-bottom: 20px;
   letter-spacing: 0.02em;
@@ -29,28 +29,25 @@
   margin-bottom: 80px;
 }
 
-/* 2. メインコピーをより強調 */
 .main-message {
-  font-size: 3.5rem; /* 2.2remから3.5remに拡大 */
+  font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 20px;
   color: #ffffff;
 }
 
-/* 3. サブコピーも存在感を出す */
 .sub-message {
-  font-size: 1.6rem; /* 1.2remから1.6remに拡大 */
+  font-size: 1.6rem;
   opacity: 0.95;
   color: #ffffff;
 }
 
-/* 4. ボタンも文字に合わせて大きく */
 .start-button {
   background-color: #ffffff;
   color: #002060;
   border: none;
-  padding: 24px 80px; /* パディングを増やしてボタン自体を大きく */
-  font-size: 2rem;    /* 文字を2remにアップ */
+  padding: 24px 80px;
+  font-size: 2rem;
   font-weight: bold;
   border-radius: 16px;
   cursor: pointer;
@@ -59,5 +56,51 @@
 }
 
 .start-button:hover {
-  transform: scale(1.05); /* ホバー時に少し大きくして躍動感を出す */
+  transform: scale(1.05);
+}
+
+/* スマホ用改行の初期設定 */
+.mobile-only {
+  display: none;
+}
+
+/* --- スマホ向けの改善 (max-width: 768px) --- */
+@media screen and (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+
+  .hero-section {
+    padding: 0 20px 60px 20px; /* 余白を少し詰める */
+  }
+
+  /* 巨大なタイトルをスマホサイズに縮小 */
+  .product-title {
+    font-size: 4rem; /* 8remから半分に */
+    margin-bottom: 10px;
+  }
+
+  .message-area {
+    margin-bottom: 50px;
+  }
+
+  /* メインメッセージの調整 */
+  .main-message {
+    font-size: 2rem; /* 3.5remから縮小 */
+    line-height: 1.3;
+  }
+
+  /* サブメッセージの調整 */
+  .sub-message {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  /* ボタンをスマホで押しやすく調整 */
+  .start-button {
+    padding: 16px 40px;
+    font-size: 1.4rem;
+    width: 90%; /* 画面幅に合わせる */
+    max-width: 300px;
+  }
 }
