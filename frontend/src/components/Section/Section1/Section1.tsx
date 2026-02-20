@@ -11,6 +11,7 @@ interface Section1Props {
   imageUrl: string; // 写真のURLを追加
   updatedDate: string; // スキル更新日時を追加
   onClickQR?: () => void;
+  onClickUpdate?: () => void;
 }
 
 const getEngineerHistory = (registeredDate: string): number => {
@@ -22,7 +23,7 @@ const getEngineerHistory = (registeredDate: string): number => {
   return years > 0 ? years : 0;
 };
 
-const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, title, level, imageUrl, updatedDate, onClickQR }) => {
+const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, title, level, imageUrl, updatedDate, onClickQR, onClickUpdate }) => {
   const history = getEngineerHistory(registeredDate);
   return(
   <BoxFrame>
