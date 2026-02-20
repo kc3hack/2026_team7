@@ -1,76 +1,44 @@
-body{
-    background-color: rgb(137, 137, 137);
+.language-skill-container {
+    width: 100%;
+    margin-bottom: 15px;
+    color: white;
 }
 
-.skill {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  color: white;
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: bold;
 }
 
-.skill-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 150px;
+.language-name {
+    font-size: 16px;
 }
 
-.skill-icon {
-  width: 40px;
-  height: 40px;
+.skill-percentage {
+    font-size: 14px;
+    opacity: 0.9;
 }
 
-.skill-name {
-  font-size: 18px;
+/* プログレスバーの背景（器） */
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    /* ★ 万が一中身が100%を超えても、ここでカットする */
+    overflow: hidden; 
+    position: relative;
 }
 
-.skill-bar {
-  flex: 1;
-  height: 30px;
-  background-color: #bfbfbf;
-  border: 1px solid #fff;
-  box-shadow:   inset 0 4px 6px rgba(255,255,255,0.6),
-                inset 0 -3px 6px rgba(0,0,0,0.4);
-  position: relative;
-}
-
-.skill-fill {
-  height: 100%;
-  width: 70%;
-  position: relative;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.7) 0%,
-      rgba(255,255,255,0.3) 20%,
-      rgba(255,255,255,0) 45%
-    ),
-    linear-gradient(
-      135deg,
-      #b7f07a 0%,
-      #4caf50 55%,
-      #0f3d14 100%
-    );
-  box-shadow:
-    inset 0 4px 6px rgba(255,255,255,0.6),
-    inset 0 -5px 8px rgba(0,0,0,0.6);
-}
-
-.skill-fill::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background: #1b5e20;
-}
-.skill-score {
-  font-size: 18px;
-  font-weight: bold;
-  width: 100px;
-  text-align: right;
-  padding-right: 10px;
-  
+/* プログレスバーの進捗部分（中身） */
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+    border-radius: 5px;
+    transition: width 0.5s ease-out;
+    
+    /* ★ CSS側のガード：0%未満や100%超えを視覚的に防ぐ */
+    min-width: 0%;
+    max-width: 100%;
 }
