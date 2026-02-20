@@ -1,7 +1,26 @@
-body{
-    background-color: rgb(137, 137, 137);
+.section2-inner {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.pad_box{
-    padding: 20px;
+.info-row {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+}
+
+.info-row > div {
+    flex: 1;
+}
+
+/* --------------------------------------------------
+   レスポンシブ (スマホ版)
+-------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .info-row {
+        flex-direction: column; /* スマホでは縦並び */
+        gap: 20px;
+    }
 }
