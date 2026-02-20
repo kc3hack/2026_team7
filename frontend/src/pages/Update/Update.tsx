@@ -7,7 +7,7 @@ import UpdateBtn from '../../components/UpdateBtn/UpdateBtn';
 const Update = () => {
   const user_name = "test";
 
-  const { status, loading, error } = useUpdateStatus(user_name);
+  const { status, loading, error } = useUpdateStatus();
 
   if (loading) {
     return <p>Loading...</p>;
