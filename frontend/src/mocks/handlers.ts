@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
-  http.get("/api/v1/engineers/:user_name/card", ({ params }) => {
+  http.get("/api/v1/card/:user_name", ({ params }) => {
     const { user_name } = params;
 
     return HttpResponse.json({
@@ -41,11 +41,11 @@ export const handlers = [
     });
   }),
 
-  http.get("/api/v1/cards/:user_name/update", ({ params }) => {
-    const { user_name } = params;
+  http.post("/api/v1/cards/:id/update", ({ params }) => {
+    const { id } = params;
 
     return HttpResponse.json({
-      status: user_name === "test"
+      status: id === "test"
     });
   }),
 

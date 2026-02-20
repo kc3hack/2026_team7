@@ -10,7 +10,7 @@ export const useUpdateStatus = (user_name: string) => {
     useEffect(() => {
         const fetchStatus = async () => {
             try {   
-                const response = await fetch(`/api/v1/cards/${user_name}/update`);
+                const response = await fetch(`/api/v1/cards/${user_name}/update`,{method: "POST"});
                 if (!response.ok) {
                     throw new Error(`Error fetching update status: ${response.statusText}`);
                 }
