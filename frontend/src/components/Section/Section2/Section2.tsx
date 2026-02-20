@@ -1,4 +1,3 @@
-import React from 'react';
 import './Section2.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
 import TitleContent from '../../TitleContent/TitleContent';
