@@ -64,7 +64,7 @@ const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, t
               <div className="box title-box">
                 <div className="title">称号</div>
                 <div className="title-neme">{title}</div>
-                <button className="update-btn">スキル更新</button>
+                <button className="update-btn" onClick={onClickUpdate}>スキル更新</button>
               </div>
 
               <div className="updated">

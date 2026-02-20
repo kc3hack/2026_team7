@@ -12,15 +12,15 @@ import { useParams,useNavigate } from 'react-router-dom';
 
 const Card = () => {
 
+  const [showQR, setShowQR] = useState(false);
+  const navigate = useNavigate();
+
   const { user_name } = useParams<{ user_name: string }>();
   
   const { cardInfo, loading, error } = useCardInfo(user_name || ""); // user_nameがundefinedの場合は空文字を渡す
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!cardInfo) return <p>No data available</p>;
-
-  const [showQR, setShowQR] = useState(false);
-  const navigate = useNavigate();
 
   const handleUpdateClick = () => {
     if (!user_name) return;
