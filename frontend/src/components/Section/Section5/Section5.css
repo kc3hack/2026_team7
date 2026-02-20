@@ -22,3 +22,19 @@ body{
 .skills > *:not(.skills-title) {
   margin-bottom: 30px;
 }
+
+@media screen and (max-width: 768px) {
+
+  .skills-title {
+    font-size: 17px;          /* 小さくする */
+    /* line-height: 1.3;         行間調整 */
+    /* word-break: break-word;   強制折り返し */
+    /* display: block;           inline-blockやめる */
+    margin: 10px;
+  }
+
+  .skills {
+    padding: 1px;            /* 余白も少し縮める */
+  }
+
+}
