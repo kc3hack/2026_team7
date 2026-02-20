@@ -1,40 +1,39 @@
-import { useEffect,useState } from "react";
+import { useState, useCallback } from "react"; // useCallbackを追加
 import type { StatusResponse } from "../types/update";
 import { fetchUserId } from "../utils/auth";
 
 export const useUpdateStatus = () => {
     const [status, setStatus] = useState<StatusResponse | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false); // 初期値はfalseにする
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const initializeUpdate = async () => {
-            try {
-                setLoading(true);
-                
-                // 1. ここで user_id を取得（await で待機）
-                const user_id = await fetchUserId();
-                
-                // 2. 取得した ID を使って POST リクエストを送る
-                const response = await fetch(`/api/v1/cards/${user_id}/update`, { 
-                    method: "POST" 
-                });
+    // ★ useEffectを消して、代わりにこの関数を作る
+    const triggerUpdate = useCallback(async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            
+            const user_id = await fetchUserId();
+            const response = await fetch(`/api/v1/cards/${user_id}/update`, { 
+                method: "POST" 
+            });
 
-                if (!response.ok) {
-                    throw new Error(`Error fetching update status: ${response.statusText}`);
-                }
-
-                const data: StatusResponse = await response.json();
-                setStatus(data);
-            } catch (err: unknown) {
-                setError(err instanceof Error ? err.message : String(err));
-            } finally {
-                setLoading(false);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
             }
-        };
 
-        initializeUpdate();
-    }, []); // 最初に1回だけ実行される
+            const data: StatusResponse = await response.json();
+            setStatus(data);
+            return data;
+        } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : String(err);
+            setError(msg);
+            throw err;
+        } finally {
+            setLoading(false);
+        }
+    }, []);
 
-    return { status, loading, error };
+    // triggerUpdate を外で使えるように返す
+    return { status, loading, error, triggerUpdate };
 };
