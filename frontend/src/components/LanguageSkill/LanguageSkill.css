@@ -92,28 +92,42 @@ body {
 
 /* --- モバイル対応（画面幅 600px 以下） --- */
 @media (max-width: 600px) {
+  .skills-container {
+    display: flex;
+    flex-direction: column;  /* 縦並び */
+    align-items: center;     /* 横方向の中央寄せ */
+    justify-content: center; /* 縦方向も中央寄せ（必要に応じて） */
+    gap: 16px;               /* skill同士の間隔 */
+    width: 100%;
+    min-height: 100vh;       /* 画面中央に配置する場合 */
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
   .skill {
     flex-direction: column; /* 縦並びに変更 */
-    margin: auto 0 24px; /* 上下のマージンはそのまま、左右は自動で中央寄せ */
+    margin: 0 auto 24px;    /* 上下のマージンはそのまま、左右は自動で中央寄せ */
     gap: 8px; 
-    width: 95%; /* 親要素を横いっぱいに */
+    width: 95%;             /* 横幅は親に対して少し余白を残す */
   }
 
   .skill-left {
-    width: 100%; /* 横幅を確保 */
+    width: 100%;
+    display: flex;
+    justify-content: center; /* アイコンと名前も中央寄せ */
+    gap: 8px;
   }
 
-  /* ★ここが重要！★ */
   .skill-bar {
-    width: 100%;      /* 縦並びのときは明示的に100%にする */
-    flex: none;       /* flex: 1 を解除 */
-    height: 24px;     /* 高さを少し調整 */
-    box-sizing: border-box; /* 枠線を含めた計算にする */
+    width: 100%;      
+    flex: none;       
+    height: 24px;     
+    box-sizing: border-box; 
   }
 
   .skill-score {
     width: 100%;
-    text-align: right; /* 数字は右寄せ */
+    text-align: right; 
     font-size: 16px;
     padding-right: 0;
   }
