@@ -3,7 +3,6 @@ body {
     background-color: rgb(137, 137, 137);
     margin: 0;
 }
-
 .card {
     display: flex;
     gap: 40px;
@@ -12,121 +11,121 @@ body {
     max-width: 1000px;
     margin: 0 auto;
 }
-
-.left { width: 30%; }
+.left {
+    width: 30%;
+    height: 50%;
+}
 .left img {
     width: 100%;
+    height: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border: 8px solid #cfcfcf;
     border-radius: 4px;
 }
-
-.right { flex: 1; }
-
+.right {
+    flex: 1;
+}
 .box {
     background-color: rgb(0 0 0 / 0.5);
     border: 3px solid #dcdcdc;
     border-radius: 20px;
-    padding: 15px 20px; /* 左右の余白を確保 */
+    padding: 15px;
+    padding-top: 0;
     margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-
     position: relative;
 }
-
 /* ★ 変更ポイント：左右の両端へ確実に引き離す ★ */
 .flex-row-container {
     display: flex !important;
-    justify-content: space-between !important; /* 両端へ押し出し */
-    align-items: flex-end; /* 底辺を揃える */
-    width: 100% !important; /* 親の幅いっぱいに広げる */
+    justify-content: space-between !important;
+    /* 両端へ押し出し */
+    align-items: flex-end;
+    /* 底辺を揃える */
+    width: 100% !important;
+    /* 親の幅いっぱいに広げる */
 }
-
 /* 左側のコンテンツ（エンジニア名など） */
 .content-left {
-    flex: 1; /* スペースを半分占有 */
+    flex: 1;
+    /* スペースを半分占有 */
     text-align: left;
 }
-
 /* 右側のコンテンツ（IDやボタンなど） */
 .content-right {
-    flex: 1; /* スペースを半分占有 */
+    flex: 1;
+    /* スペースを半分占有 */
     text-align: right;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* 中身も右寄せ */
+    align-items: flex-end;
+    /* 中身も右寄せ */
 }
-
 .main-value {
     font-size: 32px;
     font-weight: bold;
     margin: 5px 0 0 0;
 }
-
-/* ボタンのスタイル */
-.qr-btn, .update-btn {
-    background: white;
-    color: #555;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+/* ボタンのスタイル .qr-btn, .update-btn { background: white; color: #555; border: none; font-weight: bold; cursor: pointer; } */
+/* .qr-btn { padding: 4px 12px; border-radius: 8px; margin-top: 5px; } .update-btn { padding: 6px 15px; border-radius: 20px; } */
+/* .middle-row { display: flex; gap: 20px; } */
+/* .history-box { flex: 2.5; } */
+.heading {
+    font-size: 20px;
+    color: #dcdcdc;
 }
-.qr-btn { padding: 4px 12px; border-radius: 8px; margin-top: 5px; }
-.update-btn { padding: 6px 15px; border-radius: 20px; }
-
-.middle-row { display: flex; gap: 20px; }
-.history-box { flex: 2.5; }
-
-.heading { font-size: 16px; color: #dcdcdc; }
-.updated-timestamp { text-align: right; font-size: 14px; opacity: 0.8; }
-
-/* --------------------------------------------------
-    スマホ向け・レイアウト修正 (max-width: 768px)
--------------------------------------------------- */
+.updated-timestamp {
+    text-align: right;
+    font-size: 14px;
+    opacity: 0.8;
+}
+/* -------------------------------------------------- スマホ向け・レイアウト修正 (max-width: 768px) -------------------------------------------------- */
 @media screen and (max-width: 768px) {
     .card {
         flex-direction: column;
         align-items: center;
         padding: 20px;
     }
-
-    .left { width: 100%; max-width: 250px; }
-    .right { width: 100%; }
-
+    .left {
+        width: 100%;
+        max-width: 250px;
+    }
+    .right {
+        width: 100%;
+    }
     /* ★ スマホでも絶対に一行で左右に離したままにする設定 ★ */
     .flex-row-container {
         display: flex !important;
-        flex-direction: row !important; /* 縦並びを禁止 */
+        flex-direction: row !important;
+        /* 縦並びを禁止 */
         justify-content: space-between !important;
         width: 100% !important;
     }
-
-    .main-value { font-size: 24px; }
-    .heading { font-size: 12px; }
+    .main-value {
+        font-size: 24px;
+    }
+    .heading {
+        font-size: 12px;
+    }
 }
-
 .name-box .top-row {
     display: flex;
     justify-content: space-between;
     font-size: 20px;
     position: relative;
 }
-
 .name {
     font-size: 30px;
     margin-top: 10px;
     font-weight: bold;
     text-align: center;
 }
-
 .qr-btn {
     position: absolute;
     right: 20px;
     bottom: 20px;
     background: white;
-    color:rgb(0 0 0 / 0.5);
+    color: rgb(0 0 0 / 0.5);
     border: none;
     padding: 5px 15px;
     border-radius: 10px;
@@ -134,27 +133,22 @@ body {
     cursor: pointer;
     font-size: 18px;
 }
-
 .middle-row {
     display: flex;
     gap: 20px;
 }
-
 .history-box {
     flex: 3;
 }
-
 .history-header {
     display: flex;
-    justify-content: space-between; /* 左右に分ける */
+    justify-content: space-between;
+    /* 左右に分ける */
     align-items: center;
 }
-
-.Registration{
+.Registration {
     text-align: left;
-
 }
-
 .Registration-date {
     text-align: right;
 }
@@ -164,13 +158,12 @@ body {
     font-weight: bold;
     text-align: center;
 }
-
 .level-box {
     display: flex;
     justify-content: space-between;
     flex: 1;
-    /* text-align: center; */
-    padding: 10px;
+    text-align: center;
+    padding: 0px;
 }
 .level-title {
     font-size: 25px;
@@ -182,23 +175,21 @@ body {
     margin-top: 10px;
     text-align: right;
 }
-
 .title-box .title-neme {
     font-size: 30px;
     margin-top: 10px;
     font-weight: bold;
     margin-bottom: 0;
 }
-.title-neme{
+.title-neme {
     text-align: center;
 }
-
 .update-btn {
     position: absolute;
     right: 20px;
     bottom: 10px;
     background: white;
-    color:rgb(0 0 0 / 0.5);
+    color: rgb(0 0 0 / 0.5);
     border: none;
     padding: 5px 15px;
     border-radius: 30px;
@@ -207,7 +198,6 @@ body {
     font-size: 18px;
     max-width: 100px;
 }
-
 .updated {
     margin-top: 0;
     text-align: right;
