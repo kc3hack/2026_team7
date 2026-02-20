@@ -66,7 +66,7 @@ const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, t
                 <button className="update-btn">スキル更新</button>
               </div>
 
-              <div className="updated">
+              <div className="updated_date">
                 スキル更新日時：{updatedDate}
               </div>
 
