@@ -4,6 +4,7 @@ import getIconUrl from '../../utils/getIcon';
 type Props = {
   language: string;
   score: number;
+  maxScore?: number;
 };
 
 const LanguageSkill = (props: Props) => {

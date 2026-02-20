@@ -14,5 +14,6 @@ export const Default: Story = {
   args: {
     language: 'JavaScript',
     score: 80,
+    maxScore: 100,
   },
 };

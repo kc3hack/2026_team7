@@ -6,7 +6,7 @@ export const handlers = [
 
     return HttpResponse.json({
       user_info: {
-        avatar_url: "https://example.com/avatar.png",
+        avatar_url: "https://avatars.githubusercontent.com/t/16250516?s=116&v=4",
         user_name: user_name,
         display_name: "Tech Taro",
         github_joined_at: "2020-01-01",
