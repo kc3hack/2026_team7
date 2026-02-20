@@ -41,8 +41,10 @@ export const handlers = [
     });
   }),
 
-  http.post("/api/v1/cards/:id/update", ({ params }) => {
+  http.post("/api/v1/cards/:id/update", async ({ params }) => {
     const { id } = params;
+
+    await new Promise((resolve) => setTimeout(resolve, 5000));
 
     return HttpResponse.json({
       status: id === "1234567890"
