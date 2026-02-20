@@ -79,35 +79,7 @@ body {
     font-size: 14px;
     opacity: 0.8;
 }
-/* -------------------------------------------------- スマホ向け・レイアウト修正 (max-width: 768px) -------------------------------------------------- */
-@media screen and (max-width: 768px) {
-    .card {
-        flex-direction: column;
-        /* align-items: center; */
-        padding: 20px;
-    }
-    .left {
-        width: 100%;
-        max-width: 250px;
-    }
-    .right {
-        width: 100%;
-    }
-    /* ★ スマホでも絶対に一行で左右に離したままにする設定 ★ */
-    .flex-row-container {
-        display: flex !important;
-        flex-direction: row !important;
-        /* 縦並びを禁止 */
-        justify-content: space-between !important;
-        width: 100% !important;
-    }
-    .main-value {
-        font-size: 24px;
-    }
-    .heading {
-        font-size: 12px;
-    }
-}
+
 .name-box .top-row {
     display: flex;
     justify-content: space-between;
@@ -203,4 +175,49 @@ body {
     text-align: right;
     font-size: 18px;
     text-align: right;
+}
+
+/* -------------------------------------------------- スマホ向け・レイアウト修正 (max-width: 768px) -------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        /* align-items: center; */
+        padding: 20px;
+    }
+    .left {
+        width: 100%;
+        max-width: 250px;
+    }
+    .right {
+        width: 100%;
+    }
+    /* ★ スマホでも絶対に一行で左右に離したままにする設定 ★ */
+    .flex-row-container {
+        display: flex !important;
+        flex-direction: row !important;
+        /* 縦並びを禁止 */
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+    .main-value {
+        font-size: 24px;
+    }
+    .heading {
+        font-size: 12px;
+    }
+
+    .top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .qr-btn {
+        width: 20%;
+        margin-top: 8px;
+    }
+
+    .name{
+        text-align: left;
+    }
 }
