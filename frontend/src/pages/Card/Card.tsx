@@ -8,11 +8,13 @@ import Section3 from '../../components/Section/Section3/Section3';
 import Section4 from '../../components/Section/Section4/Section4';
 import Section5 from '../../components/Section/Section5/Section5';
 import QR from '../../components/QR/QR'; 
+import { useParams } from 'react-router-dom';
 
+const Card = () => {
 
-const Card = ({ user_name }: { user_name: string }) => {
+  const { user_name } = useParams<{ user_name: string }>();
   
-  const { cardInfo, loading, error } = useCardInfo(user_name);
+  const { cardInfo, loading, error } = useCardInfo(user_name || ""); // user_nameがundefinedの場合は空文字を渡す
   const [showQR, setShowQR] = useState(false);
 
   if (loading) return <p>Loading...</p>;

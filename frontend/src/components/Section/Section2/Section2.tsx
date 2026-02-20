@@ -4,9 +4,9 @@ import BoxFrame from '../../BoxFrame/BoxFrame';
 import TitleContent from '../../TitleContent/TitleContent';
 
 type Section2Props = {
-  aboutMe?: string;
-  Location?: string;
-  Company?: string;
+  aboutMe?: string | null;
+  Location?: string | null;
+  Company?: string | null;
 };
 
 const Section2 = (props: Section2Props) => {
