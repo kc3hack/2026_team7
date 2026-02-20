@@ -8,19 +8,24 @@ import Section3 from '../../components/Section/Section3/Section3';
 import Section4 from '../../components/Section/Section4/Section4';
 import Section5 from '../../components/Section/Section5/Section5';
 import QR from '../../components/QR/QR'; 
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 const Card = () => {
+
+  const [showQR, setShowQR] = useState(false);
+  const navigate = useNavigate();
 
   const { user_name } = useParams<{ user_name: string }>();
   
   const { cardInfo, loading, error } = useCardInfo(user_name || ""); // user_nameがundefinedの場合は空文字を渡す
-  const [showQR, setShowQR] = useState(false);
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!cardInfo) return <p>No data available</p>;
-  
+
+  const handleUpdateClick = () => {
+    if (!user_name) return;
+    navigate(`/cards/${cardInfo.user_info.user_name}/update`);
+  };
 
   return (
     <>
@@ -35,6 +40,7 @@ const Card = () => {
             imageUrl={cardInfo.user_info.avatar_url}
             updatedDate={cardInfo.card_info.last_updated_at}
             onClickQR={() => setShowQR(true)}
+            onClickUpdate={() => handleUpdateClick()}
           />
           <Section2 
             aboutMe={cardInfo.user_info.bio}
