@@ -181,7 +181,7 @@ body {
 @media screen and (max-width: 768px) {
     .card {
         flex-direction: column;
-        /* align-items: center; */
+        align-items: center;
         padding: 20px;
     }
     .left {
@@ -309,4 +309,32 @@ body {
         opacity: 0.8;
     }
 
+}
+
+
+@media screen and (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: stretch; /* ← 左右いっぱいに広げる */
+        padding: 20px;
+    }
+
+    .left {
+        width: 100%;
+        max-width: 250px;
+        display: flex;
+        justify-content: center; /* 親内で中央 */
+        margin: 0 auto;           /* 念のため中央 */
+    }
+
+    .left img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border: 8px solid #cfcfcf;
+        border-radius: 4px;
+        display: block;
+        margin: 0 auto;           /* 画像自体も中央 */
+    }
 }
