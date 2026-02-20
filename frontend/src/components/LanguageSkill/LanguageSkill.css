@@ -94,9 +94,9 @@ body {
 @media (max-width: 600px) {
   .skill {
     flex-direction: column; /* 縦並びに変更 */
-    align-items: flex-start; /* 左寄せ */
+    margin: auto 0 24px; /* 上下のマージンはそのまま、左右は自動で中央寄せ */
     gap: 8px; 
-    width: 100%; /* 親要素を横いっぱいに */
+    width: 95%; /* 親要素を横いっぱいに */
   }
 
   .skill-left {
