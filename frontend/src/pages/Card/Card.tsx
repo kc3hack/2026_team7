@@ -26,8 +26,18 @@ const Card = () => {
             updatedDate="2026.02.17 05:43:32"
             onClickQR={() => setShowQR(true)}
           />
-          <Section2 />
-          <Section3 />
+          <Section2 
+            aboutMe="自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。"
+            Location="Tokyo, Japan"
+            Company="Tech Company Inc."
+          />
+          <Section3 
+            website="https://example.com"
+            social_accounts={[
+              "https://twitter.example.com/example",
+              "https://github.example.com/example"
+            ]}
+          />
           <Section4 
             repositories={68}
             total_bytes={12345678}
