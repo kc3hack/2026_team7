@@ -8,7 +8,7 @@ interface UpdateBtnProps {
 
 const UpdateBtn: React.FC<UpdateBtnProps> = ({ status, onClick }) => {
   // スライド6, 7は「スキルを更新」、8は「閉じる」
-  const buttonText = status === 'updated' ? '閉じる' : 'スキルを更新';
+  const buttonText = status === 'updated' ? '戻る' : 'スキルを更新';
 
   return (
     <button 

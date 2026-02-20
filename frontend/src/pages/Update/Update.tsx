@@ -5,10 +5,14 @@ import { useUpdateStatus } from '../../hooks/update';
 import BoxFrame from '../../components/BoxFrame/BoxFrame';
 import Status from '../../components/Status/Status';
 import UpdateBtn from '../../components/UpdateBtn/UpdateBtn';
+import { useNavigate } from 'react-router-dom';
 
 type UpdateStatus = 'initial' | 'updating' | 'updated';
 
 const Update = () => {
+
+  const navigate = useNavigate();
+
   const { id } = useParams<{ id: string }>();
   const user_name = id || "unknown";
 
@@ -26,7 +30,14 @@ const Update = () => {
   }, [loading, status, isAnimating]);
 
   const handleUpdate = async () => {
-    if (currentStatus === 'updated' || loading) return;
+    
+    // 更新が完了している
+    if(currentStatus === 'updated'){
+      navigate(`/cards/${user_name}`); // カードに遷移
+      return;
+    }
+    
+    if (loading) return;
 
     setIsAnimating(true); // 演出開始
 
