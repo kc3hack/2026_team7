@@ -280,4 +280,8 @@ body {
         align-items: center;     /* 横中央 */
     }
 
+    .title-box .title-neme {
+        margin-top: 1px;   /* ← 10px → 2px にする */
+    }
+
 }
