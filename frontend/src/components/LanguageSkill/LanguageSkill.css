@@ -90,31 +90,29 @@ body {
     margin-bottom: 24px;
 }
 
-/* --- モバイル対応（画面幅 600px 以下） --- */
 @media (max-width: 600px) {
   .skills-container {
     display: flex;
     flex-direction: column;  /* 縦並び */
-    align-items: center;     /* 横方向の中央寄せ */
-    justify-content: center; /* 縦方向も中央寄せ（必要に応じて） */
-    gap: 16px;               /* skill同士の間隔 */
+    align-items: center;     /* skill全体を中央に寄せる */
+    gap: 16px;               
     width: 100%;
-    min-height: 100vh;       /* 画面中央に配置する場合 */
     padding: 16px;
     box-sizing: border-box;
   }
 
   .skill {
     flex-direction: column; /* 縦並びに変更 */
-    margin: 0 auto 24px;    /* 上下のマージンはそのまま、左右は自動で中央寄せ */
+    margin: 0 auto 24px;    /* 上下マージン、左右中央寄せ */
     gap: 8px; 
-    width: 95%;             /* 横幅は親に対して少し余白を残す */
+    width: 95%;             /* 親に対して少し余白 */
   }
 
   .skill-left {
     width: 100%;
     display: flex;
-    justify-content: center; /* アイコンと名前も中央寄せ */
+    justify-content: flex-start; /* ←左寄せに変更 */
+    align-items: center;
     gap: 8px;
   }
 
