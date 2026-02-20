@@ -1,6 +1,7 @@
 import React from 'react';
 import './Section1.css';
 import BoxFrame from '../../BoxFrame/BoxFrame';
+import dayjs from 'dayjs';
 
 interface Section1Props {
   userName: string;
@@ -48,7 +49,7 @@ const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, t
                 <div className="box history-box">
                   <div className="history-header">
                     <div className="Registration">エンジニア歴</div>
-                    <div className="Registration-date">登録日：2019/03/10</div>
+                    <div className="Registration-date">登録日：{dayjs(updatedDate).format('YYYY年MM月DD日')}</div>
                   </div>
 
                   <div className="big">{history}年</div>
@@ -67,7 +68,7 @@ const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, t
               </div>
 
               <div className="updated_date">
-                スキル更新日時：{updatedDate}
+                スキル更新日時：{dayjs(updatedDate).format('YYYY.MM.DD HH.mm.ss')}
               </div>
 
             </div>
