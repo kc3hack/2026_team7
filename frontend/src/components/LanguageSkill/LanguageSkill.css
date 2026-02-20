@@ -79,3 +79,42 @@ body {
     padding-right: 10px;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/* --- 既存のスタイルは維持しつつ、以下を調整・追加 --- */
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* 少し狭くしてPCでも見やすく */
+    color: white;
+    margin-bottom: 24px;
+}
+
+/* --- モバイル対応（画面幅 600px 以下） --- */
+@media (max-width: 600px) {
+  .skill {
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: flex-start; /* 左寄せ */
+    gap: 8px; 
+    width: 100%; /* 親要素を横いっぱいに */
+  }
+
+  .skill-left {
+    width: 100%; /* 横幅を確保 */
+  }
+
+  /* ★ここが重要！★ */
+  .skill-bar {
+    width: 100%;      /* 縦並びのときは明示的に100%にする */
+    flex: none;       /* flex: 1 を解除 */
+    height: 24px;     /* 高さを少し調整 */
+    box-sizing: border-box; /* 枠線を含めた計算にする */
+  }
+
+  .skill-score {
+    width: 100%;
+    text-align: right; /* 数字は右寄せ */
+    font-size: 16px;
+    padding-right: 0;
+  }
+}
