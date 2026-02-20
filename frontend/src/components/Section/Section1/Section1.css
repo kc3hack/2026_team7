@@ -280,15 +280,33 @@ body {
         align-items: center;     /* 横中央 */
     }
 
+.title-box {
+        display: flex;
+        flex-direction: column; /* 縦に並べる */
+        align-items: flex-start; /* 基本は左寄せ */
+    }
+
     .title-box .title-neme {
-        margin-top: 1px;   /* ← 10px → 2px にする */
-        align-items: center;   /* ← これが足りなかった */
+        margin-top: 1px;
+        width: 100%;       /* 幅をいっぱいにする */
+        text-align: center; /* 称号名は中央のままにする場合 */
     }
 
     .update-btn {
-        position: static;   /* ← absolute解除（超重要） */
+        position: static;   /* absolute解除 */
         max-width: none;
         margin-top: 6px;
+        
+        /* --- ここが重要：ボタン自体を右に寄せる --- */
+        align-self: flex-end; /* 親がFlexboxの時、自分だけ右寄せにする */
+        
+        /* もしボタンが広がりすぎる場合は適宜調整 */
+        padding: 5px 20px;
+    }
+
+    .updated_date {
+        font-size: 13px;
+        opacity: 0.8;
     }
 
 }
