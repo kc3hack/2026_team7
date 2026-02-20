@@ -12,3 +12,12 @@ body{
     
     margin: 20px auto; /* 上下のマージンを10px、左右のマージンを自動で中央寄せ */
 }
+
+/* スマホ用 */
+@media (max-width: 600px) {
+  .frame {
+    border: 3px solid #fff;
+    padding: 12px;
+    margin: 10px;
+  }
+}
