@@ -219,6 +219,7 @@ body {
 
     .name{
         text-align: left;
+        margin-top: 0px;
     }
 
     .middle-row {
@@ -266,6 +267,10 @@ body {
 
     .big{
         margin: 0px;
+    }
+
+    .box{
+        margin-bottom: 10px;
     }
 
 }
