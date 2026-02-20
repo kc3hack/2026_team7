@@ -60,8 +60,6 @@ func SelfOnly() gin.HandlerFunc {
 
 		uIDStr := fmt.Sprintf("%v", userID)
 
-		fmt.Printf("[SelfOnly Check] sessionID: '%s', paramID: '%s'\n", uIDStr, paramID)
-
 		if uIDStr != paramID {
 			c.JSON(http.StatusForbidden, gin.H{"error": "自分自身のリソースのみアクセス可能です"})
 			c.Abort()
