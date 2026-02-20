@@ -1,3 +1,4 @@
+import React from 'react';
 import './LanguageSkill.css';
 import getIconUrl from '../../utils/getIcon';
 
@@ -8,18 +9,52 @@ type Props = {
 };
 
 const LanguageSkill = (props: Props) => {
-  return  <div className="skill">
-            <div className="skill-left">
-              <img alt="Language" className="skill-icon" src={getIconUrl("javascript")}></img>
-              <span className="skill-name">Language-icon</span>
-            </div>
+  const { language, score, maxScore = 100 } = props;
 
-            <div className="skill-bar">
-              <div className="skill-fill"></div>
-            </div>
+  // ★ 名前から固有の色（Hue）を計算する関数
+  const getPersistentColor = (text: string) => {
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+      // 文字コードを使って数字を生成
+      hash = text.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    // 360度の中で色を決定
+    const hue = Math.abs(hash % 360);
+    // 彩度70%、輝度55%に固定することで「黒くならない」「鮮やか」を両立
+    return `hsl(${hue}, 70%, 55%)`;
+  };
 
-            <div className="skill-score">110,00</div>
-          </div>;
+  const mainColor = getPersistentColor(language);
+  const percentage = Math.min(Math.max(0, (score / maxScore) * 100), 100);
+
+  return (
+    <div className="skill">
+      <div className="skill-left">
+        <img 
+          alt={language} 
+          className="skill-icon" 
+          src={getIconUrl(language)} 
+        />
+        <span className="skill-name">{language}</span>
+      </div>
+
+      <div className="skill-bar">
+        <div 
+          className="skill-fill" 
+          style={{ 
+            width: `${percentage}%`,
+            backgroundColor: mainColor 
+          }}
+        >
+          {/* CSSの::afterがこの色を継承して光る線になります */}
+        </div>
+      </div>
+
+      <div className="skill-score">
+        {score.toLocaleString()}
+      </div>
+    </div>
+  );
 };
 
 export default LanguageSkill;
