@@ -45,7 +45,7 @@ export const handlers = [
     const { id } = params;
 
     return HttpResponse.json({
-      status: id === "test"
+      status: id === "1234567890"
     });
   }),
 
