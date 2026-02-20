@@ -1,29 +1,57 @@
 import React from 'react';
 import './LanguageSkill.css';
+import getIconUrl from '../../utils/getIcon';
 
-type LanguageSkillProps = {
-  languageName: string;
-  level: number;
+type Props = {
+  language: string;
+  score: number;
+  maxScore?: number;
 };
 
-const LanguageSkill = ({ languageName, level }: LanguageSkillProps) => {
-  // ★ ここがポイント：値を 0〜100 の間に強制する
-  // Math.max(0, level) でマイナスを0にし、Math.min(..., 100) で100超えを100にする
-  const clampedLevel = Math.min(Math.max(0, level), 100);
+const LanguageSkill = (props: Props) => {
+  const { language, score, maxScore = 100 } = props;
+
+  // ★ 名前から固有の色（Hue）を計算する関数
+  const getPersistentColor = (text: string) => {
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+      // 文字コードを使って数字を生成
+      hash = text.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    // 360度の中で色を決定
+    const hue = Math.abs(hash % 360);
+    // 彩度70%、輝度55%に固定することで「黒くならない」「鮮やか」を両立
+    return `hsl(${hue}, 70%, 55%)`;
+  };
+
+  const mainColor = getPersistentColor(language);
+  const percentage = Math.min(Math.max(0, (score / maxScore) * 100), 100);
 
   return (
-    <div className="language-skill-container">
-      <div className="skill-info">
-        <span className="language-name">{languageName}</span>
-        {/* 表示する数字は元の値を使うか、補正後の値を使うか選べますが、
-            バーと合わせるなら補正後の数字を出すのが親切です */}
-        <span className="skill-percentage">{clampedLevel}%</span>
+    <div className="skill">
+      <div className="skill-left">
+        <img 
+          alt={language} 
+          className="skill-icon" 
+          src={getIconUrl(language)} 
+        />
+        <span className="skill-name">{language}</span>
       </div>
-      <div className="progress-bar-bg">
+
+      <div className="skill-bar">
         <div 
-          className="progress-bar-fill" 
-          style={{ width: `${clampedLevel}%` }}
-        ></div>
+          className="skill-fill" 
+          style={{ 
+            width: `${percentage}%`,
+            backgroundColor: mainColor 
+          }}
+        >
+          {/* CSSの::afterがこの色を継承して光る線になります */}
+        </div>
+      </div>
+
+      <div className="skill-score">
+        {score.toLocaleString()}
       </div>
     </div>
   );
