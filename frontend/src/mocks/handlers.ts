@@ -7,14 +7,14 @@ export const handlers = [
     return HttpResponse.json({
       user_info: {
         avatar_url: "https://avatars.githubusercontent.com/t/16250516?s=116&v=4",
-        user_name: user_name,
+        user_name: String(user_name),
         display_name: "Tech Taro",
         github_joined_at: "2020-01-01",
         bio: "サンプルテキスト",
-        company: null,
-        location: null,
+        company: "Tech Company",
+        location: "Tokyo, Japan",
         website: "https://example.com",
-        social_accounts: [],
+        social_accounts: ["https://twitter.example.com/tech_taro", "https://github.example.com/tech-taro"],
         is_self: true
       },
       card_info: {
