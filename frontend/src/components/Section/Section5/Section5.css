@@ -34,7 +34,7 @@ body{
   }
 
   .skills {
-    padding: 1px;            /* 余白も少し縮める */
+    padding: 10px;            /* 余白も少し縮める */
   }
 
 }
