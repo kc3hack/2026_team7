@@ -14,7 +14,7 @@ const Section5 = (props: Section5Props) => {
         <h2 className="skills-title">
           Programming Skills by Language
         </h2>
-
+        {/* /* TODO: props.languageSkillsをもとにLanguageSkillコンポーネントを動的に生成する */ */}
         <LanguageSkill />
         <LanguageSkill  />
         <LanguageSkill  />

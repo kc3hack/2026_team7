@@ -34,7 +34,11 @@ const Card = () => {
             activity_grade={85}
             charisma_grade={90}
           />
-          <Section5 />   
+          <Section5 languageSkills={[
+            { name: "TypeScript", bytes: 90 },
+            { name: "Go", bytes: 85 },
+            { name: "Python", bytes: 75 }
+          ]} />
         </BodyFrame>
       </div>
       {/*QR表示*/}
