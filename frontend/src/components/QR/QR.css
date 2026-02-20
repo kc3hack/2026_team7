@@ -37,7 +37,7 @@
 /* テキスト情報 */
 .qr-details {
   text-align: center;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 
 .user-id {
@@ -51,7 +51,10 @@
   font-size: 1.1rem;
   color: #ffffff;
   opacity: 0.8;
-  word-break: break-all;
+  /* word-break: break-all; */
+  word-break: normal;    /* 単語途中で折れない */
+  white-space: nowrap;   /* 改行させない */
+  overflow-x: auto;      /* 幅を超えたら横スクロール */
 }
 
 /* 閉じるボタン：一番下に配置 */

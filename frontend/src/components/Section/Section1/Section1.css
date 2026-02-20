@@ -79,35 +79,7 @@ body {
     font-size: 14px;
     opacity: 0.8;
 }
-/* -------------------------------------------------- スマホ向け・レイアウト修正 (max-width: 768px) -------------------------------------------------- */
-@media screen and (max-width: 768px) {
-    .card {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-    .left {
-        width: 100%;
-        max-width: 250px;
-    }
-    .right {
-        width: 100%;
-    }
-    /* ★ スマホでも絶対に一行で左右に離したままにする設定 ★ */
-    .flex-row-container {
-        display: flex !important;
-        flex-direction: row !important;
-        /* 縦並びを禁止 */
-        justify-content: space-between !important;
-        width: 100% !important;
-    }
-    .main-value {
-        font-size: 24px;
-    }
-    .heading {
-        font-size: 12px;
-    }
-}
+
 .name-box .top-row {
     display: flex;
     justify-content: space-between;
@@ -167,12 +139,14 @@ body {
 }
 .level-title {
     font-size: 25px;
+    margin-left: 10px;
     margin-top: 0;
     text-align: left;
 }
 .level {
     font-size: 60px;
     margin-top: 10px;
+    padding-right: 10px;
     text-align: right;
 }
 .title-box .title-neme {
@@ -203,4 +177,166 @@ body {
     text-align: right;
     font-size: 18px;
     text-align: right;
+}
+
+/* -------------------------------------------------- スマホ向け・レイアウト修正 (max-width: 768px) -------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .left {
+        width: 100%;
+        max-width: 250px;
+    }
+    .right {
+        width: 100%;
+    }
+    /* ★ スマホでも絶対に一行で左右に離したままにする設定 ★ */
+    .flex-row-container {
+        display: flex !important;
+        flex-direction: row !important;
+        /* 縦並びを禁止 */
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+    .main-value {
+        font-size: 24px;
+    }
+    .heading {
+        font-size: 12px;
+    }
+
+    .top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .qr-btn {
+        width: 20%;
+        margin-top: 8px;
+    }
+
+    .name{
+        text-align: left;
+        margin-top: 0px;
+    }
+
+    .middle-row {
+        gap: 10px;
+    }
+/* 
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .Registration-date {
+        text-align: left;
+    } */
+
+    /* .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Registration-date {
+        margin-top: 8px;
+        margin-left: 1em;   1文字分右にずらす
+    } */
+
+    /* 縦並びにする */
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* エンジニア歴より1文字分右へ */
+    .Registration-date {
+        text-align: left;
+        margin-top: 1px;
+    }
+
+    /* 日付を改行させる */
+    .regis-text {
+        display: block;     /* ← これが重要 */
+        /* margin-top: 1px;    登録日：との間 */
+        font-size: 0.8em;
+    }
+
+    .big{
+        margin: 0px;
+    }
+
+    .box{
+        margin-bottom: 10px;
+    }
+
+    .level{
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 縦中央 */
+        align-items: center;     /* 横中央 */
+    }
+
+.title-box {
+        display: flex;
+        flex-direction: column; /* 縦に並べる */
+        align-items: flex-start; /* 基本は左寄せ */
+    }
+
+    .title-box .title-neme {
+        margin-top: 1px;
+        width: 100%;       /* 幅をいっぱいにする */
+        text-align: center; /* 称号名は中央のままにする場合 */
+    }
+
+    .update-btn {
+        position: static;   /* absolute解除 */
+        max-width: none;
+        margin-top: 6px;
+        
+        /* --- ここが重要：ボタン自体を右に寄せる --- */
+        align-self: flex-end; /* 親がFlexboxの時、自分だけ右寄せにする */
+        
+        /* もしボタンが広がりすぎる場合は適宜調整 */
+        padding: 5px 20px;
+    }
+
+    .updated_date {
+        font-size: 13px;
+        opacity: 0.8;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: stretch; /* ← 左右いっぱいに広げる */
+        padding: 20px;
+    }
+
+    .left {
+        width: 100%;
+        max-width: 250px;
+        display: flex;
+        justify-content: center; /* 親内で中央 */
+        margin: 0 auto;           /* 念のため中央 */
+    }
+
+    .left img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border: 8px solid #cfcfcf;
+        border-radius: 4px;
+        display: block;
+        margin: 0 auto;           /* 画像自体も中央 */
+    }
 }

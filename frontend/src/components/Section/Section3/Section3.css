@@ -4,4 +4,5 @@ body{
 
 .pad_box{
     padding: 20px;
+    word-break: break-word;    /* 単語の途中でも折り返す */
 }

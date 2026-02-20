@@ -19,3 +19,12 @@ body{
     /* 浮いている感じ */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
+
+/*  スマホ用 */
+@media (max-width: 600px) {
+  .box_area {
+    width: 99%;
+    border: 3px solid rgba(220, 224, 230, 0.8);
+    margin: 10px auto;
+  }
+}

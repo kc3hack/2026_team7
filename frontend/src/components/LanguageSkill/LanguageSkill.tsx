@@ -1,4 +1,3 @@
-import React from 'react';
 import './LanguageSkill.css';
 import getIconUrl from '../../utils/getIcon';
 

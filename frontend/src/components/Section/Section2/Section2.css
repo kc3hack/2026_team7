@@ -24,3 +24,16 @@
         gap: 20px;
     }
 }
+
+@media screen and (max-width: 768px) {
+
+    .section2-inner {
+        gap: 1px;   /* ← About Me と 下のエリアの間を縮める */
+        padding: 10px; /* 余白も少し縮めると自然 */
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 1px;   /* Location と Company の間も縮める */
+    }
+}

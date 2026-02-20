@@ -76,10 +76,12 @@ const Update = () => {
           <h1 className="title_update">Skill Update</h1>
           <Status status={currentStatus} />
           <p className="user-id">ID : {user_name}</p>
-          <UpdateBtn
+          <div className="update-btn-container">
+                      <UpdateBtn
             status={currentStatus}
             onClick={handleUpdate}
           />
+          </div>
         </div>
       </BoxFrame>
     </div>

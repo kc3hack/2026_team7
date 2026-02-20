@@ -8,31 +8,31 @@
 
 .hero-section {
   flex-grow: 1;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 20px 100px 20px;
+  padding: 0 20px 50px 20px;
 }
 
 .product-title {
-  font-size: 8rem;
+  font-size: 7rem;
   font-family: serif; 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   letter-spacing: 0.02em;
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 少し影をつけて読みやすく */
 }
 
 .message-area {
-  margin-bottom: 80px;
+  margin-bottom: 20px;
 }
 
 .main-message {
   font-size: 3.5rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #ffffff;
 }
 
@@ -40,6 +40,7 @@
   font-size: 1.6rem;
   opacity: 0.95;
   color: #ffffff;
+  margin-bottom: 0;
 }
 
 .start-button {
@@ -71,7 +72,7 @@
   }
 
   .hero-section {
-    padding: 0 20px 60px 20px; /* 余白を少し詰める */
+    padding: 80px 20px 60px 20px; /* 余白を少し詰める */
   }
 
   /* 巨大なタイトルをスマホサイズに縮小 */

@@ -8,3 +8,12 @@ body {
   gap: 40px 80px;
   padding: 20px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;   /* 1列固定 */
+    gap: 20px;                    /* gapも縮める */
+    padding: 12px;                /* 余白も少し小さく */
+  }
+}

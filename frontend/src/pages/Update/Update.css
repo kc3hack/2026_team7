@@ -1,6 +1,6 @@
 /* 全体リセット */
 .page {
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,9 +24,9 @@
 
 /* タイトル */
 .title_update {
-  font-size: 64px;
+  font-size: 55px;
   color: #ffffff;
-  margin-bottom: 60px;
+  margin-bottom: 25px;
   font-weight: 400;
   letter-spacing: 2px;
 }
@@ -35,6 +35,18 @@
 .user-id {
   color: #ffffff;
   font-size: 28px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .title_update {
+    font-size: 40px; /* PCより小さく */
+  }
+
+  .update-btn-container {
+    margin-top: 20px; /* ボタンとIDの間隔を少し広げる */
+    padding-bottom: 30px;
+  }
 }

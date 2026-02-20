@@ -79,3 +79,54 @@ body {
     padding-right: 10px;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/* --- 既存のスタイルは維持しつつ、以下を調整・追加 --- */
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* 少し狭くしてPCでも見やすく */
+    color: white;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .skills-container {
+    display: flex;
+    flex-direction: column;  /* 縦並び */
+    align-items: center;     /* skill全体を中央に寄せる */
+    gap: 16px;               
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .skill {
+    flex-direction: column; /* 縦並びに変更 */
+    margin: 0 auto 24px;    /* 上下マージン、左右中央寄せ */
+    gap: 8px; 
+    width: 95%;             /* 親に対して少し余白 */
+  }
+
+  .skill-left {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* ←左寄せに変更 */
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-bar {
+    width: 100%;      
+    flex: none;       
+    height: 24px;     
+    box-sizing: border-box; 
+  }
+
+  .skill-score {
+    width: 100%;
+    text-align: right; 
+    font-size: 16px;
+    padding-right: 0;
+  }
+}
