@@ -53,7 +53,7 @@ const Card = () => {
           />
           <Section4 
             repositories={cardInfo.card_info.stats.repo_count}
-            total_bytes={cardInfo.card_info.stats.repo_count}
+            total_bytes={cardInfo.card_info.stats.total_bytes}
             activity_grade={cardInfo.card_info.activity_score}
             charisma_grade={cardInfo.card_info.charm_score}
           />
