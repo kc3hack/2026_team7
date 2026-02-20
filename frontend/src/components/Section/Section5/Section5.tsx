@@ -15,8 +15,17 @@ const Section5 = (props: Section5Props) => {
           Programming Skills by Language
         </h2>
         {/* /* TODO: props.languageSkillsをもとにLanguageSkillコンポーネントを動的に生成する */ }
-        <LanguageSkill language='JavaScript' score={90} maxScore={100}></LanguageSkill>
-      </div>
+        {props.languageSkills?.length ? (
+          props.languageSkills.map((val, index) =>(
+          <LanguageSkill 
+            key={index}
+            language={val.name} 
+            score={val.bytes} 
+            maxScore={100}></LanguageSkill>
+          ))
+        ): null
+        } 
+        </div>
     </BoxFrame>
   );
 };
