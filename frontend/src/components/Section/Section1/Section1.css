@@ -220,4 +220,52 @@ body {
     .name{
         text-align: left;
     }
+
+    .middle-row {
+        gap: 10px;
+    }
+/* 
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .Registration-date {
+        text-align: left;
+    } */
+
+    /* .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Registration-date {
+        margin-top: 8px;
+        margin-left: 1em;   1文字分右にずらす
+    } */
+
+    /* 縦並びにする */
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* エンジニア歴より1文字分右へ */
+    .Registration-date {
+        text-align: left;
+        margin-top: 1px;
+    }
+
+    /* 日付を改行させる */
+    .regis-text {
+        display: block;     /* ← これが重要 */
+        /* margin-top: 1px;    登録日：との間 */
+        font-size: 0.9em;
+    }
+
+    .big{
+        margin: 0px;
+    }
+
 }

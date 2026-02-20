@@ -50,7 +50,7 @@ const Section1: React.FC<Section1Props> = ({ userName, userId, registeredDate, t
                 <div className="box history-box">
                   <div className="history-header">
                     <div className="Registration">エンジニア歴</div>
-                    <div className="Registration-date">登録日：{dayjs(updatedDate).format('YYYY年MM月DD日')}</div>
+                    <div className="Registration-date">登録日：<span className='regis-text'>{dayjs(updatedDate).format('YYYY年MM月DD日')}</span></div>
                   </div>
 
                   <div className="big">{history}年</div>
