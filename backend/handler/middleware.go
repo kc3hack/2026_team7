@@ -2,7 +2,7 @@ package handler
 
 import (
 	"net/http"
-	"strings"
+	"fmt"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -49,17 +49,20 @@ func AuthRequired() gin.HandlerFunc {
 // 自分自身のリソースのみアクセス可能なミドルウェア
 func SelfOnly() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		session := sessions.Default(c)
-		sessionUserName := session.Get("user_name")
-		paramUserName := c.Param("user_name")
+		userID, exists := c.Get("user_id")
+		paramID := c.Param("id")
 
-		if sessionUserName == nil {
+		if !exists || userID == nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "認証が必要です"})
 			c.Abort()
 			return
 		}
 
-		if !strings.EqualFold(sessionUserName.(string), paramUserName) {
+		uIDStr := fmt.Sprintf("%v", userID)
+
+		fmt.Printf("[SelfOnly Check] sessionID: '%s', paramID: '%s'\n", uIDStr, paramID)
+
+		if uIDStr != paramID {
 			c.JSON(http.StatusForbidden, gin.H{"error": "自分自身のリソースのみアクセス可能です"})
 			c.Abort()
 			return

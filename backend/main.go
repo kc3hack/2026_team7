@@ -41,7 +41,7 @@ func main() {
 	cards := r.Group("/api/v1/cards")
 	{
 		cards.GET("/:user_name", handler.HandleGetCard)
-		cards.POST("/:user_name/update", handler.AuthRequired(), handler.SelfOnly(), handler.HandleUpdateCard)
+		cards.POST("/:id/update", handler.AuthRequired(), handler.SelfOnly(), handler.HandleUpdateCard)
 		cards.GET("/:user_name/qr", handler.HandleGetQR)
 	}
 

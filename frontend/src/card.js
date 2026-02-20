@@ -82,6 +82,19 @@ async function checkAuth() {
     }
 }
 
+function getCurrentUserId() {
+    if (!currentUser) return null;
+    const rawId = currentUser.id;
+    if (rawId === undefined || rawId === null || rawId === '') return null;
+    return String(rawId);
+}
+
+function getCardUpdateEndpoint() {
+    const userId = getCurrentUserId();
+    if (!userId) return null;
+    return `/api/v1/cards/${encodeURIComponent(userId)}/update`;
+}
+
 function showLoginHeader() {
     document.getElementById('headerAuth').innerHTML = `
     <a href="/api/v1/auth/login"
@@ -335,8 +348,16 @@ document.getElementById('updateBtn')?.addEventListener('click', async () => {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
 
+    const updateEndpoint = getCardUpdateEndpoint();
+    if (!updateEndpoint) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        alert('更新に必要なユーザーIDを取得できませんでした。再ログインしてください。');
+        return;
+    }
+
     try {
-        const resp = await fetch(`/api/v1/cards/${encodeURIComponent(userName)}/update`, {
+        const resp = await fetch(updateEndpoint, {
             method: 'POST',
             credentials: 'include',
         });
@@ -411,8 +432,14 @@ async function showNoCardYet() {
         document.getElementById('loadingContainer').classList.remove('hidden');
         document.getElementById('loadingContainer').querySelector('p').textContent = 'カードを作成中... GitHubからデータを取得しています（少し時間がかかります）';
 
+        const updateEndpoint = getCardUpdateEndpoint();
+        if (!updateEndpoint) {
+            showError('カード作成に失敗しました', '作成に必要なユーザーIDを取得できませんでした。再ログインしてください。');
+            return;
+        }
+
         try {
-            const resp = await fetch(`/api/v1/cards/${encodeURIComponent(userName)}/update`, {
+            const resp = await fetch(updateEndpoint, {
                 method: 'POST',
                 credentials: 'include',
             });

@@ -39,5 +39,10 @@ func InitDB() {
 		log.Fatalf("AutoMigrateに失敗しました: %v", err)
 	}
 
+	sqlDB, err := DB.DB()
+	if driver == "sqlite" {
+		sqlDB.SetMaxOpenConns(1) // SQLiteはシングルスレッドで動作するため、接続数を1に制限
+	}
+
 	log.Printf("データベースの初期化が完了しました (ドライバ: %s)", driver)
 }

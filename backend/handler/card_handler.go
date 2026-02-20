@@ -151,27 +151,27 @@ func HandleGetCard(c *gin.Context) {
 
 // HandleUpdateCard はカード情報を更新する（認証必須、自分のみ）
 func HandleUpdateCard(c *gin.Context) {
-	userName := c.Param("user_name")
+	idParam := c.Param("id")
 
 	// セッションからユーザー情報取得
 	session := sessions.Default(c)
-	sessionUserName := session.Get("user_name")
+	sessionUserID := session.Get("user_id")
 	accessToken := session.Get("access_token")
 
-	if sessionUserName == nil || accessToken == nil {
+	if sessionUserID == nil || accessToken == nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "認証が必要です"})
 		return
 	}
 
 	// 自分のカードのみ更新可能
-	if sessionUserName.(string) != userName {
+	if fmt.Sprintf("%v", sessionUserID) != idParam {
 		c.JSON(http.StatusForbidden, gin.H{"error": "自分自身のカードのみ更新可能です"})
 		return
 	}
 
 	// ユーザーを検索
 	var user model.User
-	if err := db.DB.Where("user_name = ?", userName).First(&user).Error; err != nil {
+	if err := db.DB.Where("id = ?", idParam).First(&user).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "ユーザーが見つかりません"})
 		return
 	}
