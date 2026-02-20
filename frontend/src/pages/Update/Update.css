@@ -39,3 +39,9 @@
   margin-bottom: 50px;
   opacity: 0.9;
 }
+
+@media (max-width: 600px) {
+  .title_update {
+    font-size: 40px; /* PCより小さく */
+  }
+}
