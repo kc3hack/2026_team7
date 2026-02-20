@@ -146,7 +146,7 @@ body {
 .level {
     font-size: 60px;
     margin-top: 10px;
-    margin-right: 5px;
+    padding-right: 10px;
     text-align: right;
 }
 .title-box .title-neme {
