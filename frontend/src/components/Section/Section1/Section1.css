@@ -83,7 +83,7 @@ body {
 @media screen and (max-width: 768px) {
     .card {
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
         padding: 20px;
     }
     .left {
