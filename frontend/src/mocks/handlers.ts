@@ -54,5 +54,14 @@ export const handlers = [
       status: "success",
       qr_image_url: "https://avatars.githubusercontent.com/t/16250516?s=116&v=4"
     });
+  }),
+
+  http.get("/api/v1/auth/me",()=>{
+    return HttpResponse.json({
+        user_id:      "1234567890",
+        user_name:    "user_name",
+        avatar_url:   "https://avatars.githubusercontent.com/t/16250516?s=116&v=4"
+    });
   })
+
 ];
