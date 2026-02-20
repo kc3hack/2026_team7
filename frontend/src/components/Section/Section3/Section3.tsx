@@ -3,8 +3,8 @@ import BoxFrame from '../../BoxFrame/BoxFrame';
 import TitleContent from '../../TitleContent/TitleContent';
 
 type Section3Props = {
-  website?: string;
-  social_accounts?: string[];
+  website?: string | null;
+  social_accounts?: string[] | null;
 };
 
 const Section3 = (props: Section3Props) => {
