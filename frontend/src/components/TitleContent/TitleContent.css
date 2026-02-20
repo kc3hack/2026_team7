@@ -1,26 +1,32 @@
-body{
-    background-color: black;
+.title-content-container {
+    margin-bottom: 15px;
 }
 
-.container {
-    padding: 0px;
+.title-label {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 5px;
 }
 
-.about-card {
-    color: white;
-    max-width: 900px;
-}
-
-.about-title {
-    /* font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif; */
-    font-family: 'Comic Sans MS', 'Cursive', sans-serif;
-    font-size: 16px;
+.content-body {
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 0; 
+    color: white;
 }
 
-.about-text {
-    margin-top: 0; 
-    font-size: 16px;
-    text-indent: 1em;
+/* URLだった場合のリンクスタイル */
+.content-link {
+    color: #00bfff; /* リンクと分かりやすい青色 */
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+/* ホバー時に色を少し濃くする（濃い青にする） */
+.content-link:hover {
+    color: #0080ff;
+    cursor: pointer;
+}
+
+.content-text {
+    margin: 0;
 }
