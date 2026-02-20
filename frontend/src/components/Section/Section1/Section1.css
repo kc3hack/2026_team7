@@ -282,6 +282,13 @@ body {
 
     .title-box .title-neme {
         margin-top: 1px;   /* ← 10px → 2px にする */
+        align-items: center;   /* ← これが足りなかった */
+    }
+
+    .update-btn {
+        position: static;   /* ← absolute解除（超重要） */
+        max-width: none;
+        margin-top: 6px;
     }
 
 }
