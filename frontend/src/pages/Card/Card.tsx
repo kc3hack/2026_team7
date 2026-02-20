@@ -1,61 +1,62 @@
 import './Card.css';
+import { useState } from 'react';
+import { useCardInfo } from '../../hooks/cardInfo';
 import BodyFrame from '../../components/BodyFrame/BodyFrame';
 import Section1 from '../../components/Section/Section1/Section1';
 import Section2 from '../../components/Section/Section2/Section2';
 import Section3 from '../../components/Section/Section3/Section3';
 import Section4 from '../../components/Section/Section4/Section4';
 import Section5 from '../../components/Section/Section5/Section5';
-import { useState } from 'react';
 import QR from '../../components/QR/QR'; 
 
 
-const Card = () => {
+const Card = ({ user_name }: { user_name: string }) => {
   
+  const { cardInfo, loading, error } = useCardInfo(user_name);
   const [showQR, setShowQR] = useState(false);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!cardInfo) return <p>No data available</p>;
+  
+
   return (
     <>
       <div>
         <BodyFrame>
           <Section1 
-            userName="ゆーと" 
-            userId="12345678"
-            registeredDate="2019/03/10"
-            title="スーパーエンジニア"
-            level={125}
-            imageUrl="https://placehold.jp/150x150.png"
-            updatedDate="2026.02.17 05:43:32"
+            userName={cardInfo.user_info.display_name} 
+            userId={cardInfo.user_info.user_name}
+            registeredDate={cardInfo.user_info.github_joined_at}
+            title={cardInfo.card_info.alias_title}
+            level={cardInfo.card_info.technical_level}
+            imageUrl={cardInfo.user_info.avatar_url}
+            updatedDate={cardInfo.card_info.last_updated_at}
             onClickQR={() => setShowQR(true)}
           />
           <Section2 
-            aboutMe="自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。"
-            Location="Tokyo, Japan"
-            Company="Tech Company Inc."
+            aboutMe={cardInfo.user_info.bio}
+            Location={cardInfo.user_info.location}
+            Company={cardInfo.user_info.company}
           />
           <Section3 
-            website="https://example.com"
-            social_accounts={[
-              "https://twitter.example.com/example",
-              "https://github.example.com/example"
-            ]}
+            website={cardInfo.user_info.website}
+            social_accounts={cardInfo.user_info.social_accounts}
           />
           <Section4 
-            repositories={68}
-            total_bytes={12345678}
-            activity_grade={85}
-            charisma_grade={90}
+            repositories={cardInfo.card_info.stats.repo_count}
+            total_bytes={cardInfo.card_info.stats.repo_count}
+            activity_grade={cardInfo.card_info.activity_score}
+            charisma_grade={cardInfo.card_info.charm_score}
           />
-          <Section5 languageSkills={[
-            { name: "TypeScript", bytes: 90 },
-            { name: "Go", bytes: 85 },
-            { name: "Python", bytes: 75 }
-          ]} />
+          <Section5 languageSkills={cardInfo.card_info.languages} />
         </BodyFrame>
       </div>
       {/*QR表示*/}
       {showQR && (
         <div className="qr-overlay" onClick={() => setShowQR(false)}>
           <div className="qr-modal" onClick={(e) => e.stopPropagation()}>
-            <QR onClose={() => setShowQR(false)} />
+            <QR onClose={() => setShowQR(false)} user_name={cardInfo.user_info.user_name} />
           </div>
         </div>
       )}
