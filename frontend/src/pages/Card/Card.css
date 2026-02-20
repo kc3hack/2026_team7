@@ -12,8 +12,8 @@
 }
 
 .qr-modal {
-  width: 80%;
+  /* width: 80%; */
   background: white;
-  padding: 30px;
+  /* padding: 30px; */
   border-radius: 12px;
 }
