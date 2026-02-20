@@ -264,7 +264,7 @@ body {
     .regis-text {
         display: block;     /* ← これが重要 */
         /* margin-top: 1px;    登録日：との間 */
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
 
     .big{
