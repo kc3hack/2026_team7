@@ -11,11 +11,18 @@ const Section3 = (props: Section3Props) => {
   return (
     <BoxFrame>
       <div className="pad_box">
-        <TitleContent title="sample" content="サンプル文章あああああああああああ" />
-        <TitleContent title="sample2" content="サンプル文章あああああああああああ" />
-        <TitleContent title="" content='サンプル文章あああ'></TitleContent>
-        <TitleContent title="" content='サンプル文章あああ'></TitleContent>
-        <TitleContent title="" content='サンプル文章あああ'></TitleContent>
+        <TitleContent title="Website" content={props.website ?? "なし"}/>
+        {props.social_accounts?.length ? (
+          props.social_accounts.map((account, index) => (
+            <TitleContent
+              key={index}
+              title={index === 0 ? "SNS" : ""}
+              content={account}
+            />
+          ))
+        ) : (
+          <TitleContent title="SNS" content="なし" />
+        )}
       </div>
     </BoxFrame>
   );
