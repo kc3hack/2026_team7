@@ -56,3 +56,15 @@ img{
 .update-main-button.updated {
   background-color: #ffffff;
 }
+
+/* デフォルト：PCなど */
+img {
+  width: 30vw;
+}
+
+/* スマホ用（画面幅 600px 以下） */
+@media (max-width: 600px) {
+  img {
+    width: 60vw; /* 例: PCより大きく */
+  }
+}
