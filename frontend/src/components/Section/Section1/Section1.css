@@ -273,4 +273,11 @@ body {
         margin-bottom: 10px;
     }
 
+    .level{
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 縦中央 */
+        align-items: center;     /* 横中央 */
+    }
+
 }
