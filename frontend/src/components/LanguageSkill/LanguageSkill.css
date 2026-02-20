@@ -1,76 +1,83 @@
-body{
+body {
     background-color: rgb(137, 137, 137);
 }
 
 .skill {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  color: white;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: white;
+    margin-bottom: 20px;
 }
 
 .skill-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 150px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
 }
 
 .skill-icon {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .skill-name {
-  font-size: 18px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .skill-bar {
-  flex: 1;
-  height: 30px;
-  background-color: #bfbfbf;
-  border: 1px solid #fff;
-  box-shadow:   inset 0 4px 6px rgba(255,255,255,0.6),
-                inset 0 -3px 6px rgba(0,0,0,0.4);
-  position: relative;
+    flex: 1;
+    height: 30px;
+    background-color: #bfbfbf;
+    border: 1px solid #fff;
+    box-shadow: inset 0 4px 6px rgba(255, 255, 255, 0.6),
+                inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden; /* はみ出しガード */
 }
 
 .skill-fill {
-  height: 100%;
-  width: 70%;
-  position: relative;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.7) 0%,
-      rgba(255,255,255,0.3) 20%,
-      rgba(255,255,255,0) 45%
-    ),
-    linear-gradient(
-      135deg,
-      #b7f07a 0%,
-      #4caf50 55%,
-      #0f3d14 100%
-    );
-  box-shadow:
-    inset 0 4px 6px rgba(255,255,255,0.6),
-    inset 0 -5px 8px rgba(0,0,0,0.6);
+    height: 100%;
+    position: relative;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 20%,
+            rgba(255, 255, 255, 0) 45%
+        ),
+        linear-gradient(
+            135deg,
+            #b7f07a 0%,
+            #4caf50 55%,
+            #0f3d14 100%
+        );
+    box-shadow:
+        inset 0 4px 6px rgba(255, 255, 255, 0.6),
+        inset 0 -5px 8px rgba(0, 0, 0, 0.6);
+    /* バーの伸縮をスムーズに見せるアニメーション */
+    transition: width 0.6s ease-out;
 }
 
+/* バーの右端の境界線（より落ち着いた印象に） */
 .skill-fill::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background: #1b5e20;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: #1b5e20;
 }
+
 .skill-score {
-  font-size: 18px;
-  font-weight: bold;
-  width: 100px;
-  text-align: right;
-  padding-right: 10px;
-  
+    font-size: 18px;
+    font-weight: bold;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    font-family: 'Courier New', Courier, monospace;
 }
