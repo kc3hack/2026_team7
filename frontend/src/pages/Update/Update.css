@@ -44,4 +44,9 @@
   .title_update {
     font-size: 40px; /* PCより小さく */
   }
+
+  .update-btn-container {
+    margin-top: 20px; /* ボタンとIDの間隔を少し広げる */
+    padding-bottom: 30px;
+  }
 }
