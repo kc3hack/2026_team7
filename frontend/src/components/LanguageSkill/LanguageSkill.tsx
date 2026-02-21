@@ -29,7 +29,15 @@ const LanguageSkill = (props: Props) => {
   return (
     <div className="skill">
       <div className="skill-left">
-        <img alt={language} className="skill-icon" src={getIconUrl(language)} />
+        <img
+          alt={language}
+          className="skill-icon"
+          src={getIconUrl(language)}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src =
+              "/icon.png";
+          }}
+        />
         <span className="skill-name">{language}</span>
       </div>
 
