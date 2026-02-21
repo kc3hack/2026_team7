@@ -11,6 +11,8 @@ interface Section1Props {
   level: number; // LVを追加
   imageUrl: string; // 写真のURLを追加
   updatedDate: string; // スキル更新日時を追加
+  is_self: boolean; // 自分のプロフィールかどうかを示すフラグを追加
+  is_update: boolean; // スキル更新が可能かどうかを示すフラグを追加
   onClickQR?: () => void;
   onClickUpdate?: () => void;
 }
@@ -36,6 +38,8 @@ const Section1: React.FC<Section1Props> = ({
   level,
   imageUrl,
   updatedDate,
+  is_self,
+  is_update,
   onClickQR,
   onClickUpdate,
 }) => {
@@ -55,9 +59,11 @@ const Section1: React.FC<Section1Props> = ({
               <span className="id">ID : {userId}</span>
             </div>
             <div className="name">{userName}</div>
-            <button className="qr-btn" onClick={onClickQR}>
+            {is_self && (
+             <button className="qr-btn" onClick={onClickQR}>
               QR表示
-            </button>
+             </button>
+            )}
           </div>
           {/* 3. 歴・登録日枠 */}
           <div className="middle-row">
@@ -84,9 +90,12 @@ const Section1: React.FC<Section1Props> = ({
           <div className="box title-box">
             <div className="title">称号</div>
             <div className="title-neme">{title}</div>
-            <button className="update-btn" onClick={onClickUpdate}>
+            {is_self && is_update ?(
+              <button className="update-btn" onClick={onClickUpdate}>
               スキル更新
             </button>
+            ) : null
+            }
           </div>
 
           <div className="updated_date">

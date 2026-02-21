@@ -38,6 +38,8 @@ const Card = () => {
             level={cardInfo.card_info.technical_level}
             imageUrl={cardInfo.user_info.avatar_url}
             updatedDate={cardInfo.card_info.last_updated_at}
+            is_self={cardInfo.user_info.is_self}
+            is_update={cardInfo.user_info.is_update}
             onClickQR={() => setShowQR(true)}
             onClickUpdate={() => handleUpdateClick()}
           />
