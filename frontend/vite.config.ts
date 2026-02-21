@@ -14,6 +14,14 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://backend:8080',
+        changeOrigin: true,
+      },
+    },
+  },
   plugins: [react()],
   test: {
     projects: [
