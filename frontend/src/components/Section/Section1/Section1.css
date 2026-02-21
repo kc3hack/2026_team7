@@ -1,0 +1,402 @@
+/* --- 共通・PC向け基本スタイル --- */
+body {
+  background-color: rgb(137, 137, 137);
+  margin: 0;
+}
+.card {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  color: white;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.left {
+  width: 30%;
+  height: 50%;
+}
+.left img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 8px solid #cfcfcf;
+  border-radius: 4px;
+}
+.right {
+  flex: 1;
+}
+.box {
+  background-color: rgb(0 0 0 / 0.5);
+  border: 3px solid #dcdcdc;
+  border-radius: 20px;
+  padding: 15px;
+  padding-top: 0;
+  margin-bottom: 20px;
+  position: relative;
+}
+/* ★ 変更ポイント：左右の両端へ確実に引き離す ★ */
+.flex-row-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  /* 両端へ押し出し */
+  align-items: flex-end;
+  /* 底辺を揃える */
+  width: 100% !important;
+  /* 親の幅いっぱいに広げる */
+}
+/* 左側のコンテンツ（エンジニア名など） */
+.content-left {
+  flex: 1;
+  /* スペースを半分占有 */
+  text-align: left;
+}
+/* 右側のコンテンツ（IDやボタンなど） */
+.content-right {
+  flex: 1;
+  /* スペースを半分占有 */
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* 中身も右寄せ */
+}
+.main-value {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 5px 0 0 0;
+}
+/* ボタンのスタイル .qr-btn, .update-btn { background: white; color: #555; border: none; font-weight: bold; cursor: pointer; } */
+/* .qr-btn { padding: 4px 12px; border-radius: 8px; margin-top: 5px; } .update-btn { padding: 6px 15px; border-radius: 20px; } */
+/* .middle-row { display: flex; gap: 20px; } */
+/* .history-box { flex: 2.5; } */
+.heading {
+  font-size: 20px;
+  color: #dcdcdc;
+}
+.updated-timestamp {
+  text-align: right;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.name-box .top-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  position: relative;
+}
+.name {
+  font-size: 30px;
+  /* margin-top: 10px; */
+  font-weight: bold;
+  text-align: center;
+}
+.qr-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  background: white;
+  color: rgb(0 0 0 / 0.5);
+  border: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+}
+.middle-row {
+  display: flex;
+  gap: 20px;
+}
+.history-box {
+  flex: 3;
+}
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  /* 左右に分ける */
+  align-items: center;
+}
+.Registration {
+  text-align: left;
+}
+.Registration-date {
+  text-align: right;
+}
+.big {
+  font-size: 30px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.level-box {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  text-align: center;
+  padding: 0px;
+}
+.level-title {
+  font-size: 25px;
+  margin-left: 10px;
+  margin-top: 0;
+  text-align: left;
+}
+.level {
+  font-size: 60px;
+  margin-top: 25px;
+  padding-right: 10px;
+  text-align: right;
+}
+.title-box .title-neme {
+  font-size: 30px;
+  /* margin-top: 10px; */
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.title-neme {
+  text-align: center;
+}
+.update-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  background: white;
+  color: rgb(0 0 0 / 0.5);
+  border: none;
+  padding: 5px 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+  max-width: 100px;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.updated_date {
+  margin-top: 0;
+  text-align: right;
+  font-size: 18px;
+  text-align: right;
+}
+
+/* -------------------------------------------------- スマホ向け・レイアウト修正 (max-width: 768px) -------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .left {
+    width: 100%;
+    max-width: 250px;
+  }
+  .right {
+    width: 100%;
+  }
+  /* ★ スマホでも絶対に一行で左右に離したままにする設定 ★ */
+  .flex-row-container {
+    display: flex !important;
+    flex-direction: row !important;
+    /* 縦並びを禁止 */
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+  .main-value {
+    font-size: 24px;
+  }
+  .heading {
+    font-size: 12px;
+  }
+
+  .top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .qr-btn {
+    width: 20%;
+    margin-top: 8px;
+  }
+
+  .name {
+    text-align: left;
+    margin-top: 0px;
+  }
+
+  .middle-row {
+    gap: 10px;
+  }
+  /* 
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .Registration-date {
+        text-align: left;
+    } */
+
+  /* .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .Registration-date {
+        margin-top: 8px;
+        margin-left: 1em;   1文字分右にずらす
+    } */
+
+  /* 縦並びにする */
+  .history-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* エンジニア歴より1文字分右へ */
+  .Registration-date {
+    text-align: left;
+    margin-top: 1px;
+  }
+
+  /* 日付を改行させる */
+  .regis-text {
+    display: block; /* ← これが重要 */
+    /* margin-top: 1px;    登録日：との間 */
+    font-size: 0.8em;
+  }
+
+  .big {
+    margin: 0px;
+  }
+
+  .box {
+    margin-bottom: 10px;
+  }
+
+  .level {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 縦中央 */
+    align-items: center; /* 横中央 */
+  }
+
+  .title-box {
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    align-items: flex-start; /* 基本は左寄せ */
+  }
+
+  .title-box .title-neme {
+    margin-top: 1px;
+    width: 100%; /* 幅をいっぱいにする */
+    text-align: center; /* 称号名は中央のままにする場合 */
+    font-size: 6vw; /* ビューポート幅の5% */
+  }
+
+  .update-btn {
+    position: static; /* absolute解除 */
+    max-width: none;
+    margin-top: 6px;
+
+    /* --- ここが重要：ボタン自体を右に寄せる --- */
+    align-self: flex-end; /* 親がFlexboxの時、自分だけ右寄せにする */
+
+    /* もしボタンが広がりすぎる場合は適宜調整 */
+    padding: 5px 20px;
+  }
+
+  .updated_date {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: stretch; /* ← 左右いっぱいに広げる */
+    padding: 20px;
+  }
+
+  .left {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: center; /* 親内で中央 */
+    margin: 0 auto; /* 念のため中央 */
+  }
+
+  .left img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 8px solid #cfcfcf;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto; /* 画像自体も中央 */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* 枠全体の設定 */
+  .name-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px !important;
+    position: relative; /* ボタンの基準にする */
+  }
+
+  /* 「エンジニア名」ラベル */
+  .label-text {
+    order: 1;
+    font-size: 14px;
+    color: #dcdcdc;
+  }
+
+  .name-row {
+    order: 2;
+    display: flex;
+    align-items: center; /* 上下中央を揃える */
+    justify-content: space-between; /* ★ これで名前を左、ボタンを右端に配置 */
+    width: 100%; /* 横幅いっぱいに広げる */
+    margin: 8px 0;
+  }
+
+  /* 名前エリア */
+  .name {
+    order: 2;
+    font-size: 24px;
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  /* QRボタンをIDと同じ右端のラインに配置 */
+  .qr-btn {
+    position: absolute; /* 自由配置 */
+    right: 15px; /* 右端からの距離（paddingと同じにすると綺麗） */
+    bottom: 15px; /* 下端からの距離（IDと同じ高さに調整） */
+
+    /* ボタンが細くならないように固定 */
+    width: auto;
+    padding: 5px 15px;
+    font-size: 14px;
+    white-space: nowrap;
+    border-radius: 8px;
+  }
+
+  /* IDテキスト */
+  .id-text {
+    order: 3;
+    font-size: 14px;
+    opacity: 0.8;
+    width: 100%;
+    text-align: left; /* 基本は左 */
+  }
+}

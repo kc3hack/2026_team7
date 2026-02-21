@@ -1,0 +1,35 @@
+/* ブラウザ全体（body）にグラデーションを適用 */
+body {
+  margin: 0;
+  padding: 0;
+  /* 指定された4つの色による線形グラデーション */
+  background: linear-gradient(
+    180deg,
+    #002060 0%,
+    #0070c0 35%,
+    #0070c0 65%,
+    #002060 100%
+  );
+  /* 背景を固定してスクロールしてもグラデーションが動かないようにする設定 */
+  background-attachment: fixed;
+
+  /* テキストの基本色を白に */
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Appコンポーネント自体の背景は透明にする */
+.App {
+  background: transparent;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ルート要素の設定 */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

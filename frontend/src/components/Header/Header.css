@@ -1,0 +1,62 @@
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header {
+  background-color: #0d1b2a; /* 画像の暗い紺色に合わせた背景色 */
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-container {
+  /* max-width: 1200px; 必要に応じて調整してください */
+  width: 100%;
+  /* margin: 0 auto; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ロゴ部分のスタイル */
+/* .logo-placeholder {
+  background-color: #ffffff;
+  padding: 5px 30px;
+  color: #333;
+  font-weight: bold;
+  border-radius: 2px;
+} */
+
+/* GitHubログインボタンのスタイル */
+.login-button {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-logo {
+  display: flex; /* 横並びにする */
+  align-items: center; /* 高さを中央揃え */
+  gap: 8px; /* アイコンと文字の間隔 */
+  font-size: 1.5rem; /* 文字サイズ調整 */
+  font-weight: bold; /* 太字 */
+}
+
+.logo-icon {
+  width: 32px; /* アイコンサイズ */
+  height: 32px;
+}

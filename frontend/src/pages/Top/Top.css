@@ -1,0 +1,107 @@
+.top-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* App.cssの背景を活かすため透過 */
+  background-color: transparent;
+}
+
+.hero-section {
+  flex-grow: 1;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px 50px 20px;
+}
+
+.product-title {
+  font-size: 7rem;
+  font-family: serif;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 少し影をつけて読みやすく */
+}
+
+.message-area {
+  margin-bottom: 20px;
+}
+
+.main-message {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.sub-message {
+  font-size: 1.6rem;
+  opacity: 0.95;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+
+.start-button {
+  background-color: #ffffff;
+  color: #002060;
+  border: none;
+  padding: 24px 80px;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.start-button:hover {
+  transform: scale(1.05);
+}
+
+/* スマホ用改行の初期設定 */
+.mobile-only {
+  display: none;
+}
+
+/* --- スマホ向けの改善 (max-width: 768px) --- */
+@media screen and (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+
+  .hero-section {
+    padding: 80px 20px 60px 20px; /* 余白を少し詰める */
+  }
+
+  /* 巨大なタイトルをスマホサイズに縮小 */
+  .product-title {
+    font-size: 4rem; /* 8remから半分に */
+    margin-bottom: 10px;
+  }
+
+  .message-area {
+    margin-bottom: 50px;
+  }
+
+  /* メインメッセージの調整 */
+  .main-message {
+    font-size: 2rem; /* 3.5remから縮小 */
+    line-height: 1.3;
+  }
+
+  /* サブメッセージの調整 */
+  .sub-message {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  /* ボタンをスマホで押しやすく調整 */
+  .start-button {
+    padding: 16px 40px;
+    font-size: 1.4rem;
+    width: 90%; /* 画面幅に合わせる */
+    max-width: 300px;
+  }
+}

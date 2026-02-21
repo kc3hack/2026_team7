@@ -1,0 +1,32 @@
+.title-content-container {
+  margin-bottom: 15px;
+}
+
+.title-label {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.content-body {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+/* URLだった場合のリンクスタイル */
+.content-link {
+  color: #00bfff; /* リンクと分かりやすい青色 */
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+/* ホバー時に色を少し濃くする（濃い青にする） */
+.content-link:hover {
+  color: #0080ff;
+  cursor: pointer;
+}
+
+.content-text {
+  margin: 0;
+}

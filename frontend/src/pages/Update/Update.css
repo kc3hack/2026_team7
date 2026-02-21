@@ -1,0 +1,52 @@
+/* 全体リセット */
+.page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
+}
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+} */
+
+/* 外枠コンテナ */
+.container_outer {
+  width: 100%;
+  margin: 20px auto;
+  max-width: 1100px;
+  text-align: center;
+}
+
+/* タイトル */
+.title_update {
+  font-size: 55px;
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* ID */
+.user-id {
+  color: #ffffff;
+  font-size: 28px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .title_update {
+    font-size: 40px; /* PCより小さく */
+  }
+
+  .update-btn-container {
+    margin-top: 20px; /* ボタンとIDの間隔を少し広げる */
+    padding-bottom: 30px;
+  }
+}

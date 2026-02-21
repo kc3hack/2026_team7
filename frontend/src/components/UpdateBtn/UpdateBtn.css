@@ -1,0 +1,36 @@
+.update-main-button {
+  background-color: #ffffff;
+  color: #002060;
+  border: none;
+  padding: 16px 60px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  min-width: 260px;
+}
+
+.update-main-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background-color: #f8f9fa;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 更新中 (Slide 7): 円などの装飾はページ担当者に任せ、ボタンは押せない状態にするのみ */
+.update-main-button.updating {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 更新済 (Slide 8): 「閉じる」ボタンの状態 */
+.update-main-button.updated {
+  pointer-events: auto;
+}
+
+.update-main-button.updated:hover {
+  transform: none;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,23 @@
+body {
+  background-color: rgb(137, 137, 137);
+}
+
+.frame {
+  width: 95vw;
+  /* height: 100vh; */
+  border: 6pt solid #ffffff; /* 白 6pt 枠線 */
+  box-sizing: border-box; /* 枠込みで画面サイズに収める */
+
+  padding: 20px;
+
+  margin: 20px auto; /* 上下のマージンを10px、左右のマージンを自動で中央寄せ */
+}
+
+/* スマホ用 */
+@media (max-width: 600px) {
+  .frame {
+    border: 3px solid #fff;
+    padding: 12px;
+    margin: 10px;
+  }
+}
