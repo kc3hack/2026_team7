@@ -7,6 +7,11 @@ type Section5Props = {
   languageSkills: Language[];
 };
 
+const getMaxScore = (languages: Language[]) => {
+  if (!languages || languages.length === 0) return 0; // デフォルト値
+  return Math.max(...languages.map((lang) => lang.bytes), 100); // 最小値は100
+};
+
 const Section5 = (props: Section5Props) => {
   return (
     <BoxFrame>
@@ -19,7 +24,7 @@ const Section5 = (props: Section5Props) => {
                 key={index}
                 language={val.name}
                 score={val.bytes}
-                maxScore={100}
+                maxScore={getMaxScore(props.languageSkills)}
               ></LanguageSkill>
             ))
           : null}
