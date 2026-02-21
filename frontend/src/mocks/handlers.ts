@@ -39,7 +39,7 @@ export const handlers = [
             name: 'Go',
             char_count: 650000, // ← 修正
           },
-          { name: 'Rust', char_count: 300000 }, // ← 修正
+          { name: 'html', char_count: 300000 }, // ← 修正
         ],
         activity_score: 85,
         charm_score: 70,
