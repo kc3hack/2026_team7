@@ -190,15 +190,25 @@ func HandleUpdateCard(c *gin.Context) {
 		return
 	}
 
+	// GitHub APIからデータ取得などの重い処理を別関数に切り出し
+	if err := UpdateUserCardData(&user, accessToken.(string)); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"status": true})
+}
+
+// UpdateUserCardData は指定されたユーザーのカード情報をGitHub APIから取得しDBを更新する
+func UpdateUserCardData(user *model.User, accessToken string) error {
 	// GitHub APIからデータ取得
-	ghService := service.NewGitHubServiceWithToken(accessToken.(string))
+	ghService := service.NewGitHubServiceWithToken(accessToken)
 
 	// プロフィール取得・更新
 	profile, err := ghService.GetUserProfile()
 	if err != nil {
 		log.Printf("ユーザープロフィールの取得に失敗しました: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "GitHubプロフィールの取得に失敗しました"})
-		return
+		return fmt.Errorf("GitHubプロフィールの取得に失敗しました")
 	}
 
 	// ユーザー情報を更新
@@ -214,14 +224,13 @@ func HandleUpdateCard(c *gin.Context) {
 			user.GithubJoinedAt = &joinedAt
 		}
 	}
-	db.DB.Save(&user)
+	db.DB.Save(user)
 
 	// 全リポジトリ取得
 	repos, err := ghService.GetAllRepos()
 	if err != nil {
 		log.Printf("リポジトリ情報の取得に失敗しました: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "リポジトリ情報の取得に失敗しました"})
-		return
+		return fmt.Errorf("リポジトリ情報の取得に失敗しました")
 	}
 
 	// 言語集約
@@ -291,7 +300,7 @@ func HandleUpdateCard(c *gin.Context) {
 	log.Printf("ユーザーのカードを更新しました: %s (tech=%d, activity=%d, charm=%d, alias=%s)\n",
 		user.UserName, technicalLevel, activityScore, charmScore, alias)
 
-	c.JSON(http.StatusOK, gin.H{"status": true})
+	return nil
 }
 
 // HandleGetQR はユーザーのカードQRコードを生成する
