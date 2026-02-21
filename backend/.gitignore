@@ -2,3 +2,6 @@
 .env
 tmp/
 *.db
+*.db-journal
+main
+backend
