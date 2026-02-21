@@ -12,8 +12,8 @@ export const fetchUserId = async () => {
 
     const data = await response.json();
 
-    // オブジェクトから user_id のみを取り出して返す
-    return data.user_id;
+    // オブジェクトから id のみを取り出して返す
+    return data.id;
   } catch (error) {
     console.error('ユーザーIDの取得に失敗しました:', error);
     throw error;

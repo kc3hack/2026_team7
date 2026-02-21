@@ -12,8 +12,8 @@ type UpdateStatus = 'initial' | 'updating' | 'updated';
 const Update = () => {
   const navigate = useNavigate();
 
-  const { id } = useParams<{ id: string }>();
-  const user_name = id || 'unknown';
+  const { user_name: paramUserName } = useParams<{ user_name: string }>();
+  const user_name = paramUserName || 'unknown';
 
   const { status, loading, error, triggerUpdate } = useUpdateStatus();
 

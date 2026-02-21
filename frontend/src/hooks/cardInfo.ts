@@ -9,7 +9,7 @@ export const useCardInfo = (user_name: string) => {
   useEffect(() => {
     const fetchCardInfo = async () => {
       try {
-        const response = await fetch(`/api/v1/card/${user_name}`);
+        const response = await fetch(`/api/v1/cards/${user_name}`);
         if (!response.ok) {
           throw new Error(`Error fetching card info: ${response.statusText}`);
         }

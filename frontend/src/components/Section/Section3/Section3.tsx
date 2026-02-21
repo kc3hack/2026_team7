@@ -4,7 +4,7 @@ import TitleContent from '../../TitleContent/TitleContent';
 
 type Section3Props = {
   website?: string | null;
-  social_accounts?: string[] | null;
+  social_accounts?: { url: string }[] | null;
 };
 
 const Section3 = (props: Section3Props) => {
@@ -17,7 +17,7 @@ const Section3 = (props: Section3Props) => {
             <TitleContent
               key={index}
               title={index === 0 ? 'SNS' : ''}
-              content={account}
+              content={account.url}
             />
           ))
         ) : (

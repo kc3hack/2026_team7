@@ -1,13 +1,13 @@
 // 言語情報
 export interface Language {
   name: string;
-  bytes: number;
+  char_count: number;
 }
 
 // 統計情報
 export interface Stats {
   repo_count: number;
-  total_bytes: number;
+  total_char_count: number;
 }
 
 // ユーザー情報
@@ -16,11 +16,11 @@ export interface UserInfo {
   user_name: string;
   display_name: string;
   github_joined_at: string; // ISO形式
-  bio: string;
+  bio: string | null;
   company: string | null;
   location: string | null;
   website: string | null;
-  social_accounts: string[];
+  social_accounts: { url: string }[];
   is_self: boolean;
   is_update: boolean;
 }
@@ -39,5 +39,5 @@ export interface CardInfo {
 // 全体レスポンス
 export interface CardResponse {
   user_info: UserInfo;
-  card_info: CardInfo;
+  card_info?: CardInfo;
 }
