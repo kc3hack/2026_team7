@@ -1,0 +1,18 @@
+# ビルドステージ
+FROM golang:1.26-alpine AS builder
+RUN apk add --no-cache gcc musl-dev
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=1 GOOS=linux go build -o main .
+
+# 実行ステージ
+FROM alpine:latest
+WORKDIR /app
+RUN apk add --no-cache ca-certificates libc6-compat
+# 実行に必要なバイナリのみコピー
+COPY --from=builder /app/main .
+COPY .env .
+EXPOSE 8080
+CMD ["./main"]

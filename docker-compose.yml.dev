@@ -2,7 +2,11 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile.backend
+      dockerfile: Dockerfile.backend.dev
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8080:8080"
     env_file:
       - ./backend/.env
     networks:
@@ -10,15 +14,22 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    command: go run main.go
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.frontend
+      dockerfile: Dockerfile.frontend.dev
     volumes:
-      - frontend_static:/output
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:5173"
     networks:
       - app-network
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - backend
 
   mysql:
     image: mysql:8.0
@@ -37,27 +48,8 @@ services:
     networks:
       - app-network
 
-  nginx:
-    image: nginx:stable-alpine
-    ports:
-      - "80:80"
-      - "443:443"
-    env_file:
-      - ./infra/.env
-    environment:
-      - DOMAIN_NAME=${DOMAIN_NAME:-localhost}
-    volumes:
-      - frontend_static:/usr/share/nginx/html:ro
-      - ./infra/nginx/templates:/etc/nginx/templates:ro
-    networks:
-      - app-network
-    depends_on:
-      - frontend
-      - backend
-
 volumes:
   mysql_data:
-  frontend_static:
 
 networks:
   app-network:
