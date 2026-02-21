@@ -31,7 +31,7 @@ const QR: React.FC<Props> = ({ onClose, user_name }) => {
           <div className="qr-details">
             <p className="user-id">ID：{user_name}</p>
             <p className="user-url">URL</p>
-            <p className="user-url">https://example.com/cards/{user_name}/</p>
+            <p className="user-url">{window.location.origin}/cards/{user_name}/</p>
           </div>
 
           {/* アクション部：一番下に配置 */}
