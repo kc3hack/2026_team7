@@ -80,7 +80,7 @@ func HandleGetCard(c *gin.Context) {
 	var card model.UserCard
 	if err := db.DB.Where("user_id = ?", user.ID).First(&card).Error; err == nil {
 		if time.Since(card.LastUpdatedAt) > 15*time.Minute {
-			remaing := 15 - int(time.Since(card.LastUpdatedAt).Minutes())
+			remaining := 15 - int(time.Since(card.LastUpdatedAt).Minutes())
 			c.JSON(http.StatusTooManyRequests, gin.H{
         "error": fmt.Sprintf("次回の更新まであと %d 分待ってください", remaining),
       })
