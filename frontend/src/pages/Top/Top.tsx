@@ -15,7 +15,7 @@ const Top: React.FC = () => {
       <Header />
 
       <main className="hero-section">
-        <h1 className="product-title">Product Name</h1>
+        <h1 className="product-title">GXPass</h1>
 
         <div className="message-area">
           <p className="main-message">
