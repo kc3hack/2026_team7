@@ -11,6 +11,8 @@ interface Section1Props {
   level: number; // LVを追加
   imageUrl: string; // 写真のURLを追加
   updatedDate: string; // スキル更新日時を追加
+  is_self: boolean; // 自分のプロフィールかどうかを示すフラグを追加
+  is_update: boolean; // スキル更新が可能かどうかを示すフラグを追加
   onClickQR?: () => void;
   onClickUpdate?: () => void;
 }
@@ -36,6 +38,8 @@ const Section1: React.FC<Section1Props> = ({
   level,
   imageUrl,
   updatedDate,
+  is_self,
+  is_update,
   onClickQR,
   onClickUpdate,
 }) => {
@@ -50,29 +54,28 @@ const Section1: React.FC<Section1Props> = ({
         {/* 2. 名前・ID・QR枠 */}
         <div className="right">
           <div className="box name-box">
-            <div className="top-row">
-              <span>エンジニア名</span>
-              <span className="id">ID : {userId}</span>
+            <span className="label-text">エンジニア名</span>
+            <div className="name-row">
+              <div className="name">{userName}</div>
+              {is_self && (
+                <button className="qr-btn btn" onClick={onClickQR}>
+                  QR表示
+                </button>
+              )}
             </div>
-            <div className="name">{userName}</div>
-            <button className="qr-btn" onClick={onClickQR}>
-              QR表示
-            </button>
+            <span className="id-text">ID : {userId}</span>
           </div>
           {/* 3. 歴・登録日枠 */}
           <div className="middle-row">
             <div className="box history-box">
-              <div className="history-header">
-                <div className="Registration">エンジニア歴</div>
-                <div className="Registration-date">
-                  登録日：
-                  <span className="regis-text">
-                    {dayjs(registeredDate).format('YYYY年MM月DD日')}
-                  </span>
-                </div>
-              </div>
-
+              <div className="label-text">エンジニア歴</div>
               <div className="big">{history}年</div>
+              <div className="Registration-date">
+                登録日：
+                <span className="regis-text">
+                  {dayjs(registeredDate).format('YYYY年MM月DD日')}
+                </span>
+              </div>
             </div>
             {/* 4. LV枠 */}
             <div className="box level-box">
@@ -84,9 +87,11 @@ const Section1: React.FC<Section1Props> = ({
           <div className="box title-box">
             <div className="title">称号</div>
             <div className="title-neme">{title}</div>
-            <button className="update-btn" onClick={onClickUpdate}>
-              スキル更新
-            </button>
+            {is_self && is_update ? (
+              <button className="update-btn btn" onClick={onClickUpdate}>
+                スキル更新
+              </button>
+            ) : null}
           </div>
 
           <div className="updated_date">

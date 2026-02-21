@@ -145,7 +145,7 @@ body {
 }
 .level {
   font-size: 60px;
-  /* margin-top: 10px; */
+  margin-top: 25px;
   padding-right: 10px;
   text-align: right;
 }
@@ -171,6 +171,9 @@ body {
   cursor: pointer;
   font-size: 18px;
   max-width: 100px;
+}
+.btn:hover {
+  transform: scale(1.05);
 }
 .updated_date {
   margin-top: 0;
@@ -292,6 +295,7 @@ body {
     margin-top: 1px;
     width: 100%; /* 幅をいっぱいにする */
     text-align: center; /* 称号名は中央のままにする場合 */
+    font-size: 6vw; /* ビューポート幅の5% */
   }
 
   .update-btn {
@@ -336,5 +340,63 @@ body {
     border-radius: 4px;
     display: block;
     margin: 0 auto; /* 画像自体も中央 */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* 枠全体の設定 */
+  .name-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px !important;
+    position: relative; /* ボタンの基準にする */
+  }
+
+  /* 「エンジニア名」ラベル */
+  .label-text {
+    order: 1;
+    font-size: 14px;
+    color: #dcdcdc;
+  }
+
+  .name-row {
+    order: 2;
+    display: flex;
+    align-items: center; /* 上下中央を揃える */
+    justify-content: space-between; /* ★ これで名前を左、ボタンを右端に配置 */
+    width: 100%; /* 横幅いっぱいに広げる */
+    margin: 8px 0;
+  }
+
+  /* 名前エリア */
+  .name {
+    order: 2;
+    font-size: 24px;
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  /* QRボタンをIDと同じ右端のラインに配置 */
+  .qr-btn {
+    position: absolute; /* 自由配置 */
+    right: 15px; /* 右端からの距離（paddingと同じにすると綺麗） */
+    bottom: 15px; /* 下端からの距離（IDと同じ高さに調整） */
+
+    /* ボタンが細くならないように固定 */
+    width: auto;
+    padding: 5px 15px;
+    font-size: 14px;
+    white-space: nowrap;
+    border-radius: 8px;
+  }
+
+  /* IDテキスト */
+  .id-text {
+    order: 3;
+    font-size: 14px;
+    opacity: 0.8;
+    width: 100%;
+    text-align: left; /* 基本は左 */
   }
 }

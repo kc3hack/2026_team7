@@ -22,6 +22,7 @@ export interface UserInfo {
   website: string | null;
   social_accounts: string[];
   is_self: boolean;
+  is_update: boolean;
 }
 
 // カード情報

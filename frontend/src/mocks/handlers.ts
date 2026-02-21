@@ -20,6 +20,7 @@ export const handlers = [
           'https://github.example.com/tech-taro',
         ],
         is_self: true,
+        is_update: true,
       },
       card_info: {
         alias_title: '静寂のナイトウォッチ',
