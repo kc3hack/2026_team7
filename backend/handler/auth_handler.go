@@ -100,6 +100,7 @@ func HandleGitHubCallback(c *gin.Context) {
 
 	// DBにユーザーを保存（存在しなければ作成）
 	var dbUser model.User
+	isNewUser := false
 	result := db.DB.Where("user_name = ?", user.Login).First(&dbUser)
 	if result.Error != nil {
 		dbUser = model.User{
@@ -112,6 +113,7 @@ func HandleGitHubCallback(c *gin.Context) {
 			c.String(http.StatusInternalServerError, "DBへのユーザー登録に失敗しました")
 			return
 		}
+		isNewUser = true
 	} else {
 		if err := db.DB.Model(&dbUser).Updates(model.User{
 			UserName:  user.Login,
@@ -120,6 +122,15 @@ func HandleGitHubCallback(c *gin.Context) {
 			log.Printf("ユーザー更新エラー: %v\n", err)
 			c.String(http.StatusInternalServerError, "DBのユーザー情報更新に失敗しました")
 			return
+		}
+	}
+
+	// 初回ログイン時はカード情報を同期的に取得して準備する
+	if isNewUser {
+		log.Printf("初回ログイン: %s のカード情報を取得中...\n", dbUser.UserName)
+		if err := UpdateUserCardData(&dbUser, token.AccessToken); err != nil {
+			// 取得に失敗してもログイン自体は続行させる
+			log.Printf("初回ログイン時のカード情報取得に失敗しました: %v\n", err)
 		}
 	}
 
