@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ログイン完了 - Engineer Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body class="bg-grid">
+
+    <section class="hero-gradient min-h-screen flex flex-col items-center justify-center px-4 relative">
+        <!-- Theme Toggle -->
+        <div class="absolute top-4 right-4 z-50">
+            <button id="themeToggleBtn"
+                class="p-2 rounded-full glass hover:bg-white/10 transition-colors text-white cursor-pointer"
+                aria-label="Toggle theme">
+                <!-- Icon filled by JS -->
+            </button>
+        </div>
+
+        <div class="text-center animate-fade-in-up" id="callbackContent">
+            <!-- Loading state -->
+            <div id="loadingState">
+                <div
+                    class="w-16 h-16 mx-auto mb-6 border-4 border-dark-500 border-t-neon-blue rounded-full animate-spin">
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">ログイン処理中...</h2>
+                <p class="text-dark-300">しばらくお待ちください</p>
+            </div>
+
+            <!-- Success state (hidden by default) -->
+            <div id="successState" class="hidden">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-neon-green/10 flex items-center justify-center">
+                    <svg class="w-10 h-10 text-neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">ログイン成功！</h2>
+                <p class="text-dark-300 mb-2">ようこそ、<span id="userName" class="text-neon-blue font-semibold"></span> さん
+                </p>
+                <p class="text-dark-400 text-sm mb-8">カードページに移動します...</p>
+                <a id="goToCardLink" href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold
+                  bg-gradient-to-r from-neon-blue to-neon-purple text-white
+                  hover:shadow-lg hover:shadow-neon-blue/30 transition-all duration-300">
+                    カードを見る
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Error state (hidden by default) -->
+            <div id="errorState" class="hidden">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-red-500/10 flex items-center justify-center">
+                    <svg class="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">ログインに失敗しました</h2>
+                <p class="text-dark-300 mb-8">もう一度お試しください</p>
+                <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold
+                  bg-dark-600 hover:bg-dark-500 text-white transition-colors">
+                    トップに戻る
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="/src/callback.js"></script>
+</body>
+
+</html>
