@@ -295,6 +295,7 @@ body {
     margin-top: 1px;
     width: 100%; /* 幅をいっぱいにする */
     text-align: center; /* 称号名は中央のままにする場合 */
+    font-size: 6vw; /* ビューポート幅の5% */
   }
 
   .update-btn {
