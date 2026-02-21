@@ -47,16 +47,16 @@
 .login-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
- 
+
 .header-logo {
-  display: flex;           /* 横並びにする */
-  align-items: center;     /* 高さを中央揃え */
-  gap: 8px;                /* アイコンと文字の間隔 */
-  font-size: 1.5rem;       /* 文字サイズ調整 */
-  font-weight: bold;       /* 太字 */
+  display: flex; /* 横並びにする */
+  align-items: center; /* 高さを中央揃え */
+  gap: 8px; /* アイコンと文字の間隔 */
+  font-size: 1.5rem; /* 文字サイズ調整 */
+  font-weight: bold; /* 太字 */
 }
 
 .logo-icon {
-  width: 32px;             /* アイコンサイズ */
+  width: 32px; /* アイコンサイズ */
   height: 32px;
 }

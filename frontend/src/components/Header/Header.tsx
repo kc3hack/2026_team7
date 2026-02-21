@@ -10,10 +10,10 @@ export const Header: React.FC = () => {
   return (
     <header className="header fixed-header">
       <div className="header-container">
-       <div className="header-logo">
-        <img src="/icon.png" alt="GXPass icon" className="logo-icon" />
-        <span className="logo-placeholder">GXPass</span>
-       </div>
+        <div className="header-logo">
+          <img src="/icon.png" alt="GXPass icon" className="logo-icon" />
+          <span className="logo-placeholder">GXPass</span>
+        </div>
         <div className="header-nav">
           {/* ★ onClick を追加して関数を呼び出す */}
           <button

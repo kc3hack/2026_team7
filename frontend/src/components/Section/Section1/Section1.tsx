@@ -53,30 +53,30 @@ const Section1: React.FC<Section1Props> = ({
         </div>
         {/* 2. 名前・ID・QR枠 */}
         <div className="right">
-<div className="box name-box">
-  <span className="label-text">エンジニア名</span>
-  <div className="name-row">
-    <div className="name">{userName}</div>
-    {is_self && (
-      <button className="qr-btn btn" onClick={onClickQR}>
-        QR表示
-      </button>
-    )}
-  </div>
-  <span className="id-text">ID : {userId}</span>
-</div>
+          <div className="box name-box">
+            <span className="label-text">エンジニア名</span>
+            <div className="name-row">
+              <div className="name">{userName}</div>
+              {is_self && (
+                <button className="qr-btn btn" onClick={onClickQR}>
+                  QR表示
+                </button>
+              )}
+            </div>
+            <span className="id-text">ID : {userId}</span>
+          </div>
           {/* 3. 歴・登録日枠 */}
           <div className="middle-row">
-<div className="box history-box">
-  <div className="label-text">エンジニア歴</div>
-  <div className="big">{history}年</div>
-  <div className="Registration-date">
-    登録日：
-    <span className="regis-text">
-      {dayjs(registeredDate).format('YYYY年MM月DD日')}
-    </span>
-  </div>
-</div>
+            <div className="box history-box">
+              <div className="label-text">エンジニア歴</div>
+              <div className="big">{history}年</div>
+              <div className="Registration-date">
+                登録日：
+                <span className="regis-text">
+                  {dayjs(registeredDate).format('YYYY年MM月DD日')}
+                </span>
+              </div>
+            </div>
             {/* 4. LV枠 */}
             <div className="box level-box">
               <div className="level-title">LV</div>
@@ -87,12 +87,11 @@ const Section1: React.FC<Section1Props> = ({
           <div className="box title-box">
             <div className="title">称号</div>
             <div className="title-neme">{title}</div>
-            {is_self && is_update ?(
+            {is_self && is_update ? (
               <button className="update-btn btn" onClick={onClickUpdate}>
-              スキル更新
-            </button>
-            ) : null
-            }
+                スキル更新
+              </button>
+            ) : null}
           </div>
 
           <div className="updated_date">

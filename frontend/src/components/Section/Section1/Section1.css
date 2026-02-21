@@ -145,7 +145,7 @@ body {
 }
 .level {
   font-size: 60px;
-  margin-top: 25px;;
+  margin-top: 25px;
   padding-right: 10px;
   text-align: right;
 }
@@ -172,9 +172,8 @@ body {
   font-size: 18px;
   max-width: 100px;
 }
-.btn:hover{
+.btn:hover {
   transform: scale(1.05);
-
 }
 .updated_date {
   margin-top: 0;
@@ -343,10 +342,9 @@ body {
   }
 }
 
-
 @media screen and (max-width: 768px) {
   /* 枠全体の設定 */
-.name-box {
+  .name-box {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -364,9 +362,9 @@ body {
   .name-row {
     order: 2;
     display: flex;
-    align-items: center;      /* 上下中央を揃える */
+    align-items: center; /* 上下中央を揃える */
     justify-content: space-between; /* ★ これで名前を左、ボタンを右端に配置 */
-    width: 100%;              /* 横幅いっぱいに広げる */
+    width: 100%; /* 横幅いっぱいに広げる */
     margin: 8px 0;
   }
 
@@ -380,10 +378,10 @@ body {
 
   /* QRボタンをIDと同じ右端のラインに配置 */
   .qr-btn {
-    position: absolute;   /* 自由配置 */
-    right: 15px;          /* 右端からの距離（paddingと同じにすると綺麗） */
-    bottom: 15px;         /* 下端からの距離（IDと同じ高さに調整） */
-    
+    position: absolute; /* 自由配置 */
+    right: 15px; /* 右端からの距離（paddingと同じにすると綺麗） */
+    bottom: 15px; /* 下端からの距離（IDと同じ高さに調整） */
+
     /* ボタンが細くならないように固定 */
     width: auto;
     padding: 5px 15px;
