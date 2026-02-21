@@ -183,6 +183,15 @@ func HandleUpdateCard(c *gin.Context) {
 		return
 	}
 
+	// 15分以内の更新は拒否
+	var card model.UserCard
+	if err := db.DB.Where("user_id = ?", sessionUserID).First(&card).Error; err == nil {
+		if time.Since(card.LastUpdatedAt) < 15*time.Minute {
+			c.JSON(http.StatusTooManyRequests, gin.H{"error": "15分以内にカードを更新することはできません"})
+			return
+		}
+	}
+
 	// ユーザーを検索
 	var user model.User
 	if err := db.DB.Where("id = ?", idParam).First(&user).Error; err != nil {
