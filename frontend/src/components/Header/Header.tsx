@@ -4,7 +4,7 @@ import './Header.css';
 export const Header: React.FC = () => {
   // ★ GitHubログイン用のリダイレクト関数を追加
   const handleGitHubLogin = () => {
-    window.location.href = '/auth/github/login';
+    window.location.href = '/api/v1/auth/login';
   };
 
   return (

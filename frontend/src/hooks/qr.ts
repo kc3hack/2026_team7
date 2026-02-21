@@ -13,8 +13,9 @@ export const useQr = (user_name: string) => {
         if (!response.ok) {
           throw new Error(`Error fetching QR data: ${response.statusText}`);
         }
-        const data: QrResponse = await response.json();
-        setQrData(data);
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        setQrData({ qr_image_url: url });
       } catch (err: unknown) {
         setError((err as Error).message);
       } finally {

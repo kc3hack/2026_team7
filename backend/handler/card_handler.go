@@ -19,7 +19,7 @@ import (
 // CardResponse はカードAPIのレスポンス
 type CardResponse struct {
 	UserInfo *UserInfoResponse `json:"user_info"`
-	CardInfo *CardInfoResponse `json:"card_info"`
+	CardInfo *CardInfoResponse `json:"card_info,omitempty"`
 }
 
 // UserInfoResponse はユーザー情報レスポンス
@@ -78,18 +78,13 @@ func HandleGetCard(c *gin.Context) {
 
 	// カード情報を検索
 	var card model.UserCard
-	if err := db.DB.Where("user_id = ?", user.ID).First(&card).Error; err == nil {
+	cardFound := false
+	if err := db.DB.Where("user_id = ?", user.ID).Preload("Languages").First(&card).Error; err == nil {
+		cardFound = true
+		// キャッシュ切れチェック（カードがある場合のみ）
 		if time.Since(card.LastUpdatedAt) > 15*time.Minute {
-			remaining := 15 - int(time.Since(card.LastUpdatedAt).Minutes())
-			c.JSON(http.StatusTooManyRequests, gin.H{
-        "error": fmt.Sprintf("次回の更新まであと %d 分待ってください", remaining),
-      })
-			return
+			// ここでは isUpdate フラグを立てるだけで、エラーにはしない
 		}
-	}
-	if err := db.DB.Where("user_id = ?", user.ID).Preload("Languages").First(&card).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "カード情報が見つかりません。先にカードを更新してください。"})
-		return
 	}
 
 	// 自分のカードかどうか
@@ -104,23 +99,9 @@ func HandleGetCard(c *gin.Context) {
 
 	// 更新可能か
 	isUpdate := false
-	if time.Since(card.LastUpdatedAt) > 15*time.Minute {
+	if !cardFound || time.Since(card.LastUpdatedAt) > 15*time.Minute {
 		isUpdate = true
 	}
-
-	// レスポンス構築
-	languages := make([]LanguageResponse, 0, len(card.Languages))
-	for _, lang := range card.Languages {
-		languages = append(languages, LanguageResponse{
-			Name:      lang.Name,
-			CharCount: lang.CharCount,
-		})
-	}
-
-	// 言語をバイト数の降順でソート
-	sort.Slice(languages, func(i, j int) bool {
-		return languages[i].CharCount > languages[j].CharCount
-	})
 
 	resp := CardResponse{
 		UserInfo: &UserInfoResponse{
@@ -136,7 +117,23 @@ func HandleGetCard(c *gin.Context) {
 			IsSelf:         isSelf,
 			IsUpdate:       isUpdate,
 		},
-		CardInfo: &CardInfoResponse{
+	}
+
+	if cardFound {
+		languages := make([]LanguageResponse, 0, len(card.Languages))
+		for _, lang := range card.Languages {
+			languages = append(languages, LanguageResponse{
+				Name:      lang.Name,
+				CharCount: lang.CharCount,
+			})
+		}
+
+		// 言語をバイト数の降順でソート
+		sort.Slice(languages, func(i, j int) bool {
+			return languages[i].CharCount > languages[j].CharCount
+		})
+
+		resp.CardInfo = &CardInfoResponse{
 			AliasTitle:     card.AliasTitle,
 			TechnicalLevel: card.TechnicalLevel,
 			LastUpdatedAt:  card.LastUpdatedAt.Format(time.RFC3339),
@@ -147,7 +144,7 @@ func HandleGetCard(c *gin.Context) {
 			Languages:     languages,
 			ActivityScore: card.ActivityScore,
 			CharmScore:    card.CharmScore,
-		},
+		}
 	}
 
 	// ソーシャルアカウント取得（アクセストークンがある場合）

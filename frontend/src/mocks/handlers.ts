@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw';
 
 export const handlers = [
-  http.get('/api/v1/card/:user_name', ({ params }) => {
+  http.get('/api/v1/cards/:user_name', ({ params }) => {
     const { user_name } = params;
 
     return HttpResponse.json({
@@ -16,8 +16,8 @@ export const handlers = [
         location: 'Tokyo, Japan',
         website: 'https://example.com',
         social_accounts: [
-          'https://twitter.example.com/tech_taro',
-          'https://github.example.com/tech-taro',
+          { url: 'https://twitter.example.com/tech_taro' },
+          { url: 'https://github.example.com/tech-taro' },
         ],
         is_self: true,
         is_update: true,
@@ -28,18 +28,18 @@ export const handlers = [
         last_updated_at: '2026-02-17T14:30:00Z',
         stats: {
           repo_count: 25,
-          total_bytes: 850000, // ← 修正
+          total_char_count: 850000, // ← 修正
         },
         languages: [
           {
             name: 'TypeScript',
-            bytes: 500000, // ← 修正
+            char_count: 500000, // ← 修正
           },
           {
             name: 'Go',
-            bytes: 650000, // ← 修正
+            char_count: 650000, // ← 修正
           },
-          { name: 'Rust', bytes: 300000 }, // ← 修正
+          { name: 'Rust', char_count: 300000 }, // ← 修正
         ],
         activity_score: 85,
         charm_score: 70,
@@ -69,7 +69,7 @@ export const handlers = [
 
   http.get('/api/v1/auth/me', () => {
     return HttpResponse.json({
-      user_id: '1234567890',
+      id: '1234567890',
       user_name: 'user_name',
       avatar_url: 'https://avatars.githubusercontent.com/t/16250516?s=116&v=4',
     });

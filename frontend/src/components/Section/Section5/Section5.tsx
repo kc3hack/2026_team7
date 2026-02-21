@@ -9,7 +9,7 @@ type Section5Props = {
 
 const getMaxScore = (languages: Language[]) => {
   if (!languages || languages.length === 0) return 0; // デフォルト値
-  return Math.max(...languages.map((lang) => lang.bytes), 100); // 最小値は100
+  return Math.max(...languages.map((lang) => lang.char_count), 100); // 最小値は100
 };
 
 const Section5 = (props: Section5Props) => {
@@ -20,15 +20,15 @@ const Section5 = (props: Section5Props) => {
         {/* /* TODO: props.languageSkillsをもとにLanguageSkillコンポーネントを動的に生成する */}
         {props.languageSkills?.length
           ? [...props.languageSkills] // 元の配列を破壊しないようにコピー
-              .sort((a, b) => b.bytes - a.bytes) // bytes 大きい順にソート
-              .map((val, index) => (
-                <LanguageSkill
-                  key={index}
-                  language={val.name}
-                  score={val.bytes}
-                  maxScore={getMaxScore(props.languageSkills)}
-                />
-              ))
+            .sort((a, b) => b.char_count - a.char_count) // bytes 大きい順にソート
+            .map((val, index) => (
+              <LanguageSkill
+                key={index}
+                language={val.name}
+                score={val.char_count}
+                maxScore={getMaxScore(props.languageSkills)}
+              />
+            ))
           : null}
       </div>
     </BoxFrame>

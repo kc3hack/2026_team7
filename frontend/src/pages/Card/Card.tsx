@@ -34,10 +34,10 @@ const Card = () => {
             userName={cardInfo.user_info.display_name}
             userId={cardInfo.user_info.user_name}
             registeredDate={cardInfo.user_info.github_joined_at}
-            title={cardInfo.card_info.alias_title}
-            level={cardInfo.card_info.technical_level}
+            title={cardInfo.card_info?.alias_title || '未取得'}
+            level={cardInfo.card_info?.technical_level || 0}
             imageUrl={cardInfo.user_info.avatar_url}
-            updatedDate={cardInfo.card_info.last_updated_at}
+            updatedDate={cardInfo.card_info?.last_updated_at || cardInfo.user_info.github_joined_at}
             is_self={cardInfo.user_info.is_self}
             is_update={cardInfo.user_info.is_update}
             onClickQR={() => setShowQR(true)}
@@ -52,13 +52,22 @@ const Card = () => {
             website={cardInfo.user_info.website}
             social_accounts={cardInfo.user_info.social_accounts}
           />
-          <Section4
-            repositories={cardInfo.card_info.stats.repo_count}
-            total_bytes={cardInfo.card_info.stats.total_bytes}
-            activity_grade={cardInfo.card_info.activity_score}
-            charisma_grade={cardInfo.card_info.charm_score}
-          />
-          <Section5 languageSkills={cardInfo.card_info.languages} />
+          {cardInfo.card_info && (
+            <>
+              <Section4
+                repositories={cardInfo.card_info.stats.repo_count}
+                total_char_count={cardInfo.card_info.stats.total_char_count}
+                activity_grade={cardInfo.card_info.activity_score}
+                charisma_grade={cardInfo.card_info.charm_score}
+              />
+              <Section5 languageSkills={cardInfo.card_info.languages} />
+            </>
+          )}
+          {!cardInfo.card_info && cardInfo.user_info.is_self && (
+            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+              <p>カード情報がまだありません。下のボタンから作成しましょう！</p>
+            </div>
+          )}
         </BodyFrame>
       </div>
       {/*QR表示*/}

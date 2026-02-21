@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Logging in...</title>
+    <script>
+        // URLパラメータを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginStatus = urlParams.get('login');
+        const user = urlParams.get('user');
+
+        if (loginStatus === 'success' && user) {
+            // ログイン成功時、ユーザーのカードページへリダイレクト
+            window.location.href = '/cards/' + user;
+        } else {
+            // 失敗時などはトップへ
+            window.location.href = '/';
+        }
+    </script>
+</head>
+<body>
+    <p>ログイン処理中です。しばらくお待ちください...</p>
+</body>
+</html>
