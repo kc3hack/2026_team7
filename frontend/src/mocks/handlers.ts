@@ -36,8 +36,9 @@ export const handlers = [
           },
           {
             name: 'Go',
-            bytes: 350000, // ← 修正
+            bytes: 650000, // ← 修正
           },
+          { name: 'Rust', bytes: 300000 }, // ← 修正
         ],
         activity_score: 85,
         charm_score: 70,

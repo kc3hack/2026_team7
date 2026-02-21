@@ -23,6 +23,7 @@ body {
   width: 28px;
   height: 28px;
   object-fit: contain;
+  background-color: white;
 }
 
 .skill-name {
