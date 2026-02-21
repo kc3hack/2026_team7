@@ -3,6 +3,9 @@ function getIconUrl(lang: string) {
     'C++': 'cplusplus',
     'C#': 'csharp',
     'Jupyter Notebook': 'jupyter',
+    'HTML': 'html5',
+    'Processing': 'processingfoundation',
+    'Dockerfile': 'docker',
   };
 
   const slug = slugMap[lang] || lang.toLowerCase().replace(' ', '');
