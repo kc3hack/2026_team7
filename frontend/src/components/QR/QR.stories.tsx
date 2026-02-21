@@ -5,4 +5,4 @@ export default {
   component: QR,
 };
 
-export const Default = () => <QR />;
+export const Default = () => <QR user_name="Test User" />;

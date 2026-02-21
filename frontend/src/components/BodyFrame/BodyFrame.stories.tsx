@@ -5,4 +5,8 @@ export default {
   component: BodyFrame,
 };
 
-export const Default = () => <BodyFrame />;
+export const Default = () => (
+  <BodyFrame>
+    <p>ここにコンテンツ</p>
+  </BodyFrame>
+);

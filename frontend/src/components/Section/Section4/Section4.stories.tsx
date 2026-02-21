@@ -5,4 +5,11 @@ export default {
   component: Section4,
 };
 
-export const Default = () => <Section4 />;
+export const Default = () => (
+  <Section4
+    repositories={14}
+    total_bytes={123456}
+    activity_grade={5}
+    charisma_grade={4}
+  />
+);

@@ -5,4 +5,11 @@ export default {
   component: Section5,
 };
 
-export const Default = () => <Section5 />;
+export const Default = () => (
+  <Section5
+    languageSkills={[
+      { name: 'JavaScript', bytes: 1024 },
+      { name: 'Python', bytes: 2048 },
+    ]}
+  />
+);
