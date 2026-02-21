@@ -1,39 +1,38 @@
 .section2-inner {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .info-row {
-    display: flex;
-    gap: 40px;
-    width: 100%;
+  display: flex;
+  gap: 40px;
+  width: 100%;
 }
 
 .info-row > div {
-    flex: 1;
+  flex: 1;
 }
 
 /* --------------------------------------------------
    レスポンシブ (スマホ版)
 -------------------------------------------------- */
 @media screen and (max-width: 768px) {
-    .info-row {
-        flex-direction: column; /* スマホでは縦並び */
-        gap: 20px;
-    }
+  .info-row {
+    flex-direction: column; /* スマホでは縦並び */
+    gap: 20px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .section2-inner {
+    gap: 1px; /* ← About Me と 下のエリアの間を縮める */
+    padding: 10px; /* 余白も少し縮めると自然 */
+  }
 
-    .section2-inner {
-        gap: 1px;   /* ← About Me と 下のエリアの間を縮める */
-        padding: 10px; /* 余白も少し縮めると自然 */
-    }
-
-    .info-row {
-        flex-direction: column;
-        gap: 1px;   /* Location と Company の間も縮める */
-    }
+  .info-row {
+    flex-direction: column;
+    gap: 1px; /* Location と Company の間も縮める */
+  }
 }

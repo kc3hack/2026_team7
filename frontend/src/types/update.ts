@@ -1,3 +1,3 @@
 export interface StatusResponse {
-    status: boolean;
+  status: boolean;
 }

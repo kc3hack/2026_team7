@@ -8,7 +8,7 @@ type Props = {
   user_name: string;
 };
 
-const QR: React.FC<Props> = ({ onClose, user_name }) => {  
+const QR: React.FC<Props> = ({ onClose, user_name }) => {
   const { qrData, loading, error } = useQr(user_name);
 
   if (loading) return <p>Loading QR...</p>;
@@ -21,16 +21,17 @@ const QR: React.FC<Props> = ({ onClose, user_name }) => {
           {/* QRコード表示部 */}
           <div className="qr-visual">
             {/* QRコード画像がここに入ります */}
-            
+
             <div className="qr-box">
               <img src={qrData.qr_image_url} alt="QR-Code" />
             </div>
           </div>
-          
+
           {/* テキスト情報部：スライド5ページ目の内容 */}
           <div className="qr-details">
             <p className="user-id">ID：{user_name}</p>
-            <p className="user-url">URL</p><p className="user-url">https://example.com/cards/{user_name}/</p>
+            <p className="user-url">URL</p>
+            <p className="user-url">https://example.com/cards/{user_name}/</p>
           </div>
 
           {/* アクション部：一番下に配置 */}

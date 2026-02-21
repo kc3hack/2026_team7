@@ -3,10 +3,10 @@ import BoxFrame from '../../BoxFrame/BoxFrame';
 import { LabelValue } from '../../LabelValue/LabelValue';
 
 type Section4Props = {
-  repositories : number;
-  total_bytes : number;
-  activity_grade : number;
-  charisma_grade : number;
+  repositories: number;
+  total_bytes: number;
+  activity_grade: number;
+  charisma_grade: number;
 };
 
 const Section4 = (props: Section4Props) => {
