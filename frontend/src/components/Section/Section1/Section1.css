@@ -360,38 +360,31 @@ body {
     color: #dcdcdc;
   }
 
-  /* 名前とQRボタンの横並びエリア */
   .name-row {
     order: 2;
     display: flex;
-    align-items: center; /* 垂直方向中央 */
-    justify-content: flex-start; /* 左寄せ */
-    gap: 12px; /* 名前とボタンの間隔 */
-    width: 100%;
+    align-items: center;      /* 上下中央を揃える */
+    justify-content: space-between; /* ★ これで名前を左、ボタンを右端に配置 */
+    width: 100%;              /* 横幅いっぱいに広げる */
     margin: 8px 0;
   }
 
   .name {
     font-size: 24px;
-    font-weight: bold;
-    margin: 0;
     text-align: left;
-    flex-shrink: 1; /* 名前が長すぎる場合は縮む */
+    margin: 0;
+    flex: 1;                  /* 名前エリアを可能な限り広げる */
   }
 
-  /* QRボタンの修正 */
   .qr-btn {
-    position: static;     /* PC版のabsoluteを解除 */
-    order: unset;         /* 個別order不要（name-row内にあるため） */
-    width: auto;          /* 幅指定を解除 */
-    min-width: fit-content; /* 文字に合わせる */
-    padding: 6px 16px;    /* 押しやすいサイズに */
+    position: static;         /* PC版の絶対配置を解除 */
+    width: auto;              /* 横幅をコンテンツに合わせる */
+    min-width: 80px;          /* ボタンが小さくなりすぎないよう最低幅を確保 */
+    padding: 6px 12px;
     font-size: 14px;
-    background: white;
-    color: #333;
-    border-radius: 8px;
-    white-space: nowrap;  /* 文字を改行させない */
-    flex-shrink: 0;       /* ボタンが潰れるのを防ぐ */
+    white-space: nowrap;      /* 改行を禁止 */
+    flex-shrink: 0;           /* ★ ボタンが潰れるのを防ぐ */
+    margin-left: 10px;        /* 名前との最低限の間隔 */
   }
 
   /* IDテキスト */
