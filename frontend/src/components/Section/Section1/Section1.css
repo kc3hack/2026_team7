@@ -95,7 +95,7 @@ body {
 .qr-btn {
   position: absolute;
   right: 20px;
-  bottom: 20px;
+  bottom: 10px;
   background: white;
   color: rgb(0 0 0 / 0.5);
   border: none;
