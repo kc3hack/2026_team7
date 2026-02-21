@@ -53,33 +53,30 @@ const Section1: React.FC<Section1Props> = ({
         </div>
         {/* 2. 名前・ID・QR枠 */}
         <div className="right">
-          <div className="box name-box">
-            <div className="top-row">
-              <span>エンジニア名</span>
-              <span className="id">ID : {userId}</span>
-            </div>
-            <div className="name">{userName}</div>
-            {is_self && (
-             <button className="qr-btn btn" onClick={onClickQR}>
-              QR表示
-             </button>
-            )}
-          </div>
+<div className="box name-box">
+  <span className="label-text">エンジニア名</span>
+  <div className="name-row">
+    <div className="name">{userName}</div>
+    {is_self && (
+      <button className="qr-btn btn" onClick={onClickQR}>
+        QR表示
+      </button>
+    )}
+  </div>
+  <span className="id-text">ID : {userId}</span>
+</div>
           {/* 3. 歴・登録日枠 */}
           <div className="middle-row">
-            <div className="box history-box">
-              <div className="history-header">
-                <div className="Registration">エンジニア歴</div>
-                <div className="Registration-date">
-                  登録日：
-                  <span className="regis-text">
-                    {dayjs(registeredDate).format('YYYY年MM月DD日')}
-                  </span>
-                </div>
-              </div>
-
-              <div className="big">{history}年</div>
-            </div>
+<div className="box history-box">
+  <div className="label-text">エンジニア歴</div>
+  <div className="big">{history}年</div>
+  <div className="Registration-date">
+    登録日：
+    <span className="regis-text">
+      {dayjs(registeredDate).format('YYYY年MM月DD日')}
+    </span>
+  </div>
+</div>
             {/* 4. LV枠 */}
             <div className="box level-box">
               <div className="level-title">LV</div>

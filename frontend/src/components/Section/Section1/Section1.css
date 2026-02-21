@@ -342,3 +342,62 @@ body {
     margin: 0 auto; /* 画像自体も中央 */
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  /* 枠全体の設定 */
+  .name-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px !important; /* padding-top:0を上書き */
+  }
+
+  /* 「エンジニア名」ラベル */
+  .label-text {
+    order: 1;
+    font-size: 14px;
+    color: #dcdcdc;
+  }
+
+  /* 名前とQRボタンの横並びエリア */
+  .name-row {
+    order: 2;
+    display: flex;
+    align-items: center; /* 垂直方向中央 */
+    justify-content: flex-start; /* 左寄せ */
+    gap: 12px; /* 名前とボタンの間隔 */
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+    flex-shrink: 1; /* 名前が長すぎる場合は縮む */
+  }
+
+  /* QRボタンの修正 */
+  .qr-btn {
+    position: static;     /* PC版のabsoluteを解除 */
+    order: unset;         /* 個別order不要（name-row内にあるため） */
+    width: auto;          /* 幅指定を解除 */
+    min-width: fit-content; /* 文字に合わせる */
+    padding: 6px 16px;    /* 押しやすいサイズに */
+    font-size: 14px;
+    background: white;
+    color: #333;
+    border-radius: 8px;
+    white-space: nowrap;  /* 文字を改行させない */
+    flex-shrink: 0;       /* ボタンが潰れるのを防ぐ */
+  }
+
+  /* IDテキスト */
+  .id-text {
+    order: 3;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+}
