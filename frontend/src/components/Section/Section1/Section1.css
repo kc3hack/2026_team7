@@ -172,6 +172,10 @@ body {
   font-size: 18px;
   max-width: 100px;
 }
+.btn:hover{
+  transform: scale(1.05);
+
+}
 .updated_date {
   margin-top: 0;
   text-align: right;

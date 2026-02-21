@@ -60,7 +60,7 @@ const Section1: React.FC<Section1Props> = ({
             </div>
             <div className="name">{userName}</div>
             {is_self && (
-             <button className="qr-btn" onClick={onClickQR}>
+             <button className="qr-btn btn" onClick={onClickQR}>
               QR表示
              </button>
             )}
@@ -91,7 +91,7 @@ const Section1: React.FC<Section1Props> = ({
             <div className="title">称号</div>
             <div className="title-neme">{title}</div>
             {is_self && is_update ?(
-              <button className="update-btn" onClick={onClickUpdate}>
+              <button className="update-btn btn" onClick={onClickUpdate}>
               スキル更新
             </button>
             ) : null
