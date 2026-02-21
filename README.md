@@ -1,6 +1,7 @@
 # GXPass
 　Githubでの活動、君の技術力を見える形にしよう
- ![image](https://hackmd.io/_uploads/S1ExOmPd-g.png)
+ <img width="2879" height="1530" alt="sample" src="https://github.com/user-attachments/assets/d0c507f4-fdb9-4fc5-b2b9-cd71d07c77a3" />
+
 ## チーム名
 【チーム7】 Stack Over OIT
 ## プロダクト説明
