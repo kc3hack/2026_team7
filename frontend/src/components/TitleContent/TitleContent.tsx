@@ -14,10 +14,10 @@ const TitleContent = ({ title, content }: TitleContentProps) => {
       <h3 className="title-label">{title}</h3>
       <div className="content-body">
         {isUrl ? (
-          <a 
-            href={content} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={content}
+            target="_blank"
+            rel="noopener noreferrer"
             className="content-link"
           >
             {content}

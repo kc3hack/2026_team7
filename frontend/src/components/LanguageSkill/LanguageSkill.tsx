@@ -29,29 +29,23 @@ const LanguageSkill = (props: Props) => {
   return (
     <div className="skill">
       <div className="skill-left">
-        <img 
-          alt={language} 
-          className="skill-icon" 
-          src={getIconUrl(language)} 
-        />
+        <img alt={language} className="skill-icon" src={getIconUrl(language)} />
         <span className="skill-name">{language}</span>
       </div>
 
       <div className="skill-bar">
-        <div 
-          className="skill-fill" 
-          style={{ 
+        <div
+          className="skill-fill"
+          style={{
             width: `${percentage}%`,
-            backgroundColor: mainColor 
+            backgroundColor: mainColor,
           }}
         >
           {/* CSSの::afterがこの色を継承して光る線になります */}
         </div>
       </div>
 
-      <div className="skill-score">
-        {score.toLocaleString()}
-      </div>
+      <div className="skill-score">{score.toLocaleString()}</div>
     </div>
   );
 };

@@ -4,15 +4,15 @@ body {
   padding: 0;
   /* 指定された4つの色による線形グラデーション */
   background: linear-gradient(
-    180deg, 
-    #002060 0%, 
-    #0070C0 35%, 
-    #0070C0 65%, 
+    180deg,
+    #002060 0%,
+    #0070c0 35%,
+    #0070c0 65%,
     #002060 100%
   );
   /* 背景を固定してスクロールしてもグラデーションが動かないようにする設定 */
   background-attachment: fixed;
-  
+
   /* テキストの基本色を白に */
   color: #ffffff;
   min-height: 100vh;

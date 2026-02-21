@@ -15,10 +15,10 @@ export const Header: React.FC = () => {
         </div>
         <div className="header-nav">
           {/* ★ onClick を追加して関数を呼び出す */}
-          <button 
-            className="login-button" 
+          <button
+            className="login-button"
             onClick={handleGitHubLogin}
-            style={{ cursor: 'pointer' }} 
+            style={{ cursor: 'pointer' }}
           >
             GitHubでログイン
           </button>

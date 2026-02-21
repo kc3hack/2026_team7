@@ -13,8 +13,8 @@ npm install
 ## 使い方
 
 ```tsx
-import React from "react";
-import { useCardInfo } from "./hooks/useCardInfo";
+import React from 'react';
+import { useCardInfo } from './hooks/useCardInfo';
 
 const CardComponent = ({ user_name }: { user_name: string }) => {
   const { cardInfo, loading, error } = useCardInfo(user_name);
@@ -42,8 +42,10 @@ const CardComponent = ({ user_name }: { user_name: string }) => {
       <p>Charm Score: {cardInfo.card_info.charm_score}</p>
       <h3>Languages:</h3>
       <ul>
-        {cardInfo.card_info.languages.map(lang => (
-          <li key={lang.name}>{lang.name} - {lang.bytes} bytes</li>
+        {cardInfo.card_info.languages.map((lang) => (
+          <li key={lang.name}>
+            {lang.name} - {lang.bytes} bytes
+          </li>
         ))}
       </ul>
     </div>
@@ -55,16 +57,16 @@ export default CardComponent;
 
 ## パラメータ
 
-| パラメータ       | 型        | 説明                          |
-| ----------- | -------- | --------------------------- |
+| パラメータ  | 型       | 説明                                               |
+| ----------- | -------- | -------------------------------------------------- |
 | `user_name` | `string` | 情報を取得したいユーザーの名前（API で利用される） |
 
 ## 戻り値
 
-| プロパティ      | 型                      | 説明               |
-| ---------- | ---------------------- | ---------------- |
-| `cardInfo` | `CardResponse \| null` | API から取得したカード情報  |
-| `loading`  | `boolean`              | データ取得中かどうか       |
+| プロパティ | 型                     | 説明                             |
+| ---------- | ---------------------- | -------------------------------- |
+| `cardInfo` | `CardResponse \| null` | API から取得したカード情報       |
+| `loading`  | `boolean`              | データ取得中かどうか             |
 | `error`    | `string \| null`       | エラーが発生した場合のメッセージ |
 
 ## データ構造
@@ -129,7 +131,7 @@ interface Language {
 
 ## 注意点
 
-* `user_name` が変更されるたびに API が呼ばれます。
-* API のレスポンスが正しい形式であることを前提としています。
-* 言語情報は `name` と `bytes` を持ち、各リポジトリのコード量を示します。
-* 統計情報はリポジトリ数と総バイト数を含みます。
+- `user_name` が変更されるたびに API が呼ばれます。
+- API のレスポンスが正しい形式であることを前提としています。
+- 言語情報は `name` と `bytes` を持ち、各リポジトリのコード量を示します。
+- 統計情報はリポジトリ数と総バイト数を含みます。

@@ -1,23 +1,22 @@
-body{
-    background-color: rgb(137, 137, 137);
+body {
+  background-color: rgb(137, 137, 137);
 }
 
 .box_area {
-    
-    width: 95%;
+  width: 95%;
 
-    border: 6px solid rgba(220, 224, 230, 0.8); /* 4.5pt ≒ 6px */
-    
-    box-sizing: border-box;      /* 枠込みで画面サイズに収める */
+  border: 6px solid rgba(220, 224, 230, 0.8); /* 4.5pt ≒ 6px */
 
-    background-color: rgba(0, 57, 98, 0.5); /* 半透明の青 */
+  box-sizing: border-box; /* 枠込みで画面サイズに収める */
 
-    /* padding: 15px; */
+  background-color: rgba(0, 57, 98, 0.5); /* 半透明の青 */
 
-    margin: 15px auto; /* 上下のマージンを15px、左右のマージンを自動で中央寄せ */
+  /* padding: 15px; */
 
-    /* 浮いている感じ */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  margin: 15px auto; /* 上下のマージンを15px、左右のマージンを自動で中央寄せ */
+
+  /* 浮いている感じ */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 /*  スマホ用 */

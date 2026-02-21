@@ -1,5 +1,5 @@
-body{
-    background-color: rgb(137, 137, 137);
+body {
+  background-color: rgb(137, 137, 137);
 }
 
 .skills {
@@ -8,7 +8,6 @@ body{
 }
 
 .skills-title {
-
   font-family: 'Comic Sans MS', 'Cursive', sans-serif;
 
   font-size: 24px;
@@ -24,9 +23,8 @@ body{
 }
 
 @media screen and (max-width: 768px) {
-
   .skills-title {
-    font-size: 17px;          /* 小さくする */
+    font-size: 17px; /* 小さくする */
     /* line-height: 1.3;         行間調整 */
     /* word-break: break-word;   強制折り返し */
     /* display: block;           inline-blockやめる */
@@ -34,9 +32,8 @@ body{
   }
 
   .skills {
-    padding: 10px;            /* 余白も少し縮める */
+    padding: 10px; /* 余白も少し縮める */
   }
-
 }
 
 @media screen and (max-width: 768px) {

@@ -5,8 +5,8 @@
 ## 使い方
 
 ```tsx
-import React from "react";
-import { useQr } from "./hooks/useQr";
+import React from 'react';
+import { useQr } from './hooks/useQr';
 
 const QrComponent = ({ user_name }: { user_name: string }) => {
   const { qrData, loading, error } = useQr(user_name);
@@ -28,17 +28,17 @@ export default QrComponent;
 
 ## パラメータ
 
-| パラメータ       | 型        | 説明               |
-| ----------- | -------- | ---------------- |
+| パラメータ  | 型       | 説明                          |
+| ----------- | -------- | ----------------------------- |
 | `user_name` | `string` | QR 情報を取得したいユーザー名 |
 
 ## 戻り値
 
-| プロパティ     | 型                    | 説明               |
-| --------- | -------------------- | ---------------- |
-| `qrData`  | `QrResponse \| null` | 取得した QR 情報       |
-| `loading` | `boolean`            | データ取得中かどうか       |
-| `error`   | `string \| null`     | エラーが発生した場合のメッセージ |
+| プロパティ | 型                   | 説明                             |
+| ---------- | -------------------- | -------------------------------- |
+| `qrData`   | `QrResponse \| null` | 取得した QR 情報                 |
+| `loading`  | `boolean`            | データ取得中かどうか             |
+| `error`    | `string \| null`     | エラーが発生した場合のメッセージ |
 
 ## データ構造
 
@@ -53,5 +53,5 @@ interface QrResponse {
 
 ## 注意点
 
-* `user_name` が変更されるたびに API が呼ばれます。
-* API のレスポンスが正しい形式であることを前提としています。
+- `user_name` が変更されるたびに API が呼ばれます。
+- API のレスポンスが正しい形式であることを前提としています。

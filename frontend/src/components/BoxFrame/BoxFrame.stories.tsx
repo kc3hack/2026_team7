@@ -1,8 +1,8 @@
-import BoxFrame from "./BoxFrame";
+import BoxFrame from './BoxFrame';
 
 export default {
   title: 'Components/BoxFrame',
-  component: BoxFrame       ,
+  component: BoxFrame,
 };
 
 export const Default = () => <BoxFrame>BoxFrame Component</BoxFrame>;

@@ -1,8 +1,8 @@
-import BodyFrame from "./BodyFrame";
+import BodyFrame from './BodyFrame';
 
 export default {
   title: 'Components/BodyFrame',
-  component: BodyFrame       ,
+  component: BodyFrame,
 };
 
 export const Default = () => <BodyFrame />;

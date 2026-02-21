@@ -11,7 +11,7 @@ const UpdateBtn: React.FC<UpdateBtnProps> = ({ status, onClick }) => {
   const buttonText = status === 'updated' ? '戻る' : 'スキルを更新';
 
   return (
-    <button 
+    <button
       className={`update-main-button ${status}`}
       onClick={onClick}
       disabled={status === 'updating'}

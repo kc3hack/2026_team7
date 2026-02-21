@@ -1,101 +1,103 @@
 body {
-    background-color: rgb(137, 137, 137);
+  background-color: rgb(137, 137, 137);
 }
 
 .skill {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    color: white;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: white;
+  margin-bottom: 20px;
 }
 
 .skill-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 160px; /* ロゴと名前の間隔を安定させる */
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 160px; /* ロゴと名前の間隔を安定させる */
+  flex-shrink: 0;
 }
 
 .skill-icon {
-    /* でかすぎ問題を解決：バーの高さに合わせて調整 */
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
+  /* でかすぎ問題を解決：バーの高さに合わせて調整 */
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .skill-name {
-    font-size: 16px;
-    font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .skill-bar {
-    flex: 1;
-    height: 30px;
-    background-color: #2a2a2a; /* 背景を暗くすると色が映えます */
-    border: 1px solid #fff;
-    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4);
-    position: relative;
-    overflow: hidden;
+  flex: 1;
+  height: 30px;
+  background-color: #2a2a2a; /* 背景を暗くすると色が映えます */
+  border: 1px solid #fff;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
 .skill-fill {
-    height: 100%;
-    position: relative;
-    /* 背景色(Reactから渡る色)と幅の変化をスムーズに */
-    transition: width 0.6s ease-out, background-color 0.4s ease;
-    
-    /* 質感（光沢）だけを上に重ねる。色はここには書かない！ */
-    background-image: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0.1) 25%,
-        rgba(255, 255, 255, 0) 50%
-    );
+  height: 100%;
+  position: relative;
+  /* 背景色(Reactから渡る色)と幅の変化をスムーズに */
+  transition:
+    width 0.6s ease-out,
+    background-color 0.4s ease;
 
-    box-shadow:
-        inset 0 4px 6px rgba(255, 255, 255, 0.3),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  /* 質感（光沢）だけを上に重ねる。色はここには書かない！ */
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0) 50%
+  );
+
+  box-shadow:
+    inset 0 4px 6px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* 右端の境界線：フィルターで自動的に明るくする */
 .skill-fill::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background-color: inherit; /* 親(skill-fill)の色を引き継ぐ */
-    filter: brightness(1.5); /* 1.5倍明るくして光らせる */
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: inherit; /* 親(skill-fill)の色を引き継ぐ */
+  filter: brightness(1.5); /* 1.5倍明るくして光らせる */
 }
 
 .skill-score {
-    font-size: 18px;
-    font-weight: bold;
-    width: 100px;
-    text-align: right;
-    padding-right: 10px;
-    font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100px;
+  text-align: right;
+  padding-right: 10px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 /* --- 既存のスタイルは維持しつつ、以下を調整・追加 --- */
 
 .skill {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* 少し狭くしてPCでも見やすく */
-    color: white;
-    margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* 少し狭くしてPCでも見やすく */
+  color: white;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 600px) {
   .skills-container {
     display: flex;
-    flex-direction: column;  /* 縦並び */
-    align-items: center;     /* skill全体を中央に寄せる */
-    gap: 16px;               
+    flex-direction: column; /* 縦並び */
+    align-items: center; /* skill全体を中央に寄せる */
+    gap: 16px;
     width: 100%;
     padding: 16px;
     box-sizing: border-box;
@@ -103,9 +105,9 @@ body {
 
   .skill {
     flex-direction: column; /* 縦並びに変更 */
-    margin: 0 auto 24px;    /* 上下マージン、左右中央寄せ */
-    gap: 8px; 
-    width: 95%;             /* 親に対して少し余白 */
+    margin: 0 auto 24px; /* 上下マージン、左右中央寄せ */
+    gap: 8px;
+    width: 95%; /* 親に対して少し余白 */
   }
 
   .skill-left {
@@ -117,15 +119,15 @@ body {
   }
 
   .skill-bar {
-    width: 100%;      
-    flex: none;       
-    height: 24px;     
-    box-sizing: border-box; 
+    width: 100%;
+    flex: none;
+    height: 24px;
+    box-sizing: border-box;
   }
 
   .skill-score {
     width: 100%;
-    text-align: right; 
+    text-align: right;
     font-size: 16px;
     padding-right: 0;
   }

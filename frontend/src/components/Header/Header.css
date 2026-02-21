@@ -3,9 +3,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;;
+  z-index: 1000;
 }
-
 
 .header {
   background-color: #0d1b2a; /* 画像の暗い紺色に合わせた背景色 */

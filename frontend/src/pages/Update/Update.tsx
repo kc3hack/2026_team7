@@ -1,7 +1,7 @@
 import './Update.css';
 import { useMemo, useState } from 'react'; // useStateを追加
 import { useParams } from 'react-router-dom';
-import { useUpdateStatus } from '../../hooks/update'; 
+import { useUpdateStatus } from '../../hooks/update';
 import BoxFrame from '../../components/BoxFrame/BoxFrame';
 import Status from '../../components/Status/Status';
 import UpdateBtn from '../../components/UpdateBtn/UpdateBtn';
@@ -10,14 +10,13 @@ import { useNavigate } from 'react-router-dom';
 type UpdateStatus = 'initial' | 'updating' | 'updated';
 
 const Update = () => {
-
   const navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
-  const user_name = id || "unknown";
+  const user_name = id || 'unknown';
 
   const { status, loading, error, triggerUpdate } = useUpdateStatus();
-  
+
   // ★ 演出用の「更新中」状態を管理するフラグ
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -30,13 +29,12 @@ const Update = () => {
   }, [loading, status, isAnimating]);
 
   const handleUpdate = async () => {
-    
     // 更新が完了している
-    if(currentStatus === 'updated'){
+    if (currentStatus === 'updated') {
       navigate(`/cards/${user_name}`); // カードに遷移
       return;
     }
-    
+
     if (loading) return;
 
     setIsAnimating(true); // 演出開始
@@ -44,13 +42,12 @@ const Update = () => {
     try {
       // 1. 実際の更新リクエストを送る
       await triggerUpdate();
-      
+
       // 2. ★ ゲージがMaxになるのを待つための「あえての待ち時間」
       // 1.5秒〜2秒くらいに設定すると、ゲージが溜まっていく様子がしっかり見えます
-      await new Promise(resolve => setTimeout(resolve, 2000)); 
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (err) {
-      console.error("更新処理に失敗しました:", err);
+      console.error('更新処理に失敗しました:', err);
     } finally {
       setIsAnimating(false); // 演出終了 -> ここで 'updated' に切り替わる
     }
@@ -77,10 +74,7 @@ const Update = () => {
           <Status status={currentStatus} />
           <p className="user-id">ID : {user_name}</p>
           <div className="update-btn-container">
-                      <UpdateBtn
-            status={currentStatus}
-            onClick={handleUpdate}
-          />
+            <UpdateBtn status={currentStatus} onClick={handleUpdate} />
           </div>
         </div>
       </BoxFrame>
