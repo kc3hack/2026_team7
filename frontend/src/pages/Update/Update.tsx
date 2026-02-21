@@ -37,6 +37,13 @@ const Update = () => {
 
     if (loading) return;
 
+    const result = confirm("本当にスキル更新しますか？");
+
+    if (!result) {
+      navigate(`/cards/${user_name}`); // カードに遷移
+      return;
+    };
+
     setIsAnimating(true); // 演出開始
 
     try {
