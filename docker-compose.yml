@@ -9,6 +9,8 @@ services:
       - "8080:8080"
     env_file:
       - ./backend/.env
+    networks:
+      - app-network
     depends_on:
       mysql:
         condition: service_healthy
@@ -22,7 +24,9 @@ services:
       - ./frontend:/app
       - /app/node_modules
     ports:
-      - "3000:5173"
+      - "3000:80"
+    networks:
+      - app-network
     depends_on:
       - backend
 
@@ -43,3 +47,7 @@ services:
 
 volumes:
   mysql_data:
+
+networks:
+  app-network:
+    driver: bridge

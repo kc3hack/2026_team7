@@ -6,7 +6,7 @@ const Top: React.FC = () => {
   // 中央ボタン用のログイン処理
   const handleGitHubLogin = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.location.href = '/auth/github/login';
+    window.location.href = '/api/v1/auth/login';
   };
 
   return (
