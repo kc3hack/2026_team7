@@ -103,25 +103,25 @@ func HandleGitHubCallback(c *gin.Context) {
 	result := db.DB.Where("user_name = ?", user.Login).First(&dbUser)
 	if result.Error != nil {
 		dbUser = model.User{
-			GitHubID: int64(user.ID),
+			GitHubID:  int64(user.ID),
 			UserName:  user.Login,
 			AvatarURL: user.AvatarURL,
 		}
 		if err := db.DB.Create(&dbUser).Error; err != nil {
-        log.Printf("ユーザー作成エラー: %v\n", err)
-        c.String(http.StatusInternalServerError, "DBへのユーザー登録に失敗しました")
-        return
-    }
-  } else {
-    if err := db.DB.Model(&dbUser).Updates(model.User{
-        UserName:  user.Login,
-        AvatarURL: user.AvatarURL,
-    }).Error; err != nil {
-        log.Printf("ユーザー更新エラー: %v\n", err)
-        c.String(http.StatusInternalServerError, "DBのユーザー情報更新に失敗しました")
-        return
-    }
-  }
+			log.Printf("ユーザー作成エラー: %v\n", err)
+			c.String(http.StatusInternalServerError, "DBへのユーザー登録に失敗しました")
+			return
+		}
+	} else {
+		if err := db.DB.Model(&dbUser).Updates(model.User{
+			UserName:  user.Login,
+			AvatarURL: user.AvatarURL,
+		}).Error; err != nil {
+			log.Printf("ユーザー更新エラー: %v\n", err)
+			c.String(http.StatusInternalServerError, "DBのユーザー情報更新に失敗しました")
+			return
+		}
+	}
 
 	// セッションにユーザー情報とアクセストークンを保存
 	session.Set("user_id", dbUser.ID)
@@ -151,9 +151,9 @@ func HandleGetMe(c *gin.Context) {
 	db.DB.Where("user_name = ?", userName).First(&user)
 
 	c.JSON(http.StatusOK, gin.H{
-		"id":           userID,
-		"user_name":    userName,
-		"avatar_url":   user.AvatarURL,
+		"id":         userID,
+		"user_name":  userName,
+		"avatar_url": user.AvatarURL,
 	})
 }
 

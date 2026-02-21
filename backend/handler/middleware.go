@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"

@@ -34,6 +34,7 @@ type UserInfoResponse struct {
 	Website        *string             `json:"website"`
 	SocialAccounts []SocialAccountResp `json:"social_accounts"`
 	IsSelf         bool                `json:"is_self"`
+	IsUpdate       bool                `json:"is_update"`
 }
 
 // SocialAccountResp はソーシャルアカウントレスポンス
@@ -77,6 +78,15 @@ func HandleGetCard(c *gin.Context) {
 
 	// カード情報を検索
 	var card model.UserCard
+	if err := db.DB.Where("user_id = ?", user.ID).First(&card).Error; err == nil {
+		if time.Since(card.LastUpdatedAt) > 15*time.Minute {
+			remaing := 15 - int(time.Since(card.LastUpdatedAt).Minutes())
+			c.JSON(http.StatusTooManyRequests, gin.H{
+        "error": fmt.Sprintf("次回の更新まであと %d 分待ってください", remaining),
+      })
+			return
+		}
+	}
 	if err := db.DB.Where("user_id = ?", user.ID).Preload("Languages").First(&card).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "カード情報が見つかりません。先にカードを更新してください。"})
 		return
@@ -90,6 +100,12 @@ func HandleGetCard(c *gin.Context) {
 		if id, ok := sessionUserID.(uint); ok {
 			isSelf = (id == user.ID)
 		}
+	}
+
+	// 更新可能か
+	isUpdate := false
+	if time.Since(card.LastUpdatedAt) > 15*time.Minute {
+		isUpdate = true
 	}
 
 	// レスポンス構築
@@ -118,6 +134,7 @@ func HandleGetCard(c *gin.Context) {
 			Website:        nullableString(user.Website),
 			SocialAccounts: []SocialAccountResp{},
 			IsSelf:         isSelf,
+			IsUpdate:       isUpdate,
 		},
 		CardInfo: &CardInfoResponse{
 			AliasTitle:     card.AliasTitle,
