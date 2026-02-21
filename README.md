@@ -66,3 +66,5 @@
 - ![](https://skillicons.dev/icons?i=react) React
 - ![](https://skillicons.dev/icons?i=go) Go
 - ![](https://skillicons.dev/icons?i=github) GitHub API
+- ![](https://skillicons.dev/icons?i=nginx)NGINX
+- ![](https://skillicons.dev/icons?i=mysql)MySQL
