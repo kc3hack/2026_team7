@@ -46,7 +46,8 @@
 - 認証回りでは、ユーザーがログイン時にわざわざアカウントを作成する手間を省き、利便性を重視した設計を行った。
 - GitHub APIへのリクエスト回数を削減する工夫を導入し、効率的かつ安定したデータ取得を実現。
 - サーバーサイドにはGoを採用し、軽量かつ高速に動作する環境を構築。
-- データベースはSQLiteに対応させ、低予算の環境でも簡単に運用できるよう設計。
+- データベースはMYSQLとSQLiteに対応させ、低予算の環境でも簡単に運用できるよう設計。
+- フルスタックのコンテナ化: Backend、Frontend、そしてリバースプロキシとしてのNginxまですべてをdocker-compose.ymlに集約した。
 - 難しかった点としては、コンテナ化の手順や API 仕様の不明確さによる開発上の苦戦が挙げられるが、それらを乗り越えることで安定したプロダクトに仕上げた。
 ##### UI/UX面でのこだわり
 - ゲーム風プロフィール・ユーザカードを再現したデザインを作成した。
@@ -68,5 +69,6 @@
 - ![](https://skillicons.dev/icons?i=go) Go
 - ![](https://skillicons.dev/icons?i=github) GitHub API
 - ![](https://skillicons.dev/icons?i=nginx)NGINX
+- ![](https://skillicons.dev/icons?i=sqlite)sqlite
 - ![](https://skillicons.dev/icons?i=mysql)MySQL
 - ![](https://skillicons.dev/icons?i=docker)Docker
